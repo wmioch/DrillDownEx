@@ -1,0 +1,110 @@
+================================================================================
+              INCREMENT VERSION BEFORE EACH ANDROID DEPLOYMENT
+================================================================================
+
+BEFORE you run DEPLOY_ANDROID.bat, you MUST increment the version number!
+
+Otherwise, Android won't recognize it as an update.
+
+================================================================================
+                              QUICK STEPS
+================================================================================
+
+1. Open: D:\Projects\DrillDown\android\build.gradle
+
+2. Find lines 46-47:
+   versionCode 122
+   versionName "v122"
+
+3. Change to (increment by 1):
+   versionCode 123
+   versionName "v123"
+
+4. Save the file (Ctrl+S)
+
+5. Double-click: DEPLOY_ANDROID.bat
+
+================================================================================
+                            DETAILED EXAMPLE
+================================================================================
+
+BEFORE (Current):
+---
+    defaultConfig {
+        applicationId "de.dakror.quarry"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 122              ← UPDATE THIS
+        versionName "v122"           ← UPDATE THIS
+        multiDexEnabled false
+    }
+---
+
+AFTER (Updated for deployment):
+---
+    defaultConfig {
+        applicationId "de.dakror.quarry"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 123              ← INCREMENTED
+        versionName "v123"           ← INCREMENTED
+        multiDexEnabled false
+    }
+---
+
+Then deploy with DEPLOY_ANDROID.bat
+
+================================================================================
+                         IMPORTANT RULES
+================================================================================
+
+✓ DO:
+  • Increment versionCode by 1 each time
+  • Use whole numbers only (122, 123, 124, etc.)
+  • Update both versionCode AND versionName
+  • Save the file before deploying
+
+✗ DON'T:
+  • Use decimal numbers (122.5 will fail)
+  • Use the same versionCode twice
+  • Use a LOWER versionCode
+  • Forget to save the file
+
+================================================================================
+                    VERSION HISTORY TRACKING
+================================================================================
+
+Current: versionCode 122, versionName "v123"
+
+Next deploys:
+  #2: versionCode 123, versionName "v123"
+  #3: versionCode 124, versionName "v124"
+  #4: versionCode 125, versionName "v125"
+  
+  (Or use your own naming: v1.0, v1.1, v2.0-beta, etc.)
+
+================================================================================
+                         WHAT HAPPENS ON PHONE
+================================================================================
+
+When you deploy with matching versionCode:
+  ✓ Old app is replaced
+  ✓ Game saves are preserved
+  ✓ Settings are preserved
+  ✓ No separate app icon
+
+When you deploy with LOWER versionCode:
+  ✗ Installation fails or is blocked
+  ✗ Must uninstall old version first
+
+================================================================================
+
+SUMMARY:
+  1. Edit android/build.gradle
+  2. Increment versionCode (122 → 123)
+  3. Increment versionName ("v122" → "v123")
+  4. Save file
+  5. Run DEPLOY_ANDROID.bat
+
+That's it! 🚀
+

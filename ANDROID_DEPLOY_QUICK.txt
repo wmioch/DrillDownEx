@@ -1,0 +1,136 @@
+================================================================================
+           DRILLDOWN - ANDROID DEPLOYMENT - QUICK REFERENCE
+================================================================================
+
+DEPLOY TO PHONE (One-Click):
+   Double-click: DEPLOY_ANDROID.bat
+
+That's it! The script will:
+   1. Check for connected device
+   2. Build the APK
+   3. Deploy to your phone
+
+================================================================================
+                              FIRST TIME SETUP
+================================================================================
+
+If this is your first deployment run:
+
+1. Phone Setup:
+   - Settings > About Phone > Build Number (tap 7 times)
+   - Settings > Developer options > Enable USB Debugging
+   - Allow the security prompt on phone
+
+2. Computer Setup:
+   - Android SDK/NDK installed
+   - ANDROID_HOME environment variable set
+   - Keystore file created and gradle.properties updated
+
+3. First Deploy:
+   - Connect phone via USB
+   - Double-click: DEPLOY_ANDROID.bat
+   - Wait for build and install to complete
+
+================================================================================
+                         FOR SUBSEQUENT UPDATES
+================================================================================
+
+Workflow:
+1. Modify code
+2. BEFORE deploying - Edit android/build.gradle (line 46):
+   Change: versionCode 122
+   To:     versionCode 123  (increment by 1)
+   
+   Also update line 47:
+   Change: versionName "v122"
+   To:     versionName "v123"
+
+3. Save the file
+
+4. Connect phone via USB
+
+5. Double-click: DEPLOY_ANDROID.bat
+
+6. Your phone will update the app, preserving all game data
+
+================================================================================
+                        PACKAGE NAME (DO NOT CHANGE)
+================================================================================
+
+Package: de.dakror.quarry
+Location: android/build.gradle (line 43)
+
+This stays the same for all updates. Changing it creates a NEW app.
+
+================================================================================
+                           IF SOMETHING GOES WRONG
+================================================================================
+
+ERROR: "No Android device connected"
+   Fix: 
+   - Check USB cable connection
+   - Enable USB Debugging on phone (Settings > Developer options)
+   - Try different USB port
+   - Restart phone
+
+ERROR: "Build failed"
+   Fix:
+   - Run: gradlew --stop
+   - Run DEPLOY_ANDROID.bat again
+
+ERROR: "Installation failed"
+   Fix:
+   - Phone storage full? Clear some space
+   - Run: adb uninstall de.dakror.quarry
+   - Run DEPLOY_ANDROID.bat again
+
+ERROR: "ADB not available"
+   Fix:
+   - Set ANDROID_HOME environment variable
+   - Add %ANDROID_HOME%\platform-tools to PATH
+   - Restart terminal/computer
+
+================================================================================
+                            USEFUL COMMANDS
+================================================================================
+
+Check connected devices:
+   adb devices
+
+View phone logs:
+   adb logcat | findstr "quarry"
+
+Uninstall app from phone:
+   adb uninstall de.dakror.quarry
+
+Just build (without deploy):
+   gradlew android:assembleFullRelease
+
+Manual install:
+   adb install -r android\build\outputs\apk\full\release\android-full-release.apk
+
+================================================================================
+                        CURRENT VERSION INFO
+================================================================================
+
+Current versionCode: 122 (line 46 of android/build.gradle)
+Current versionName: v122 (line 47 of android/build.gradle)
+Package Name: de.dakror.quarry
+
+================================================================================
+                              TIPS
+================================================================================
+
+• Always increment versionCode before deploying updates
+• versionCode must be higher than the previous version
+• versionName is just for display (e.g., "v123", "1.0", etc.)
+• Game saves are preserved when updating (same package name)
+• To completely reinstall: uninstall first, then deploy
+• The -r flag in adb allows reinstalling with the same signature
+
+================================================================================
+
+Ready to deploy! 🚀
+
+Double-click DEPLOY_ANDROID.bat to get started.
+

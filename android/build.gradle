@@ -8,6 +8,7 @@ android {
         }
     }
     compileSdkVersion 30
+    namespace "de.dakror.quarry"
 
     flavorDimensions "version"
 
@@ -39,17 +40,20 @@ android {
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
+    buildFeatures {
+        buildConfig true
+    }
     defaultConfig {
         applicationId "de.dakror.quarry"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 122
-        versionName "v122"
+        versionCode 128
+        versionName "v128"
         multiDexEnabled false
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
             signingConfig signingConfigs.config

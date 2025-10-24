@@ -1,0 +1,85 @@
+================================================================================
+                        FIX: ADB NOT IN PATH
+================================================================================
+
+QUICK FIX - RUN THIS:
+   Double-click: SETUP_ADB_PATH.bat
+
+This script will:
+   1. Find ADB on your system
+   2. Add it to PATH automatically OR show manual steps
+   3. Let you know when it's done
+
+================================================================================
+                         MANUAL WORKAROUND
+================================================================================
+
+If the automated setup doesn't work, you can work around it:
+
+Edit DEPLOY_ANDROID.bat and change this line:
+   adb devices
+
+To this (use full path):
+   "C:\path\to\platform-tools\adb.exe" devices
+
+Replace "C:\path\to\platform-tools" with your actual path.
+
+================================================================================
+                    WHERE TO FIND YOUR ADB PATH
+================================================================================
+
+Common locations:
+   ✓ C:\Users\YourUsername\AppData\Local\Android\Sdk\platform-tools
+   ✓ C:\Android\Sdk\platform-tools
+   ✓ C:\Program Files\Android\Sdk\platform-tools
+   ✓ C:\Program Files (x86)\Android\Sdk\platform-tools
+   ✓ Check if you have "Android Studio" - it's usually there
+
+If you installed Android Studio:
+   1. Open Android Studio
+   2. Go to: Tools > SDK Manager
+   3. Look for "SDK Location" at the top
+   4. That's your Android SDK folder
+   5. Add "\platform-tools" to that path
+
+================================================================================
+                       STEPS TO FIX PERMANENTLY
+================================================================================
+
+1. Find where ADB is: SETUP_ADB_PATH.bat will find it
+
+2. Add to Windows PATH:
+   Option A (Automatic):
+      - Right-click SETUP_ADB_PATH.bat
+      - Select "Run as administrator"
+      - Choose option "A" for automatic
+      
+   Option B (Manual):
+      - Right-click "This PC"
+      - Select "Properties"
+      - Click "Advanced system settings"
+      - Click "Environment Variables"
+      - Click "New" under "System variables"
+      - Name: PATH
+      - Value: C:\path\to\platform-tools
+      - Click OK
+
+3. Restart Cursor/Terminal
+
+4. Try DEPLOY_ANDROID.bat again
+
+================================================================================
+                          VERIFY IT WORKS
+================================================================================
+
+After adding to PATH, test it:
+   Open Command Prompt and type:
+      adb version
+
+If you see version info, it worked!
+Then try: DEPLOY_ANDROID.bat
+
+================================================================================
+
+Next step: Double-click SETUP_ADB_PATH.bat
+

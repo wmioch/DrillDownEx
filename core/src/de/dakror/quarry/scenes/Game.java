@@ -3959,10 +3959,20 @@ public class Game extends GameScene {
                     recalcResources();
                     break;
                 case Keys.P:
-                    increaseSpeed();
+                    // Cycle through preset speeds: 1x -> 2x -> 4x -> 10x -> 25x -> 1x
+                    int[] speeds = {1, 2, 4, 10, 25};
+                    int currentIndex = -1;
+                    for (int i = 0; i < speeds.length; i++) {
+                        if (gameSpeed == speeds[i]) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+                    int nextSpeed = speeds[(currentIndex + 1) % speeds.length];
+                    setGameSpeed(nextSpeed);
                     break;
                 case Keys.O:
-                    resetSpeed();
+                    setGameSpeed(1);
                     break;
                 case Keys.U:
                     FOGMODE = true;
@@ -4124,6 +4134,21 @@ public class Game extends GameScene {
 
     public void increaseSpeed() {
         gameSpeed = Math.min(gameSpeed * 2, 100);
+    }
+
+    public void setGameSpeed(int speed) {
+        gameSpeed = Math.max(1, Math.min(speed, 100)); // Clamp between 1 and 100
+        onSpeedChange();
+    }
+
+    public int getGameSpeed() {
+        return gameSpeed;
+    }
+
+    private void onSpeedChange() {
+        if (ui != null) {
+            ui.updateSpeedButtons();
+        }
     }
 
     public int getItemCount() {

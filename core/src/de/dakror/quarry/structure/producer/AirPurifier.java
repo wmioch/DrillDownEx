@@ -57,7 +57,7 @@ public class AirPurifier extends ProducerStructure {
                     .sciences(ScienceType.MineExpansion)
                     .flags(Flags.TextureAlwaysUpright);
 
-    private static final float halfWidth = (int) (Const.CHUNK_SIZE * 0.75f) + 0.5f;
+    private static final float halfWidth = Const.DEFAULT_LAYER_SIZE + 5; //(int) (Const.CHUNK_SIZE * 0.75f) + 0.5f;
 
     int currentHalfWidth;
 

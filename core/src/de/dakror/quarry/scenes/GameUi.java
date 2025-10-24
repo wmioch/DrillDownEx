@@ -248,6 +248,10 @@ public class GameUi implements Ui {
     public ImageButton pauseButton;
     ImageButton copyButton;
 
+    // Speed controls
+    public ButtonGroup<ImageButton> speedButtonGroup;
+    public ImageButton speed2xButton, speed10xButton, speed25xButton, speed100xButton;
+
     // Resources
     VerticalGroup resources;
     Table[] resourceRows;
@@ -618,8 +622,17 @@ public class GameUi implements Ui {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Quarry.Q.sound.play(Quarry.Q.clickSfx);
-                Game.G.resetSpeed();
-                Game.G.setPaused(pauseButton.isChecked());
+                
+                boolean isPaused = pauseButton.isChecked();
+                
+                if (isPaused) {
+                    // When pausing, reset to 1x to avoid confusion
+                    Game.G.setGameSpeed(1);
+                }
+                // When unpausing, speed stays at 1x (user can change it)
+                
+                Game.G.setPaused(isPaused);
+                updateSpeedButtons();
             }
         }, "button.pause");
         ImageButtonStyle style = pauseButton.getStyle();
@@ -629,6 +642,112 @@ public class GameUi implements Ui {
         pauseButton.setPosition(24 + Const.BUILD_RING_ITEM_SIZE, Const.UI_H - (Const.BUILD_RING_ITEM_SIZE + 12));
         pauseButton.setName("pauseButton");
         stage.addActor(pauseButton);
+
+        // Speed control buttons
+        // Pause button is at (24 + BUILD_RING_ITEM_SIZE) with size BUILD_RING_ITEM_SIZE
+        // So speed buttons should start after: position + size + gap
+        float pauseButtonX = 24 + Const.BUILD_RING_ITEM_SIZE;
+        float baseX = pauseButtonX + Const.BUILD_RING_ITEM_SIZE + 8; // After pause button with 8px gap
+        float buttonSpacing = 6; // Space between buttons
+        float buttonSize = Const.BUILD_RING_ITEM_SIZE; // Use same size as pause button
+
+        speedButtonGroup = new ButtonGroup<>();
+        speedButtonGroup.setMaxCheckCount(1);
+        speedButtonGroup.setMinCheckCount(1);
+        speedButtonGroup.setUncheckLast(true);
+
+        speed2xButton = createSpeedButton(2, baseX, skin);
+        speedButtonGroup.add(speed2xButton);
+        stage.addActor(speed2xButton);
+
+        speed10xButton = createSpeedButton(10, baseX + buttonSize + buttonSpacing, skin);
+        speedButtonGroup.add(speed10xButton);
+        stage.addActor(speed10xButton);
+
+        speed25xButton = createSpeedButton(25, baseX + (buttonSize + buttonSpacing) * 2, skin);
+        speedButtonGroup.add(speed25xButton);
+        stage.addActor(speed25xButton);
+
+        speed100xButton = createSpeedButton(100, baseX + (buttonSize + buttonSpacing) * 3, skin);
+        speedButtonGroup.add(speed100xButton);
+        stage.addActor(speed100xButton);
+
+        // Set initial state (1x is default)
+        speed2xButton.setChecked(true);
+    }
+
+    private ImageButton createSpeedButton(final int speed, float xPosition, Skin skin) {
+        final int speedValue = speed;
+
+        // Create a compact button similar to roundButton but with proper sizing
+        ImageButton button = new ImageButton(skin, "round") {
+            @Override
+            public float getPrefWidth() {
+                return super.getWidth();
+            }
+
+            @Override
+            public float getPrefHeight() {
+                return super.getHeight();
+            }
+        };
+        
+        // Set size to match pause button
+        button.setSize(Const.BUILD_RING_ITEM_SIZE, Const.BUILD_RING_ITEM_SIZE);
+        
+        // Get the style and add a simple text label as a child
+        Label label = new Label(speed + "x", skin);
+        label.setAlignment(Align.center);
+        button.addActor(label);  // Add label as actor inside button
+        
+        // Position label to center of button
+        label.setSize(Const.BUILD_RING_ITEM_SIZE, Const.BUILD_RING_ITEM_SIZE);
+
+        // Add click listener
+        button.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Quarry.Q.sound.play(Quarry.Q.clickSfx);
+                Game.G.setGameSpeed(speedValue);
+                updateSpeedButtons();
+            }
+        });
+
+        // Add tooltip
+        button.addListener(new TextTooltip(
+            Quarry.Q.i18n.get("button.speed." + speed + "x"),
+            skin
+        ));
+
+        button.setPosition(xPosition, Const.UI_H - (Const.BUILD_RING_ITEM_SIZE + 12));
+        button.setName("speed" + speed + "xButton");
+
+        return button;
+    }
+
+    public void updateSpeedButtons() {
+        int currentSpeed = Game.G.getGameSpeed();
+        boolean isPaused = Game.G.isPaused();
+
+        // Update checked state based on current speed
+        speed2xButton.setChecked(currentSpeed == 2);
+        speed10xButton.setChecked(currentSpeed == 10);
+        speed25xButton.setChecked(currentSpeed == 25);
+        speed100xButton.setChecked(currentSpeed == 100);
+
+        // If speed is not one of the presets, select closest
+        if (currentSpeed != 2 && currentSpeed != 10 && currentSpeed != 25 && currentSpeed != 100) {
+            if (currentSpeed < 10) speed2xButton.setChecked(true);
+            else if (currentSpeed < 25) speed10xButton.setChecked(true);
+            else if (currentSpeed < 100) speed25xButton.setChecked(true);
+            else speed100xButton.setChecked(true);
+        }
+
+        // Optionally disable speed controls when paused
+        speed2xButton.setDisabled(isPaused);
+        speed10xButton.setDisabled(isPaused);
+        speed25xButton.setDisabled(isPaused);
+        speed100xButton.setDisabled(isPaused);
     }
 
     public void rotateActiveStructure() {

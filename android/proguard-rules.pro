@@ -54,6 +54,17 @@
 
 -keep class com.badlogic.gdx.graphics.Color
 -keep class com.badlogic.gdx.graphics.g2d.BitmapFont
+
+# Keep all libGDX scene2d.ui classes and their inner classes for skin loading
+-keep class com.badlogic.gdx.scenes.scene2d.ui.** { *; }
+-keep class com.badlogic.gdx.graphics.g2d.** { *; }
+
+# Keep all constructors for scene2d classes (required for reflection)
+-keepclassmembers class com.badlogic.gdx.scenes.scene2d.** {
+    <init>(...);
+}
+
+# Keep all fields in scene2d classes (required for skin deserialization)
 -keepclasseswithmembers class com.badlogic.gdx.scenes.** {
 	<fields>;
 }
