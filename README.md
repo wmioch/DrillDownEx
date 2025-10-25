@@ -2,7 +2,7 @@
 
 A factory building game with modern improvements and enhanced features. Build production chains, mine resources, and expand deeper underground.
 
-**Original**: [Dakror/DrillDown](https://github.com/Dakror/DrillDown) | **Play**: [itch.io](https://dakror.itch.io/drill-down)
+**Original**: [Dakror/DrillDown](https://github.com/Dakror/DrillDown)
 
 ## ✨ New Features
 
