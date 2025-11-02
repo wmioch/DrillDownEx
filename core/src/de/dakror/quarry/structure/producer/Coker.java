@@ -43,7 +43,7 @@ public class Coker extends ProducerStructure {
                 protected void init() {
                     add(new Recipe(75f, "petroleumcoke", 600).input(new Amount(ItemType.RefinedOil, 15000)).output(new Amount(ItemType.PetroleumCoke, 20)).science(ScienceType.AdvancedFuelProcessing));
                 }
-            }, new Sfx("coker" + Const.SFX_FORMAT),
+            }, new Sfx("refinery" + Const.SFX_FORMAT),
             true,
             new Dock(3, 2, Direction.East, DockType.ItemOut),
             new Dock(2, 0, Direction.South, DockType.Power), new Dock(0, 2, Direction.West, DockType.FluidIn, new DockFilter(ItemType.RefinedOil)))
