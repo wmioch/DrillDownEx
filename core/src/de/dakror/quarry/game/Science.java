@@ -62,6 +62,7 @@ public class Science {
         Boosting(21, "symb_ff", new Items(ItemType.BronzePlate, 240, ItemType.Battery, 40), 50, MineralExtraction),
         Blueprints(23, "icon_copy", new Items(ItemType.Wood, 250, ItemType.IronPlate, 250), 40, HighTech),
         AdvancedTransport(24, "icon_empty_barrel", new Items(ItemType.TinPlate, 80, ItemType.SteelPlate, 60, ItemType.WoodPlank, 120), 40, HighTech),
+        AdvancedFuelProcessing(25, "icon_crude_oil", new Items(ItemType.RefinedOilBarrel, 50, ItemType.AdvancedMachineFrame, 10, ItemType.Chip, 5, ItemType.SteelCable, 100), 95, OilProcessing, ComponentAssembly),
 
         ;
 

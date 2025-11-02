@@ -36,6 +36,10 @@ import de.dakror.quarry.structure.logistics.Filter;
 import de.dakror.quarry.structure.logistics.Hopper;
 import de.dakror.quarry.structure.logistics.ItemLift;
 import de.dakror.quarry.structure.logistics.ItemLiftBelow;
+import de.dakror.quarry.structure.logistics.ItemElevator;
+import de.dakror.quarry.structure.logistics.ItemElevatorExit;
+import de.dakror.quarry.structure.logistics.ItemElevatorPassthrough;
+import de.dakror.quarry.structure.logistics.ReliefValve;
 import de.dakror.quarry.structure.logistics.SteelTube;
 import de.dakror.quarry.structure.logistics.TubeShaft;
 import de.dakror.quarry.structure.logistics.TubeShaftBelow;
@@ -66,6 +70,7 @@ import de.dakror.quarry.structure.producer.BlastFurnace;
 import de.dakror.quarry.structure.producer.Carpenter;
 import de.dakror.quarry.structure.producer.Centrifuge;
 import de.dakror.quarry.structure.producer.CharcoalMound;
+import de.dakror.quarry.structure.producer.Coker;
 import de.dakror.quarry.structure.producer.Compactor;
 import de.dakror.quarry.structure.producer.Condenser;
 import de.dakror.quarry.structure.producer.Crucible;
@@ -117,6 +122,7 @@ public enum StructureType {
     Valve(12, Valve.class),
     Hopper(13, Hopper.class),
     VacuumPump(14, VacuumPump.class),
+    ReliefValve(15, ReliefValve.class),
 
     // storage
     Storage(20, Storage.class),
@@ -166,6 +172,7 @@ public enum StructureType {
     FillingMachine(97, FillingMachine.class),
     BarrelDrainer(98, BarrelDrainer.class),
     ArcWelder(99, ArcWelder.class),
+    Coker(214, Coker.class),
 
     // power management
     Substation(100, Substation.class),
@@ -203,6 +210,11 @@ public enum StructureType {
 
     // Processors cnt.
     Stacker(210, Stacker.class),
+
+    // Multi-floor elevators
+    ItemElevator(211, ItemElevator.class),
+    ItemElevatorExit(212, ItemElevatorExit.class),
+    ItemElevatorPassthrough(213, ItemElevatorPassthrough.class),
 
     ;
 

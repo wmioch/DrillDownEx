@@ -124,6 +124,7 @@ import de.dakror.quarry.structure.logistics.SteelTube;
 import de.dakror.quarry.structure.logistics.TubeShaft;
 import de.dakror.quarry.structure.logistics.VacuumPump;
 import de.dakror.quarry.structure.logistics.Valve;
+import de.dakror.quarry.structure.logistics.ReliefValve;
 import de.dakror.quarry.structure.power.AnchorPortal;
 import de.dakror.quarry.structure.power.CableShaft;
 import de.dakror.quarry.structure.power.Capacitor;
@@ -182,6 +183,7 @@ import de.dakror.quarry.ui.BoilerRecipe;
 import de.dakror.quarry.ui.Confirm;
 import de.dakror.quarry.ui.DistillationRecipe;
 import de.dakror.quarry.ui.EndOfGame;
+import de.dakror.quarry.ui.FloorSelectionDialog;
 import de.dakror.quarry.ui.ItemSelection;
 import de.dakror.quarry.ui.LayerSelection;
 import de.dakror.quarry.ui.Menu;
@@ -194,6 +196,7 @@ import de.dakror.quarry.ui.Tutorial;
 import de.dakror.quarry.ui.Ui;
 import de.dakror.quarry.ui.Upgrade;
 import de.dakror.quarry.util.Util;
+import de.dakror.quarry.structure.producer.Coker;
 
 /**
  * @author Maximilian Stark | Dakror
@@ -277,6 +280,7 @@ public class GameUi implements Ui {
     public Confirm confirm;
     public Upgrade upgrade;
     public Prompt prompt;
+    public FloorSelectionDialog floorSelectionDialog;
     public SeedPrompt seedPrompt;
     public ItemSelection itemSelection;
     LayerSelection layerSelection;
@@ -930,8 +934,10 @@ public class GameUi implements Ui {
         buildMenuItem(rout, new Filter(-1, 0));
         buildMenuItem(rout, new Distributor(-1, 0));
         buildMenuItem(rout, new Valve(-1, 0));
+        buildMenuItem(rout, new ReliefValve(-1, 0));
         buildMenuItem(rout, new VacuumPump(-1, 0));
         buildMenuItem(rout, new ItemLift(-1, 0));
+        buildMenuItem(rout, new de.dakror.quarry.structure.logistics.ItemElevator(-1, 0));
         buildMenuItem(rout, new TubeShaft(-1, 0));
         buildMenuItem(rout, new CableShaft(-1, 0));
         buildMenuItem(rout, new HighPowerShaft(-1, 0));
@@ -990,6 +996,7 @@ public class GameUi implements Ui {
         buildMenuItem(wate, new OilWell(-1, 0));
         buildMenuItem(wate, new Refinery(-1, 0));
         buildMenuItem(wate, new DistillationColumn(-1, 0));
+        buildMenuItem(wate, new Coker(-1, 0));
 
         buildMenuItem(powe, new Substation(-1, 0));
         buildMenuItem(powe, new PowerPole(-1, 0));
@@ -1132,6 +1139,8 @@ public class GameUi implements Ui {
         prompt = Util.lml("prompt");
         alert = Util.lml("alert");
         confirm = Util.lml("confirm");
+        floorSelectionDialog = new FloorSelectionDialog(skin);
+        floorSelectionDialog.setName("floorSelectionDialog");
         if (!Quarry.Q.fullVersion) {
             upgrade = Util.lml("upgrade");
         }

@@ -252,6 +252,7 @@ public class Item {
         Blueprint(68, "blueprint", 677712, ItemCategory.Component),
         Gunpowder(71, "gunpowder", 72850, ItemCategory.Component),
         Dynamite(70, "dynamite", 1640401, ItemCategory.Component),
+        PetroleumCoke(72, "petroleum_coke", 500, ItemCategory.CoalFuel),
 
         Water(100, "water", 100, ItemCategory.Fluid),
         Steam(101, "steam", 200, ItemCategory.Fluid),
@@ -364,16 +365,17 @@ public class Item {
         BlueprintPallet(Pallet, 76, Blueprint),
         GunpowderPallet(Pallet, 77, Gunpowder),
         DynamitePallet(Pallet, 78, Dynamite),
+        PetroleumCokePallet(Pallet, 79, PetroleumCoke),
 
-        EmptyBarrelPallet(Pallet, 79, EmptyBarrel),
-        WaterBarrelPallet(Pallet, 80, WaterBarrel),
-        CrudeOilBarrelPallet(Pallet, 81, CrudeOilBarrel),
-        RefinedOilBarrelPallet(Pallet, 82, RefinedOilBarrel),
-        LubricantBarrelPallet(Pallet, 83, LubricantBarrel),
+        EmptyBarrelPallet(Pallet, 80, EmptyBarrel),
+        WaterBarrelPallet(Pallet, 81, WaterBarrel),
+        CrudeOilBarrelPallet(Pallet, 82, CrudeOilBarrel),
+        RefinedOilBarrelPallet(Pallet, 83, RefinedOilBarrel),
+        LubricantBarrelPallet(Pallet, 84, LubricantBarrel),
 
-        EmptyTankPallet(Pallet, 84, EmptyTank),
-        GasTankPallet(Pallet, 85, GasTank),
-        PressurizedSteamTankPallet(Pallet, 86, PressurizedSteamTank),
+        EmptyTankPallet(Pallet, 85, EmptyTank),
+        GasTankPallet(Pallet, 86, GasTank),
+        PressurizedSteamTankPallet(Pallet, 87, PressurizedSteamTank),
 
         ;
 
