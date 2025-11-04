@@ -1,6 +1,6 @@
 {
-	"maxWidth": 4096,
-	"maxHeight": 4096,
+	"maxWidth": 2048,
+	"maxHeight": 2048,
 	"duplicatePadding": true,
 	"useIndexes": false,
 	"alias": false,
