@@ -1,61 +1,61 @@
 
 tex.png
-size: 2048,2048
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Nearest
 repeat: none
 button
   rotate: false
-  xy: 161, 12
+  xy: 389, 74
   size: 128, 1
   orig: 128, 1
   offset: 0, 0
   index: -1
 button_rectangleRed
   rotate: false
-  xy: 1956, 563
+  xy: 235, 5
   size: 80, 40
   orig: 80, 40
   offset: 0, 0
   index: -1
 caret_down
   rotate: false
-  xy: 291, 3
+  xy: 3901, 1011
   size: 24, 10
   orig: 24, 10
   offset: 0, 0
   index: -1
 caret_left
   rotate: false
-  xy: 591, 413
+  xy: 2103, 835
   size: 10, 24
   orig: 10, 24
   offset: 0, 0
   index: -1
 caret_right
   rotate: false
-  xy: 591, 387
+  xy: 1505, 613
   size: 10, 24
   orig: 10, 24
   offset: 0, 0
   index: -1
 caret_up
   rotate: false
-  xy: 317, 3
+  xy: 3779, 1187
   size: 24, 10
   orig: 24, 10
   offset: 0, 0
   index: -1
 confetti
   rotate: false
-  xy: 579, 457
+  xy: 4075, 1551
   size: 20, 32
   orig: 20, 32
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 597, 452
+  xy: 3259, 822
   size: 3, 3
   split: 1, 1, 1, 1
   orig: 3, 3
@@ -63,7 +63,7 @@ cursor
   index: -1
 default-slider
   rotate: false
-  xy: 591, 357
+  xy: 603, 593
   size: 8, 8
   split: 2, 2, 2, 2
   orig: 8, 8
@@ -71,805 +71,1729 @@ default-slider
   index: -1
 default-slider-knob
   rotate: false
-  xy: 591, 367
+  xy: 3890, 1249
   size: 9, 18
   orig: 9, 18
   offset: 0, 0
   index: -1
 dock_bigpower
   rotate: false
-  xy: 119, 4
+  xy: 461, 1
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 dock_fluidin
   rotate: false
-  xy: 887, 6
+  xy: 503, 1
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 dock_fluidout
   rotate: false
-  xy: 757, 2
+  xy: 1, 2
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 dock_itemin
   rotate: false
-  xy: 799, 2
+  xy: 1777, 245
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 dock_itemout
   rotate: false
-  xy: 841, 2
+  xy: 43, 2
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 dock_power
   rotate: false
-  xy: 1187, 10
+  xy: 85, 2
   size: 40, 13
   orig: 40, 13
   offset: 0, 0
   index: -1
 end_marker
   rotate: false
-  xy: 1771, 58
+  xy: 4013, 1761
   size: 65, 92
   orig: 65, 92
   offset: 0, 0
   index: -1
 end_marker_a
   rotate: false
-  xy: 1971, 256
+  xy: 4013, 1667
   size: 65, 92
   orig: 65, 92
   offset: 0, 0
   index: -1
 end_marker_glow
   rotate: false
-  xy: 1971, 162
+  xy: 1419, 55
   size: 65, 92
   orig: 65, 92
   offset: 0, 0
   index: -1
 flag_de
   rotate: false
-  xy: 1185, 749
+  xy: 3697, 1022
   size: 53, 40
   orig: 53, 40
   offset: 0, 0
   index: -1
 flag_en
   rotate: false
-  xy: 1771, 16
+  xy: 3671, 1245
   size: 53, 40
   orig: 53, 40
   offset: 0, 0
   index: -1
+fluid_crude_oil
+  rotate: false
+  xy: 1667, 665
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_gas
+  rotate: false
+  xy: 3753, 1281
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_lubricant
+  rotate: false
+  xy: 4025, 969
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_molten_metal
+  rotate: false
+  xy: 2512, 551
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_oil
+  rotate: false
+  xy: 2578, 551
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_pressurized_steam
+  rotate: false
+  xy: 2644, 551
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_steam
+  rotate: false
+  xy: 2710, 551
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fluid_water
+  rotate: false
+  xy: 2776, 551
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 icon_airpurifier
   rotate: false
-  xy: 1922, 350
+  xy: 4013, 1585
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 icon_anchorportal
   rotate: false
-  xy: 1838, 7
+  xy: 3697, 1064
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 icon_arcwelder
   rotate: false
-  xy: 1920, 7
+  xy: 2895, 643
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
+icon_assembler
+  rotate: false
+  xy: 2977, 615
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_assembly
+  rotate: false
+  xy: 3059, 615
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_ballmill
+  rotate: false
+  xy: 3141, 615
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_barrel
+  rotate: false
+  xy: 3665, 1451
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_barreldrainer
+  rotate: false
+  xy: 3665, 1369
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_boiler
+  rotate: false
+  xy: 3671, 1287
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_booster
+  rotate: false
+  xy: 2025, 607
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_brick_channel
+  rotate: false
+  xy: 1711, 245
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 icon_build
   rotate: false
-  xy: 485, 277
+  xy: 519, 115
   size: 90, 90
   orig: 90, 90
   offset: 0, 0
   index: -1
 icon_build2
   rotate: false
-  xy: 1935, 1021
+  xy: 519, 23
   size: 90, 90
   orig: 90, 90
   offset: 0, 0
   index: -1
 icon_cableremove
   rotate: false
-  xy: 485, 11
+  xy: 2103, 693
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
 icon_cableremovebulk
   rotate: false
-  xy: 621, 11
+  xy: 2239, 693
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
+icon_cableshaft
+  rotate: false
+  xy: 2107, 611
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_cableshaftbelow
+  rotate: false
+  xy: 2189, 611
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_capacitor
+  rotate: false
+  xy: 2271, 611
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_carpenter
+  rotate: false
+  xy: 2353, 611
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_centrifuge
+  rotate: false
+  xy: 2435, 617
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_charcoal
   rotate: false
-  xy: 1963, 1318
+  xy: 1622, 164
   size: 83, 83
   orig: 83, 83
   offset: 0, 0
   index: -1
+icon_charcoalmound
+  rotate: false
+  xy: 2517, 617
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_cinventory
   rotate: false
-  xy: 1543, 1013
+  xy: 3223, 661
   size: 34, 34
   orig: 34, 34
   offset: 0, 0
   index: -1
+icon_compactor
+  rotate: false
+  xy: 2599, 617
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_condenser
+  rotate: false
+  xy: 2681, 617
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_conveyor
   rotate: false
-  xy: 1481, 987
+  xy: 3217, 827
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 icon_conveyorbridge
   rotate: false
-  xy: 1675, 1307
+  xy: 1227, 53
   size: 94, 94
   orig: 94, 94
   offset: 0, 0
   index: -1
+icon_copper_cable
+  rotate: false
+  xy: 2763, 617
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_copper_tube
   rotate: false
-  xy: 1971, 95
+  xy: 3279, 822
   size: 65, 65
   orig: 65, 65
   offset: 0, 0
   index: -1
+icon_copy
+  rotate: false
+  xy: 1649, 557
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_crucible
+  rotate: false
+  xy: 1649, 475
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_crude_oil
+  rotate: false
+  xy: 1649, 393
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_crusher
+  rotate: false
+  xy: 1649, 311
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_destroy
+  rotate: false
+  xy: 3720, 803
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_destroybulk
+  rotate: false
+  xy: 2895, 561
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_devicefabricator
+  rotate: false
+  xy: 2977, 533
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_digitalstorage
+  rotate: false
+  xy: 3059, 533
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_distillationcolumn
+  rotate: false
+  xy: 3141, 533
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_distributor
   rotate: false
-  xy: 1943, 929
+  xy: 1135, 61
   size: 90, 90
   orig: 90, 90
   offset: 0, 0
   index: -1
+icon_drill
+  rotate: false
+  xy: 3223, 558
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_drill_button
   rotate: false
-  xy: 1415, 793
+  xy: 1649, 249
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 icon_electric_conveyor
   rotate: false
-  xy: 1581, 277
+  xy: 3747, 1371
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 icon_electric_conveyor_core
   rotate: false
-  xy: 1581, 215
+  xy: 2371, 549
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
+icon_empty_barrel
+  rotate: false
+  xy: 3223, 476
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_excavator
+  rotate: false
+  xy: 3305, 536
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_fe_ingot
+  rotate: false
+  xy: 3305, 454
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_fillingmachine
+  rotate: false
+  xy: 3387, 536
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_filter
   rotate: false
-  xy: 1956, 605
+  xy: 3633, 1146
   size: 90, 90
   orig: 90, 90
   offset: 0, 0
   index: -1
 icon_flow_direction
   rotate: false
-  xy: 440, 3
+  xy: 4055, 1379
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 icon_flow_direction_none
   rotate: false
-  xy: 887, 105
+  xy: 4055, 1337
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
+icon_gasturbine
+  rotate: false
+  xy: 3450, 793
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
 icon_groundwaterpump
   rotate: false
-  xy: 1771, 1307
+  xy: 1323, 53
   size: 94, 94
   orig: 94, 94
   offset: 0, 0
   index: -1
+icon_highpowershaft
+  rotate: false
+  xy: 3387, 454
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_highpowershaftbelow
+  rotate: false
+  xy: 3747, 1515
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_hopper
+  rotate: false
+  xy: 3747, 1433
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_inductionfurnace
+  rotate: false
+  xy: 3829, 1515
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_ingotmold
+  rotate: false
+  xy: 3829, 1433
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_injectionmolder
+  rotate: false
+  xy: 3911, 1515
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_itemlift
   rotate: false
-  xy: 1867, 1307
+  xy: 1486, 23
   size: 94, 94
   orig: 94, 94
   offset: 0, 0
   index: -1
 icon_jammed
   rotate: false
-  xy: 1, 1
+  xy: 744, 3
   size: 46, 46
   orig: 46, 46
   offset: 0, 0
   index: -1
 icon_kiln
   rotate: false
-  xy: 1377, 267
+  xy: 389, 2
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
+icon_liquids
+  rotate: false
+  xy: 3911, 1433
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_lumberjack
   rotate: false
-  xy: 1839, 349
+  xy: 611, 2
   size: 81, 81
   orig: 81, 81
   offset: 0, 0
   index: -1
 icon_magnet
   rotate: false
-  xy: 878, 302
+  xy: 2435, 540
   size: 75, 75
   orig: 75, 75
   offset: 0, 0
   index: -1
+icon_mason
+  rotate: false
+  xy: 3993, 1503
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_mine
+  rotate: false
+  xy: 3993, 1421
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_minerals
+  rotate: false
+  xy: 3809, 1351
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_misc
+  rotate: false
+  xy: 3891, 1351
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_mixer
+  rotate: false
+  xy: 3973, 1339
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_molding
+  rotate: false
+  xy: 3819, 1269
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_network
+  rotate: false
+  xy: 3973, 1257
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_new_bg
+  rotate: false
+  xy: 3973, 1175
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_new_fg
+  rotate: false
+  xy: 3431, 622
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_oilwell
+  rotate: false
+  xy: 3469, 540
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_polarizer
+  rotate: false
+  xy: 3469, 458
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_polymerizer
   rotate: false
-  xy: 1601, 566
+  xy: 3355, 790
   size: 93, 93
   orig: 93, 93
   offset: 0, 0
   index: -1
+icon_power
+  rotate: false
+  xy: 3726, 1199
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_power_node
+  rotate: false
+  xy: 1707, 179
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+icon_powerpole
+  rotate: false
+  xy: 3808, 1187
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_pump_out
   rotate: false
-  xy: 1927, 1533
+  xy: 3947, 811
   size: 34, 34
   orig: 34, 34
   offset: 0, 0
   index: -1
+icon_refinery
+  rotate: false
+  xy: 3779, 1105
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_rollingmachine
+  rotate: false
+  xy: 3542, 793
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
 icon_rotate
   rotate: false
-  xy: 1925, 1945
+  xy: 2895, 725
   size: 102, 102
   orig: 102, 102
   offset: 0, 0
   index: -1
 icon_sawmill
   rotate: false
-  xy: 1927, 1569
+  xy: 1582, 23
   size: 94, 94
   orig: 94, 94
   offset: 0, 0
   index: -1
 icon_science
   rotate: false
-  xy: 1579, 1016
+  xy: 941, 54
   size: 95, 95
   orig: 95, 95
   offset: 0, 0
   index: -1
 icon_sciencelab
   rotate: false
-  xy: 1676, 1016
+  xy: 1038, 54
   size: 95, 95
   orig: 95, 95
   offset: 0, 0
   index: -1
+icon_silo
+  rotate: false
+  xy: 3779, 1023
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_smelter
+  rotate: false
+  xy: 3861, 1105
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_solar
+  rotate: false
+  xy: 3861, 1023
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_solarpanel
+  rotate: false
+  xy: 3943, 1093
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_solarpaneloutlet
+  rotate: false
+  xy: 3943, 1011
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_solarpaneloutlet.png
+  rotate: false
+  xy: 3441, 708
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_stacker
+  rotate: false
+  xy: 3523, 711
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_steamturbine
+  rotate: false
+  xy: 3605, 711
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_steel_ingot
+  rotate: false
+  xy: 3687, 717
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_steel_tube
+  rotate: false
+  xy: 4025, 1102
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
 icon_storage
   rotate: false
-  xy: 678, 279
+  xy: 741, 51
   size: 98, 98
   orig: 98, 98
   offset: 0, 0
   index: -1
+icon_supercapacitor
+  rotate: false
+  xy: 3769, 721
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_tank
+  rotate: false
+  xy: 3737, 940
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_thermo_inner
   rotate: false
-  xy: 602, 278
+  xy: 3691, 1562
   size: 36, 99
   orig: 36, 99
   offset: 0, 0
   index: -1
 icon_thermo_outer
   rotate: false
-  xy: 640, 278
+  xy: 3633, 1238
   size: 36, 99
   orig: 36, 99
   offset: 0, 0
   index: -1
 icon_tiles
   rotate: false
-  xy: 1513, 1733
+  xy: 1667, 639
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 icon_time
   rotate: false
-  xy: 1963, 1533
+  xy: 3910, 355
   size: 34, 34
   orig: 34, 34
   offset: 0, 0
   index: -1
+icon_tubebender
+  rotate: false
+  xy: 3819, 941
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_tubeshaft
   rotate: false
-  xy: 1505, 565
+  xy: 3259, 726
   size: 94, 94
   orig: 94, 94
   offset: 0, 0
   index: -1
+icon_vacuumpump
+  rotate: false
+  xy: 3901, 929
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_valve
+  rotate: false
+  xy: 4025, 1035
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+icon_wafer
+  rotate: false
+  xy: 3983, 887
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 icon_warehouse
   rotate: false
-  xy: 778, 279
+  xy: 841, 51
   size: 98, 98
   orig: 98, 98
   offset: 0, 0
   index: -1
+icon_water
+  rotate: false
+  xy: 3819, 859
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+icon_waterwheel
+  rotate: false
+  xy: 1707, 113
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+icon_wiredrawer
+  rotate: false
+  xy: 3901, 847
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 item_advancedmachineframe
   rotate: false
-  xy: 1513, 1707
+  xy: 3729, 1637
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_au_dust
   rotate: false
-  xy: 1513, 1681
+  xy: 1693, 639
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_au_ingot
   rotate: false
-  xy: 1513, 1655
+  xy: 3729, 1611
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_au_plate
   rotate: false
-  xy: 1513, 1629
+  xy: 355, 181
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_au_wire
   rotate: false
-  xy: 1513, 1603
+  xy: 1485, 285
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_barrel
   rotate: false
-  xy: 1513, 1577
+  xy: 3691, 1536
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_battery
   rotate: false
-  xy: 1513, 1551
+  xy: 4065, 943
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_blackpowder
   rotate: false
-  xy: 1513, 1525
+  xy: 1719, 639
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_blueprint
   rotate: false
-  xy: 1579, 990
+  xy: 2950, 535
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_brick
   rotate: false
-  xy: 1543, 987
+  xy: 4065, 917
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_bronze_dust
   rotate: false
-  xy: 1605, 990
+  xy: 4065, 891
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_bronze_ingot
   rotate: false
-  xy: 1631, 990
+  xy: 4065, 865
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_bronze_plate
   rotate: false
-  xy: 1657, 990
+  xy: 4065, 839
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_c_dust
   rotate: false
-  xy: 1477, 829
+  xy: 4065, 813
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_c_ore
   rotate: false
-  xy: 1477, 803
+  xy: 1745, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_carbonblock
   rotate: false
-  xy: 2023, 1647
+  xy: 1771, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cellulose
   rotate: false
-  xy: 2023, 1621
+  xy: 1797, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cement
   rotate: false
-  xy: 2023, 1595
+  xy: 1823, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_charcoal
   rotate: false
-  xy: 2023, 1569
+  xy: 1849, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_chip
   rotate: false
-  xy: 2023, 1919
+  xy: 1875, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_clay
   rotate: false
-  xy: 2023, 1893
+  xy: 1901, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_coalchunk
   rotate: false
-  xy: 2023, 1867
+  xy: 1927, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_concretepowder
   rotate: false
-  xy: 2023, 1841
+  xy: 1953, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_crude_oil
   rotate: false
-  xy: 2023, 1815
+  xy: 1979, 641
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_crude_oil_barrel
   rotate: false
-  xy: 2023, 1789
+  xy: 3736, 287
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_dust
   rotate: false
-  xy: 2023, 1763
+  xy: 1489, 259
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_gravel
   rotate: false
-  xy: 1673, 860
+  xy: 1731, 613
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_ingot
   rotate: false
-  xy: 1505, 539
+  xy: 1731, 587
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_ore
   rotate: false
-  xy: 1531, 539
+  xy: 1731, 561
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_plate
   rotate: false
-  xy: 1557, 539
+  xy: 1731, 535
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_tube
   rotate: false
-  xy: 1634, 540
+  xy: 1731, 509
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_cu_wire
   rotate: false
-  xy: 1699, 666
+  xy: 1731, 483
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_dirt
   rotate: false
-  xy: 1725, 666
+  xy: 1731, 457
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_dust
   rotate: false
-  xy: 1751, 666
+  xy: 1731, 431
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_dynamite
   rotate: false
-  xy: 1777, 666
+  xy: 1731, 405
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_dynamo
   rotate: false
-  xy: 1967, 1120
+  xy: 1731, 379
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_empty_barrel
   rotate: false
-  xy: 1993, 1120
+  xy: 1731, 353
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_empty_tank
   rotate: false
-  xy: 2019, 1120
+  xy: 1757, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fe_dust
   rotate: false
-  xy: 1660, 540
+  xy: 1783, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fe_gravel
   rotate: false
-  xy: 1796, 569
+  xy: 1757, 589
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fe_ingot
   rotate: false
-  xy: 1796, 543
+  xy: 1809, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fe_ore
   rotate: false
-  xy: 1347, 183
+  xy: 1757, 563
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fe_plate
   rotate: false
-  xy: 1373, 169
+  xy: 1783, 589
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_filled_pallet
   rotate: false
-  xy: 1347, 157
+  xy: 1835, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_fuel
   rotate: false
-  xy: 1399, 169
+  xy: 1757, 537
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_gas
   rotate: false
-  xy: 1425, 169
+  xy: 1783, 563
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_gas_tank
   rotate: false
-  xy: 1615, 189
+  xy: 1809, 589
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_glass
   rotate: false
-  xy: 1615, 163
+  xy: 1861, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_gravel
   rotate: false
-  xy: 1615, 137
+  xy: 1757, 511
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_gunpowder
   rotate: false
-  xy: 2023, 869
+  xy: 1783, 537
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_hardenedsteel_plate
   rotate: false
-  xy: 2023, 843
+  xy: 1835, 589
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_ingot
   rotate: false
-  xy: 2023, 817
+  xy: 1809, 563
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_lubricant
   rotate: false
-  xy: 2023, 791
+  xy: 1887, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_lubricant_barrel
   rotate: false
-  xy: 2023, 765
+  xy: 1757, 485
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_machineframe
   rotate: false
-  xy: 2023, 739
+  xy: 1757, 459
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_magnet
   rotate: false
-  xy: 2023, 713
+  xy: 1783, 511
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_molten_metal
   rotate: false
-  xy: 1615, 111
+  xy: 1861, 589
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_molten_metal_actual
   rotate: false
-  xy: 1615, 85
+  xy: 1835, 563
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_nil
   rotate: false
-  xy: 1615, 59
+  xy: 1809, 537
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_oil
   rotate: false
-  xy: 1615, 33
+  xy: 1913, 615
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_oil_barrel
   rotate: false
-  xy: 1615, 7
+  xy: 1757, 433
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 item_ore
   rotate: false
-  xy: 2019, 465
+  xy: 1783, 485
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_ore2
+  rotate: false
+  xy: 1783, 459
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_pallet
+  rotate: false
+  xy: 1887, 589
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_paper
+  rotate: false
+  xy: 1861, 563
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_planks
+  rotate: false
+  xy: 1809, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_plasticbeads
+  rotate: false
+  xy: 1835, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_plasticcasing
+  rotate: false
+  xy: 1939, 615
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_plate
+  rotate: false
+  xy: 1757, 407
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_platestack
+  rotate: false
+  xy: 1783, 433
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_pressurized_steam
+  rotate: false
+  xy: 1913, 589
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_pressurized_steam_tank
+  rotate: false
+  xy: 1887, 563
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_pyrite_dust
+  rotate: false
+  xy: 1809, 485
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_quartz_dust
+  rotate: false
+  xy: 1809, 459
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_rotor
+  rotate: false
+  xy: 1861, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_s_dust
+  rotate: false
+  xy: 1835, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sand
+  rotate: false
+  xy: 1965, 615
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_scaffolding
+  rotate: false
+  xy: 1757, 381
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_si_dust
+  rotate: false
+  xy: 1783, 407
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_siliconwafer
+  rotate: false
+  xy: 1939, 589
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_dust
+  rotate: false
+  xy: 1913, 563
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_gravel
+  rotate: false
+  xy: 1809, 433
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_ingot
+  rotate: false
+  xy: 1887, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_ore
+  rotate: false
+  xy: 1861, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_plate
+  rotate: false
+  xy: 1835, 485
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_sn_wire
+  rotate: false
+  xy: 1835, 459
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steam
+  rotate: false
+  xy: 1757, 355
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steel_cable
+  rotate: false
+  xy: 1783, 381
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steel_ingot
+  rotate: false
+  xy: 1965, 589
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steel_plate
+  rotate: false
+  xy: 1939, 563
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steel_tube
+  rotate: false
+  xy: 1809, 407
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_steel_wire
+  rotate: false
+  xy: 1913, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_stone
+  rotate: false
+  xy: 1887, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_stone_brick
+  rotate: false
+  xy: 1861, 485
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_stone_dust
+  rotate: false
+  xy: 1861, 459
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_stone_gravel
+  rotate: false
+  xy: 1835, 433
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_syntheticquartz
+  rotate: false
+  xy: 1783, 355
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_ti_dust
+  rotate: false
+  xy: 1965, 563
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_ti_ingot
+  rotate: false
+  xy: 1809, 381
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_ti_plate
+  rotate: false
+  xy: 1939, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_ti_wire
+  rotate: false
+  xy: 1913, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_tube
+  rotate: false
+  xy: 1887, 485
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_turbine
+  rotate: false
+  xy: 1887, 459
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_water
+  rotate: false
+  xy: 1861, 433
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_water_barrel
+  rotate: false
+  xy: 1835, 407
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_wire
+  rotate: false
+  xy: 1809, 355
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_wood
+  rotate: false
+  xy: 1965, 537
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_wood_chip
+  rotate: false
+  xy: 1939, 511
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_wood_chips
+  rotate: false
+  xy: 1913, 485
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 mouse
   rotate: false
-  xy: 1943, 895
+  xy: 1485, 311
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+overhang
+  rotate: false
+  xy: 1678, 47
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+overhang_fog
+  rotate: false
+  xy: 1744, 47
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+overhang_fog_inner
+  rotate: false
+  xy: 2512, 485
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 overlay
   rotate: false
-  xy: 597, 439
+  xy: 3450, 790
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 panel_boltsBlue
   rotate: false
-  xy: 929, 3
+  xy: 3634, 799
   size: 84, 84
   split: 43, 40, 43, 40
   orig: 84, 84
@@ -877,7 +1801,7 @@ panel_boltsBlue
   index: -1
 panel_boltsDetailSquare
   rotate: false
-  xy: 1015, 3
+  xy: 3355, 704
   size: 84, 84
   split: 43, 40, 43, 40
   orig: 84, 84
@@ -885,7 +1809,7 @@ panel_boltsDetailSquare
   index: -1
 panel_metal
   rotate: false
-  xy: 1101, 3
+  xy: 3259, 640
   size: 84, 84
   split: 43, 40, 43, 40
   orig: 84, 84
@@ -893,7 +1817,7 @@ panel_metal
   index: -1
 panel_metalDark
   rotate: false
-  xy: 1925, 1665
+  xy: 3345, 618
   size: 84, 84
   split: 43, 40, 43, 40
   orig: 84, 84
@@ -901,42 +1825,42 @@ panel_metalDark
   index: -1
 particle_dust
   rotate: false
-  xy: 397, 2
+  xy: 1042, 11
   size: 41, 41
   orig: 41, 41
   offset: 0, 0
   index: -1
 particle_fire
   rotate: false
-  xy: 577, 319
+  xy: 357, 11
   size: 23, 34
   orig: 23, 34
   offset: 0, 0
   index: -1
 patternStripesShadow_large
   rotate: false
-  xy: 1027, 733
+  xy: 461, 16
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
   index: -1
 pixel
   rotate: false
-  xy: 600, 449
+  xy: 2842, 614
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 power_meter
   rotate: false
-  xy: 935, 162
+  xy: 1619, 119
   size: 1, 128
   orig: 1, 128
   offset: 0, 0
   index: -1
 progress
   rotate: false
-  xy: 1977, 895
+  xy: 694, 51
   size: 32, 32
   split: 15, 15, 15, 15
   orig: 32, 32
@@ -944,7 +1868,7 @@ progress
   index: -1
 progress_fill
   rotate: false
-  xy: 2011, 895
+  xy: 1672, 130
   size: 32, 32
   split: 15, 15, 15, 15
   orig: 32, 32
@@ -952,56 +1876,77 @@ progress_fill
   index: -1
 round_metal
   rotate: false
-  xy: 757, 17
+  xy: 2375, 699
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 round_metalActive
   rotate: false
-  xy: 1683, 886
+  xy: 2505, 699
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 round_metalDark
   rotate: false
-  xy: 1876, 1403
+  xy: 2635, 699
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 round_metalDarkActive
   rotate: false
-  xy: 1826, 562
+  xy: 2765, 699
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 round_metalDarkDisabled
   rotate: false
-  xy: 1813, 891
+  xy: 1099, 153
   size: 128, 128
   orig: 128, 128
+  offset: 0, 0
+  index: -1
+round_metalDarkRed
+  rotate: false
+  xy: 2578, 485
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 round_metalDisabled
   rotate: false
-  xy: 1451, 209
+  xy: 259, 47
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
+round_metalRed
+  rotate: false
+  xy: 2644, 485
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+science_considerate
+  rotate: false
+  xy: 3983, 805
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 science_power
   rotate: false
-  xy: 887, 63
+  xy: 4055, 1295
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 scroll
   rotate: false
-  xy: 2011, 1673
+  xy: 3909, 809
   size: 36, 36
   split: 16, 16, 16, 16
   orig: 36, 36
@@ -1009,597 +1954,1206 @@ scroll
   index: -1
 selection
   rotate: false
-  xy: 600, 446
+  xy: 3523, 708
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 state_nopower
   rotate: false
-  xy: 1999, 1533
+  xy: 3784, 309
   size: 34, 34
   orig: 34, 34
   offset: 0, 0
   index: -1
 state_sleeping
   rotate: false
-  xy: 1085, 741
+  xy: 694, 1
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 structure_airpurifier
   rotate: false
-  xy: 1027, 857
+  xy: 2117, 829
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_anchorportal
   rotate: false
-  xy: 485, 147
+  xy: 603, 603
   size: 448, 128
   orig: 448, 128
   offset: 0, 0
   index: -1
 structure_arcwelder
   rotate: false
-  xy: 1221, 791
+  xy: 2311, 829
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_assembler
   rotate: false
-  xy: 1539, 1663
+  xy: 3369, 1663
   size: 384, 384
   orig: 384, 384
   offset: 0, 0
   index: -1
 structure_ballmill
   rotate: false
-  xy: 935, 89
+  xy: 355, 207
   size: 256, 64
   orig: 256, 64
   offset: 0, 0
   index: -1
+structure_barrel
+  rotate: false
+  xy: 2710, 485
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_barreldrainer
   rotate: false
-  xy: 1247, 209
+  xy: 389, 77
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 structure_boiler
   rotate: false
-  xy: 163, 175
+  xy: 3755, 1855
   size: 320, 192
   orig: 320, 192
   offset: 0, 0
   index: -1
 structure_booster
   rotate: false
-  xy: 1481, 1307
+  xy: 2505, 829
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_brick_channel
   rotate: false
-  xy: 887, 21
+  xy: 4055, 1253
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_brick_channel_esw
   rotate: false
-  xy: 2006, 1491
+  xy: 4055, 1211
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_brick_channel_ew
   rotate: false
-  xy: 2006, 1449
+  xy: 4055, 1169
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_brick_channel_n
   rotate: false
-  xy: 2006, 1407
+  xy: 3983, 969
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_brick_channel_nesw
   rotate: false
-  xy: 2002, 53
+  xy: 3737, 898
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_brick_channel_sw
   rotate: false
-  xy: 2002, 11
+  xy: 1085, 12
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
+structure_cableshaft
+  rotate: false
+  xy: 2776, 485
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_cableshaftbelow
+  rotate: false
+  xy: 2884, 495
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_capacitor
   rotate: false
-  xy: 1925, 1751
+  xy: 3275, 1019
   size: 96, 192
   orig: 96, 192
   offset: 0, 0
   index: -1
 structure_carpenter
   rotate: false
-  xy: 1839, 432
+  xy: 1519, 509
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 structure_centrifuge
   rotate: false
-  xy: 603, 379
+  xy: 1, 177
   size: 352, 352
   orig: 352, 352
   offset: 0, 0
   index: -1
 structure_charcoalmound
   rotate: false
-  xy: 1579, 1113
+  xy: 2699, 829
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_coker
   rotate: false
-  xy: 1, 733
+  xy: 1, 1023
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
   index: -1
 structure_compactor
   rotate: false
-  xy: 1539, 1533
+  xy: 1311, 603
   size: 192, 128
   orig: 192, 128
   offset: 0, 0
   index: -1
 structure_condenser
   rotate: false
-  xy: 1027, 791
+  xy: 1291, 279
   size: 192, 64
   orig: 192, 64
   offset: 0, 0
   index: -1
+structure_conveyor
+  rotate: false
+  xy: 2884, 429
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyor_e
+  rotate: false
+  xy: 2950, 467
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyor_ne
+  rotate: false
+  xy: 3016, 467
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyor_nse
+  rotate: false
+  xy: 3082, 467
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_conveyor_pad1
   rotate: false
-  xy: 579, 397
+  xy: 3767, 1157
   size: 10, 40
   orig: 10, 40
   offset: 0, 0
   index: -1
+structure_conveyor_we
+  rotate: false
+  xy: 3148, 467
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyor_wne
+  rotate: false
+  xy: 2950, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyor_wnse
+  rotate: false
+  xy: 3016, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_conveyorbridge
+  rotate: false
+  xy: 3082, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_conveyorbridge3
   rotate: false
-  xy: 2004, 404
+  xy: 3725, 1157
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_copper_cable
   rotate: false
-  xy: 579, 439
+  xy: 3729, 1593
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 structure_copper_cable_es
   rotate: false
-  xy: 934, 292
+  xy: 3345, 716
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 structure_copper_cable_ew
   rotate: false
-  xy: 597, 442
+  xy: 1486, 139
   size: 1, 8
   orig: 1, 8
   offset: 0, 0
   index: -1
 structure_copper_tube
   rotate: false
-  xy: 2004, 362
+  xy: 2842, 567
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_copper_tube_esw
+  rotate: false
+  xy: 2842, 525
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_copper_tube_ew
+  rotate: false
+  xy: 2842, 483
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_copper_tube_n
+  rotate: false
+  xy: 3551, 468
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_copper_tube_nesw
+  rotate: false
+  xy: 1823, 5
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_copper_tube_sw
+  rotate: false
+  xy: 3610, 273
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 structure_crucible
   rotate: false
-  xy: 1451, 339
+  xy: 3373, 1339
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_crusher
   rotate: false
-  xy: 1841, 219
+  xy: 1519, 379
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 structure_devicefabricator
   rotate: false
-  xy: 1, 1759
+  xy: 1, 733
   size: 1536, 288
   orig: 1536, 288
   offset: 0, 0
   index: -1
 structure_digitalstorage
   rotate: false
-  xy: 1247, 339
+  xy: 613, 151
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_digitalstorage_fill_status
   rotate: false
-  xy: 1967, 1146
+  xy: 2025, 689
   size: 76, 170
   orig: 76, 170
   offset: 0, 0
   index: -1
 structure_distillationcolumn
   rotate: false
-  xy: 1157, 1501
+  xy: 3275, 1213
   size: 96, 256
   orig: 96, 256
   offset: 0, 0
   index: -1
 structure_distillationcolumn_top
   rotate: false
-  xy: 1481, 1049
+  xy: 1421, 345
   size: 96, 256
   orig: 96, 256
   offset: 0, 0
   index: -1
+structure_distributor
+  rotate: false
+  xy: 3148, 401
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_distributor_cursor
   rotate: false
-  xy: 878, 278
+  xy: 3753, 1347
   size: 54, 22
   orig: 54, 22
   offset: 0, 0
   index: -1
+structure_distributor_lower
+  rotate: false
+  xy: 3214, 410
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_drill
   rotate: false
-  xy: 1223, 1243
+  xy: 355, 273
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
+structure_electric_conveyor
+  rotate: false
+  xy: 3280, 388
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_core
+  rotate: false
+  xy: 3346, 388
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_core_e
+  rotate: false
+  xy: 3412, 388
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_core_we
+  rotate: false
+  xy: 3478, 392
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_e
+  rotate: false
+  xy: 3214, 344
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_ne
+  rotate: false
+  xy: 3280, 322
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_nse
+  rotate: false
+  xy: 3346, 322
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_electric_conveyor_pad1
   rotate: false
-  xy: 579, 355
+  xy: 3752, 1022
   size: 10, 40
   orig: 10, 40
   offset: 0, 0
   index: -1
+structure_electric_conveyor_we
+  rotate: false
+  xy: 3412, 322
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_wne
+  rotate: false
+  xy: 3478, 326
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_electric_conveyor_wnse
+  rotate: false
+  xy: 3544, 392
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_excavator
   rotate: false
-  xy: 1027, 1051
+  xy: 1291, 345
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: -1
 structure_fillingmachine
   rotate: false
-  xy: 1255, 1501
+  xy: 3755, 1597
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
+structure_filter
+  rotate: false
+  xy: 3544, 326
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_gasturbine
   rotate: false
-  xy: 1, 369
+  xy: 1539, 861
   size: 576, 160
   orig: 576, 160
   offset: 0, 0
   index: -1
 structure_groundwaterpump
   rotate: false
-  xy: 1841, 89
+  xy: 2999, 697
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
+structure_highpowershaft
+  rotate: false
+  xy: 3513, 642
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_highpowershaftbelow
+  rotate: false
+  xy: 3579, 645
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_hopper
+  rotate: false
+  xy: 3645, 645
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_inductionfurnace
   rotate: false
-  xy: 1, 49
+  xy: 1129, 283
   size: 160, 318
   orig: 160, 318
   offset: 0, 0
   index: -1
 structure_ingotmold
   rotate: false
-  xy: 1641, 22
+  xy: 3129, 697
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 structure_injectionmolder
   rotate: false
-  xy: 1505, 661
+  xy: 807, 151
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
+structure_itemlift
+  rotate: false
+  xy: 3711, 651
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_itemliftout
+  rotate: false
+  xy: 3777, 655
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_kiln
   rotate: false
-  xy: 1549, 15
+  xy: 3567, 1145
   size: 64, 192
   orig: 64, 192
   offset: 0, 0
   index: -1
+structure_lumberjack
+  rotate: false
+  xy: 3217, 889
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+structure_mason
+  rotate: false
+  xy: 3347, 885
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+structure_mine
+  rotate: false
+  xy: 3477, 885
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+structure_mixer
+  rotate: false
+  xy: 3567, 1015
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 structure_oilwell
   rotate: false
-  xy: 1223, 985
+  xy: 613, 345
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 structure_polarizer
   rotate: false
-  xy: 1682, 1403
+  xy: 1539, 731
   size: 192, 128
   orig: 192, 128
   offset: 0, 0
   index: -1
 structure_polymerizer
   rotate: false
-  xy: 1247, 533
+  xy: 871, 345
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
+structure_power_node
+  rotate: false
+  xy: 3551, 576
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_powerpole
+  rotate: false
+  xy: 3551, 510
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_powerpoleghost
+  rotate: false
+  xy: 3617, 579
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_redstone
+  rotate: false
+  xy: 3617, 513
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_refinery
   rotate: false
-  xy: 957, 155
+  xy: 3079, 1471
   size: 288, 576
   orig: 288, 576
   offset: 0, 0
   index: -1
+structure_reliefvalve
+  rotate: false
+  xy: 1027, 1023
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
+structure_reliefvalve_top
+  rotate: false
+  xy: 2053, 1023
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
 structure_rollingmachine
   rotate: false
-  xy: 1773, 1113
+  xy: 3023, 827
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_sawmill
   rotate: false
-  xy: 1193, 25
+  xy: 1053, 603
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
+structure_sciencelab
+  rotate: false
+  xy: 3607, 885
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+structure_shaft_drill_head
+  rotate: false
+  xy: 1229, 149
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+structure_shaft_drill_head_outer
+  rotate: false
+  xy: 1359, 149
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 structure_silo
   rotate: false
-  xy: 1027, 1309
+  xy: 3079, 1021
   size: 128, 448
   orig: 128, 448
   offset: 0, 0
   index: -1
+structure_smelter
+  rotate: false
+  xy: 1519, 249
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 structure_solarpanel
   rotate: false
-  xy: 1645, 152
+  xy: 3567, 1339
   size: 96, 192
   orig: 96, 192
   offset: 0, 0
   index: -1
 structure_solarpaneloutlet
   rotate: false
-  xy: 1451, 15
+  xy: 1001, 151
   size: 96, 192
   orig: 96, 192
   offset: 0, 0
   index: -1
 structure_stacker
   rotate: false
-  xy: 1645, 346
+  xy: 1733, 667
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
 structure_steamturbine
   rotate: false
-  xy: 1699, 692
+  xy: 3373, 1145
   size: 192, 192
   orig: 192, 192
   offset: 0, 0
   index: -1
+structure_steel_tube
+  rotate: false
+  xy: 3652, 273
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_steel_tube_esw
+  rotate: false
+  xy: 3694, 273
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_steel_tube_ew
+  rotate: false
+  xy: 3742, 345
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_steel_tube_n
+  rotate: false
+  xy: 3784, 345
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_steel_tube_nesw
+  rotate: false
+  xy: 3826, 349
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+structure_steel_tube_sw
+  rotate: false
+  xy: 3868, 349
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
 structure_storage
   rotate: false
-  xy: 1733, 1533
+  xy: 3373, 1015
   size: 192, 128
   orig: 192, 128
   offset: 0, 0
   index: -1
 structure_storage_fill_status
   rotate: false
-  xy: 119, 19
+  xy: 1779, 17
   size: 42, 28
   orig: 42, 28
   offset: 0, 0
   index: -1
 structure_supercapacitor
   rotate: false
-  xy: 1743, 152
+  xy: 1927, 667
   size: 96, 192
   orig: 96, 192
   offset: 0, 0
   index: -1
 structure_tank
   rotate: false
-  xy: 1415, 855
+  xy: 1, 47
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
 structure_tubebender
   rotate: false
-  xy: 1893, 697
+  xy: 2893, 829
   size: 128, 192
   orig: 128, 192
   offset: 0, 0
   index: -1
+structure_tubeshaft
+  rotate: false
+  xy: 3683, 579
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_tubeshaftout
+  rotate: false
+  xy: 3683, 513
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_vacuumpump
   rotate: false
-  xy: 1696, 595
+  xy: 611, 85
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
+structure_valve
+  rotate: false
+  xy: 3749, 585
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+structure_valve_top
+  rotate: false
+  xy: 3749, 519
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 structure_warehouse
   rotate: false
-  xy: 163, 45
+  xy: 3369, 1533
   size: 320, 128
   orig: 320, 128
   offset: 0, 0
   index: -1
 structure_warehouse_fill_status
   rotate: false
-  xy: 163, 15
+  xy: 1, 17
   size: 232, 28
   orig: 232, 28
   offset: 0, 0
   index: -1
+structure_waterwheel
+  rotate: false
+  xy: 1489, 119
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
 structure_wiredrawer
   rotate: false
-  xy: 1157, 1051
+  xy: 3209, 1021
   size: 64, 448
   orig: 64, 448
   offset: 0, 0
   index: -1
 symb_ff
   rotate: false
-  xy: 1377, 195
+  xy: 3901, 1279
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 symb_flip
   rotate: false
-  xy: 1969, 491
+  xy: 3901, 1207
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 symb_help
   rotate: false
-  xy: 89, 3
+  xy: 1099, 299
   size: 28, 44
   orig: 28, 44
   offset: 0, 0
   index: -1
 symb_leftarrow
   rotate: false
-  xy: 1581, 1502
+  xy: 1678, 16
   size: 49, 29
   orig: 49, 29
   offset: 0, 0
   index: -1
 symb_menu
   rotate: false
-  xy: 1539, 1501
+  xy: 3742, 313
   size: 40, 30
   orig: 40, 30
   offset: 0, 0
   index: -1
 symb_music_0
   rotate: false
-  xy: 1135, 746
+  xy: 1622, 119
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_music_1
   rotate: false
-  xy: 1696, 550
+  xy: 2845, 654
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_music_2
   rotate: false
-  xy: 1746, 550
+  xy: 2845, 609
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_music_3
   rotate: false
-  xy: 1247, 164
+  xy: 792, 6
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_pause
   rotate: false
-  xy: 579, 491
+  xy: 3593, 470
   size: 22, 38
   orig: 22, 38
   offset: 0, 0
   index: -1
 symb_play
   rotate: false
-  xy: 2011, 1711
+  xy: 3779, 900
   size: 36, 38
   orig: 36, 38
   offset: 0, 0
   index: -1
 symb_rightarrow
   rotate: false
-  xy: 1632, 1502
+  xy: 1729, 16
   size: 48, 29
   orig: 48, 29
   offset: 0, 0
   index: -1
 symb_sound_0
   rotate: false
-  xy: 1297, 164
+  xy: 842, 6
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_sound_1
   rotate: false
-  xy: 1969, 446
+  xy: 892, 6
+  size: 48, 43
+  orig: 48, 43
+  offset: 0, 0
+  index: -1
+symb_sound_2
+  rotate: false
+  xy: 942, 9
+  size: 48, 43
+  orig: 48, 43
+  offset: 0, 0
+  index: -1
+symb_sound_3
+  rotate: false
+  xy: 992, 9
   size: 48, 43
   orig: 48, 43
   offset: 0, 0
   index: -1
 symb_trash
   rotate: false
-  xy: 49, 3
+  xy: 317, 1
   size: 38, 44
   orig: 38, 44
   offset: 0, 0
   index: -1
 symb_x
   rotate: false
-  xy: 1601, 533
+  xy: 1731, 311
   size: 31, 31
   orig: 31, 31
   offset: 0, 0
   index: -1
+temp
+  rotate: false
+  xy: 3815, 589
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 thumb
   rotate: false
-  xy: 1773, 1021
+  xy: 1505, 639
   size: 160, 90
   orig: 160, 90
+  offset: 0, 0
+  index: -1
+tile_clay
+  rotate: false
+  xy: 3815, 523
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_coal
+  rotate: false
+  xy: 3843, 655
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_coal_alt
+  rotate: false
+  xy: 3881, 589
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_copper
+  rotate: false
+  xy: 3881, 523
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_copper_alt
+  rotate: false
+  xy: 3749, 453
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil
+  rotate: false
+  xy: 3815, 457
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_corner
+  rotate: false
+  xy: 3881, 457
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_dirt_corner
+  rotate: false
+  xy: 2107, 545
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_dirt_hole
+  rotate: false
+  xy: 2173, 545
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_dirt_inner
+  rotate: false
+  xy: 2239, 545
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_dirt_middle
+  rotate: false
+  xy: 2305, 545
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_hole
+  rotate: false
+  xy: 1773, 179
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_inner
+  rotate: false
+  xy: 1773, 113
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_crude_oil_middle
+  rotate: false
+  xy: 1810, 47
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_dirt
+  rotate: false
+  xy: 3478, 260
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_dirt_corner
+  rotate: false
+  xy: 3544, 260
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_dirt_hole
+  rotate: false
+  xy: 3815, 391
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_dirt_inner
+  rotate: false
+  xy: 3881, 391
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_dirt_middle
+  rotate: false
+  xy: 3617, 447
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_fog
+  rotate: false
+  xy: 3683, 447
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_iron
+  rotate: false
+  xy: 3749, 387
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_iron_alt
+  rotate: false
+  xy: 3610, 381
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_stone
+  rotate: false
+  xy: 3610, 315
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_tin
+  rotate: false
+  xy: 3676, 381
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+tile_tin_alt
+  rotate: false
+  xy: 3676, 315
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 title
@@ -1607,1571 +3161,5 @@ title
   xy: 1, 531
   size: 600, 200
   orig: 600, 200
-  offset: 0, 0
-  index: -1
-
-tex2.png
-size: 2048,2048
-format: RGBA8888
-filter: Linear,Nearest
-repeat: none
-fluid_crude_oil
-  rotate: false
-  xy: 299, 35
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_gas
-  rotate: false
-  xy: 311, 739
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_lubricant
-  rotate: false
-  xy: 377, 739
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_molten_metal
-  rotate: false
-  xy: 441, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_oil
-  rotate: false
-  xy: 507, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_pressurized_steam
-  rotate: false
-  xy: 573, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_steam
-  rotate: false
-  xy: 639, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-fluid_water
-  rotate: false
-  xy: 705, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_assembler
-  rotate: false
-  xy: 1287, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_assembly
-  rotate: false
-  xy: 1, 545
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_ballmill
-  rotate: false
-  xy: 131, 675
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_barrel
-  rotate: false
-  xy: 261, 805
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_barreldrainer
-  rotate: false
-  xy: 391, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_boiler
-  rotate: false
-  xy: 1027, 1609
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_booster
-  rotate: false
-  xy: 1369, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_brick_channel
-  rotate: false
-  xy: 771, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_cableshaft
-  rotate: false
-  xy: 1, 463
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_cableshaftbelow
-  rotate: false
-  xy: 473, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_capacitor
-  rotate: false
-  xy: 1027, 1527
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_carpenter
-  rotate: false
-  xy: 1451, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_centrifuge
-  rotate: false
-  xy: 1, 381
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_charcoalmound
-  rotate: false
-  xy: 555, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_compactor
-  rotate: false
-  xy: 1027, 1445
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_condenser
-  rotate: false
-  xy: 1533, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_copper_cable
-  rotate: false
-  xy: 1, 299
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_copy
-  rotate: false
-  xy: 637, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_crucible
-  rotate: false
-  xy: 1027, 1363
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_crude_oil
-  rotate: false
-  xy: 1615, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_crusher
-  rotate: false
-  xy: 1, 217
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_destroy
-  rotate: false
-  xy: 719, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_destroybulk
-  rotate: false
-  xy: 1027, 1281
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_devicefabricator
-  rotate: false
-  xy: 1697, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_digitalstorage
-  rotate: false
-  xy: 1, 135
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_distillationcolumn
-  rotate: false
-  xy: 801, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_drill
-  rotate: false
-  xy: 1027, 1199
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_empty_barrel
-  rotate: false
-  xy: 1779, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_excavator
-  rotate: false
-  xy: 1, 53
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_fe_ingot
-  rotate: false
-  xy: 883, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_fillingmachine
-  rotate: false
-  xy: 1027, 1117
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_gasturbine
-  rotate: false
-  xy: 1027, 1691
-  size: 90, 90
-  orig: 90, 90
-  offset: 0, 0
-  index: -1
-icon_highpowershaft
-  rotate: false
-  xy: 1861, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_highpowershaftbelow
-  rotate: false
-  xy: 1027, 1035
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_hopper
-  rotate: false
-  xy: 1943, 1961
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_inductionfurnace
-  rotate: false
-  xy: 965, 935
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_ingotmold
-  rotate: false
-  xy: 1287, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_injectionmolder
-  rotate: false
-  xy: 1369, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_liquids
-  rotate: false
-  xy: 1451, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_mason
-  rotate: false
-  xy: 1533, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_mine
-  rotate: false
-  xy: 1615, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_minerals
-  rotate: false
-  xy: 1697, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_misc
-  rotate: false
-  xy: 1779, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_mixer
-  rotate: false
-  xy: 1861, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_molding
-  rotate: false
-  xy: 1943, 1879
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_network
-  rotate: false
-  xy: 83, 545
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_new_bg
-  rotate: false
-  xy: 83, 463
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_new_fg
-  rotate: false
-  xy: 83, 381
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_oilwell
-  rotate: false
-  xy: 83, 299
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_polarizer
-  rotate: false
-  xy: 83, 217
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_power
-  rotate: false
-  xy: 83, 135
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_power_node
-  rotate: false
-  xy: 837, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_powerpole
-  rotate: false
-  xy: 83, 53
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_refinery
-  rotate: false
-  xy: 213, 675
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_rollingmachine
-  rotate: false
-  xy: 1157, 1821
-  size: 90, 90
-  orig: 90, 90
-  offset: 0, 0
-  index: -1
-icon_silo
-  rotate: false
-  xy: 343, 805
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_smelter
-  rotate: false
-  xy: 1047, 953
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_solar
-  rotate: false
-  xy: 1157, 1739
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_solarpanel
-  rotate: false
-  xy: 165, 593
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_solarpaneloutlet
-  rotate: false
-  xy: 165, 511
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_solarpaneloutlet.png
-  rotate: false
-  xy: 165, 429
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_stacker
-  rotate: false
-  xy: 165, 347
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_steamturbine
-  rotate: false
-  xy: 165, 265
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_steel_ingot
-  rotate: false
-  xy: 165, 183
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_steel_tube
-  rotate: false
-  xy: 165, 34
-  size: 65, 65
-  orig: 65, 65
-  offset: 0, 0
-  index: -1
-icon_supercapacitor
-  rotate: false
-  xy: 165, 101
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_tank
-  rotate: false
-  xy: 247, 593
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_tubebender
-  rotate: false
-  xy: 247, 511
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_vacuumpump
-  rotate: false
-  xy: 247, 429
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_valve
-  rotate: false
-  xy: 232, 34
-  size: 65, 65
-  orig: 65, 65
-  offset: 0, 0
-  index: -1
-icon_wafer
-  rotate: false
-  xy: 247, 347
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_water
-  rotate: false
-  xy: 247, 265
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-icon_waterwheel
-  rotate: false
-  xy: 903, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-icon_wiredrawer
-  rotate: false
-  xy: 247, 183
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-item_ore2
-  rotate: false
-  xy: 131, 649
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_pallet
-  rotate: false
-  xy: 1249, 1887
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_paper
-  rotate: false
-  xy: 127, 27
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_planks
-  rotate: false
-  xy: 1119, 1757
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_plasticbeads
-  rotate: false
-  xy: 1307, 1325
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_plasticcasing
-  rotate: false
-  xy: 1373, 1415
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_plate
-  rotate: false
-  xy: 1679, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_platestack
-  rotate: false
-  xy: 1241, 1217
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_pressurized_steam
-  rotate: false
-  xy: 1119, 1731
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_pressurized_steam_tank
-  rotate: false
-  xy: 1307, 1299
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_pyrite_dust
-  rotate: false
-  xy: 1333, 1325
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_quartz_dust
-  rotate: false
-  xy: 1373, 1389
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_rotor
-  rotate: false
-  xy: 1705, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_s_dust
-  rotate: false
-  xy: 1241, 1191
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sand
-  rotate: false
-  xy: 1119, 1705
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_scaffolding
-  rotate: false
-  xy: 1333, 1299
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_si_dust
-  rotate: false
-  xy: 1373, 1363
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_siliconwafer
-  rotate: false
-  xy: 1731, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_dust
-  rotate: false
-  xy: 1241, 1165
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_gravel
-  rotate: false
-  xy: 1757, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_ingot
-  rotate: false
-  xy: 1783, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_ore
-  rotate: false
-  xy: 1809, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_plate
-  rotate: false
-  xy: 1835, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_sn_wire
-  rotate: false
-  xy: 1861, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steam
-  rotate: false
-  xy: 1887, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steel_cable
-  rotate: false
-  xy: 1913, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steel_ingot
-  rotate: false
-  xy: 1939, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steel_plate
-  rotate: false
-  xy: 1965, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steel_tube
-  rotate: false
-  xy: 1991, 1721
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_steel_wire
-  rotate: false
-  xy: 1151, 1071
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_stone
-  rotate: false
-  xy: 1217, 1119
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_stone_brick
-  rotate: false
-  xy: 1415, 1457
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_stone_dust
-  rotate: false
-  xy: 1481, 1523
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_stone_gravel
-  rotate: false
-  xy: 1547, 1589
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_syntheticquartz
-  rotate: false
-  xy: 1613, 1655
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_ti_dust
-  rotate: false
-  xy: 1283, 1259
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_ti_ingot
-  rotate: false
-  xy: 1177, 1077
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_ti_plate
-  rotate: false
-  xy: 127, 1
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_ti_wire
-  rotate: false
-  xy: 1399, 1415
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_tube
-  rotate: false
-  xy: 1399, 1389
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_turbine
-  rotate: false
-  xy: 1399, 1363
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_water
-  rotate: false
-  xy: 1679, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_water_barrel
-  rotate: false
-  xy: 1705, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_wire
-  rotate: false
-  xy: 1731, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_wood
-  rotate: false
-  xy: 1757, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_wood_chip
-  rotate: false
-  xy: 1783, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-item_wood_chips
-  rotate: false
-  xy: 1809, 1695
-  size: 24, 24
-  orig: 24, 24
-  offset: 0, 0
-  index: -1
-overhang
-  rotate: false
-  xy: 969, 869
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-overhang_fog
-  rotate: false
-  xy: 1249, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-overhang_fog_inner
-  rotate: false
-  xy: 1315, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-round_metalDarkRed
-  rotate: false
-  xy: 1381, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-round_metalRed
-  rotate: false
-  xy: 1447, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-science_considerate
-  rotate: false
-  xy: 247, 101
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-structure_barrel
-  rotate: false
-  xy: 1513, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_cableshaft
-  rotate: false
-  xy: 1579, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_cableshaftbelow
-  rotate: false
-  xy: 1645, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor
-  rotate: false
-  xy: 1711, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_e
-  rotate: false
-  xy: 1777, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_ne
-  rotate: false
-  xy: 1843, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_nse
-  rotate: false
-  xy: 1909, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_we
-  rotate: false
-  xy: 1239, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_wne
-  rotate: false
-  xy: 1305, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyor_wnse
-  rotate: false
-  xy: 1371, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_conveyorbridge
-  rotate: false
-  xy: 1437, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_copper_tube_esw
-  rotate: false
-  xy: 1, 11
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_copper_tube_ew
-  rotate: false
-  xy: 43, 11
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_copper_tube_n
-  rotate: false
-  xy: 85, 11
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_copper_tube_nesw
-  rotate: false
-  xy: 1109, 1055
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_copper_tube_sw
-  rotate: false
-  xy: 1175, 1103
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_distributor
-  rotate: false
-  xy: 1503, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_distributor_lower
-  rotate: false
-  xy: 1569, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor
-  rotate: false
-  xy: 1635, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_core
-  rotate: false
-  xy: 1701, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_core_e
-  rotate: false
-  xy: 1767, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_core_we
-  rotate: false
-  xy: 1833, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_e
-  rotate: false
-  xy: 1899, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_ne
-  rotate: false
-  xy: 1975, 1813
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_nse
-  rotate: false
-  xy: 1965, 1747
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_we
-  rotate: false
-  xy: 1047, 887
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_wne
-  rotate: false
-  xy: 1113, 887
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_electric_conveyor_wnse
-  rotate: false
-  xy: 1109, 1625
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_filter
-  rotate: false
-  xy: 1109, 1559
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_highpowershaft
-  rotate: false
-  xy: 1109, 1493
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_highpowershaftbelow
-  rotate: false
-  xy: 1109, 1427
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_hopper
-  rotate: false
-  xy: 1109, 1361
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_itemlift
-  rotate: false
-  xy: 1109, 1295
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_itemliftout
-  rotate: false
-  xy: 1109, 1229
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_lumberjack
-  rotate: false
-  xy: 1, 887
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_mason
-  rotate: false
-  xy: 1027, 1913
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_mine
-  rotate: false
-  xy: 1, 757
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_mixer
-  rotate: false
-  xy: 131, 887
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_power_node
-  rotate: false
-  xy: 1109, 1163
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_powerpole
-  rotate: false
-  xy: 1109, 1097
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_powerpoleghost
-  rotate: false
-  xy: 1175, 1673
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_redstone
-  rotate: false
-  xy: 1175, 1607
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_reliefvalve
-  rotate: false
-  xy: 1, 1017
-  size: 1024, 1024
-  orig: 1024, 1024
-  offset: 0, 0
-  index: -1
-structure_sciencelab
-  rotate: false
-  xy: 1027, 1783
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_shaft_drill_head
-  rotate: false
-  xy: 1157, 1913
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_shaft_drill_head_outer
-  rotate: false
-  xy: 1, 627
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_smelter
-  rotate: false
-  xy: 131, 757
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-structure_steel_tube
-  rotate: false
-  xy: 1373, 1441
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_steel_tube_esw
-  rotate: false
-  xy: 1439, 1507
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_steel_tube_ew
-  rotate: false
-  xy: 1505, 1573
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_steel_tube_n
-  rotate: false
-  xy: 1571, 1639
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_steel_tube_nesw
-  rotate: false
-  xy: 1637, 1705
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_steel_tube_sw
-  rotate: false
-  xy: 1241, 1243
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-structure_tubeshaft
-  rotate: false
-  xy: 1175, 1541
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_tubeshaftout
-  rotate: false
-  xy: 1175, 1475
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_valve
-  rotate: false
-  xy: 1175, 1409
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_valve_top
-  rotate: false
-  xy: 1175, 1343
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-structure_waterwheel
-  rotate: false
-  xy: 261, 887
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-symb_sound_2
-  rotate: false
-  xy: 261, 760
-  size: 48, 43
-  orig: 48, 43
-  offset: 0, 0
-  index: -1
-symb_sound_3
-  rotate: false
-  xy: 391, 890
-  size: 48, 43
-  orig: 48, 43
-  offset: 0, 0
-  index: -1
-temp
-  rotate: false
-  xy: 1175, 1277
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_clay
-  rotate: false
-  xy: 1175, 1211
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_coal
-  rotate: false
-  xy: 1175, 1145
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_coal_alt
-  rotate: false
-  xy: 1241, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_copper
-  rotate: false
-  xy: 1241, 1615
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_copper_alt
-  rotate: false
-  xy: 1307, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil
-  rotate: false
-  xy: 1241, 1549
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_corner
-  rotate: false
-  xy: 1307, 1615
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_dirt_corner
-  rotate: false
-  xy: 1373, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_dirt_hole
-  rotate: false
-  xy: 1241, 1483
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_dirt_inner
-  rotate: false
-  xy: 1307, 1549
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_dirt_middle
-  rotate: false
-  xy: 1373, 1615
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_hole
-  rotate: false
-  xy: 1439, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_inner
-  rotate: false
-  xy: 1241, 1417
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_crude_oil_middle
-  rotate: false
-  xy: 1307, 1483
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_dirt
-  rotate: false
-  xy: 1373, 1549
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_dirt_corner
-  rotate: false
-  xy: 1439, 1615
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_dirt_hole
-  rotate: false
-  xy: 1505, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_dirt_inner
-  rotate: false
-  xy: 1241, 1351
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_dirt_middle
-  rotate: false
-  xy: 1307, 1417
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_fog
-  rotate: false
-  xy: 1373, 1483
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_iron
-  rotate: false
-  xy: 1439, 1549
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_iron_alt
-  rotate: false
-  xy: 1505, 1615
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_stone
-  rotate: false
-  xy: 1571, 1681
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_tin
-  rotate: false
-  xy: 1241, 1285
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tile_tin_alt
-  rotate: false
-  xy: 1307, 1351
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-
-tex3.png
-size: 2048,2048
-format: RGBA8888
-filter: Linear,Nearest
-repeat: none
-structure_reliefvalve_top
-  rotate: false
-  xy: 1, 1
-  size: 1024, 1024
-  orig: 1024, 1024
   offset: 0, 0
   index: -1
