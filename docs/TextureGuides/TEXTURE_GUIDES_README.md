@@ -412,5 +412,3 @@ Good luck! 🎮
 ---
 
 *Created for the Drill Down development team. These guides document the tried-and-tested texture packing workflow for LibGDX games.*
-
-

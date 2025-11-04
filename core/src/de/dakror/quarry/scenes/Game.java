@@ -1318,14 +1318,47 @@ public class Game extends GameScene {
                         }
                     }
 
-                    placeStructure(layer, (Structure<?>) activeStructure.clone());
+                    // ===== ADD THIS SECTION =====
+                    // Handle Item Elevator - show floor selection dialog
+                    if (activeStructure instanceof de.dakror.quarry.structure.logistics.ItemElevator) {
+                        de.dakror.quarry.structure.logistics.ItemElevator elevator = 
+                            (de.dakror.quarry.structure.logistics.ItemElevator) activeStructure;
+                        // Show floor selection dialog instead of placing directly
+                        ui.floorSelectionDialog.show(layer.getIndex(), activeStructure.x, activeStructure.y,
+                            new de.dakror.common.Callback<Integer>() {
+                                @Override
+                                public void call(Integer selectedFloor) {
+                                    // Confirm callback: user selected a floor
+                                    if (elevator.setTargetFloor(selectedFloor)) {
+                                        // Floor selection was valid, now place the structure
+                                        placeStructure(layer, (Structure<?>) activeStructure.clone());
+                                        if (endA.x > -1) {
+                                            endA.set(-1, 0);
+                                            endB.set(-1, 0);
+                                            activeStructure.x = -1;
+                                            activeStructure.y = 0;
+                                        }
+                                    }
+                                }
+                            },
+                            new de.dakror.common.Callback<Boolean>() {
+                                @Override
+                                public void call(Boolean cancelled) {
+                                    // Cancel callback - do nothing, user cancelled placement
+                                }
+                            }
+                        );
+                    } else {
+                        // ===== END NEW SECTION =====
+                        placeStructure(layer, (Structure<?>) activeStructure.clone());
 
-                    if (endA.x > -1) {
-                        endA.set(-1, 0);
-                        endB.set(-1, 0);
-                        activeStructure.x = -1;
-                        activeStructure.y = 0;
-                    }
+                        if (endA.x > -1) {
+                            endA.set(-1, 0);
+                            endB.set(-1, 0);
+                            activeStructure.x = -1;
+                            activeStructure.y = 0;
+                        }
+                    } // <-- Add closing brace for the else
                 }
             }
         }

@@ -516,5 +516,3 @@ When implementing new textures, verify each step:
 ---
 
 *This architecture has been battle-tested through multiple texture additions in the Drill Down development cycle.*
-
-

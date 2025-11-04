@@ -56,6 +56,8 @@ import de.dakror.quarry.structure.base.Dock;
 import de.dakror.quarry.structure.base.StorageStructure;
 import de.dakror.quarry.structure.base.Structure;
 import de.dakror.quarry.structure.base.StructureType;
+import de.dakror.quarry.structure.base.ISpecialRenderer;
+import de.dakror.quarry.structure.base.RenderingStyle;
 import de.dakror.quarry.structure.logistics.Conveyor;
 import de.dakror.quarry.structure.power.CopperCable;
 import de.dakror.quarry.util.Bounds;
@@ -478,6 +480,11 @@ public class Chunk implements Disposable, FBOable, Savable {
             synchronized (structLock) {
                 for (Structure<?> st : structures.items) {
                     if (st == null) break;
+                    // CRITICAL: Exclude ISpecialRenderer structures from static mesh
+                    // They will be rendered dynamically in drawFrameStructures with tinting
+                    if (st instanceof ISpecialRenderer) {
+                        continue; // Skip - will be rendered with special tinting
+                    }
                     st.draw(builder);
                 }
                 for (Entry<CopperCable> st : cables.entries()) {
@@ -497,10 +504,41 @@ public class Chunk implements Disposable, FBOable, Savable {
         if (!dataSet) return;
 
         synchronized (structLock) {
+            // CRITICAL: Reset tint to white at start to ensure clean state
+            spriter.setTintColor(1.0f, 1.0f, 1.0f, 1.0f);
+            
+            // Pass 1: Render all ISpecialRenderer structures with their custom tints
+            // ONLY render the structure sprites (st.draw), NOT frame elements
+            for (Structure<?> st : structures.items) {
+                if (st == null) break;
+                if (st instanceof ISpecialRenderer) {
+                    RenderingStyle style = ((ISpecialRenderer) st).getRenderingStyle();
+                    
+                    // CRITICAL: Flush before applying tint to isolate this structure
+                    spriter.flush();
+                    
+                    // Apply custom tint
+                    Color tint = style.getTintColor();
+                    spriter.setTintColor(tint.r, tint.g, tint.b, tint.a);
+                    
+                    // Draw structure with tint (ONLY the structure sprite, not icons)
+                    st.draw(spriter);
+                    
+                    // CRITICAL: Flush after drawing to prevent tint bleeding
+                    spriter.flush();
+                    
+                    // Reset tint to white for next iteration
+                    spriter.setTintColor(1.0f, 1.0f, 1.0f, 1.0f);
+                }
+            }
+            
+            // Pass 2: Render ALL frame elements (icons, items, etc.) with white tint
+            // This ensures icons don't get the blue tint, even for ISpecialRenderer structures
             for (Structure<?> st : structures.items) {
                 if (st == null) break;
                 st.drawFrame(spriter, shaper, pfxBatch);
             }
+            
             if (Game.DRAW_DEBUG) {
                 for (Entry<CopperCable> st : cables.entries()) {
                     st.value.drawFrame(spriter, shaper, pfxBatch);

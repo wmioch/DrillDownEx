@@ -558,32 +558,63 @@ public class Layer implements Disposable, Savable, Listener<Layer> {
                 }
             }
         }
+        
+        // ===== ADD BOUNDS CHECKING FOR DOCKS =====
         for (Dock d : s.getDocks()) {
+            // Calculate absolute dock coordinates
+            int dockX = s.x + d.x;
+            int dockY = s.y + d.y;
+            
+            // Check bounds for initial dock position
+            if (dockX < 0 || dockX >= width || dockY < 0 || dockY >= height) {
+                continue; // Skip if dock position is out of bounds
+            }
+            
             if (d.type == DockType.Power) {
                 if (colliding) {
-                    flags[(s.x + d.x) * height + s.y + d.y] |= FLAG_POWER_DOCK_COLLISION;
+                    flags[dockX * height + dockY] |= FLAG_POWER_DOCK_COLLISION;
                 } else {
-                    flags[(s.x + d.x) * height + s.y + d.y] &= ~FLAG_POWER_DOCK_COLLISION;
+                    flags[dockX * height + dockY] &= ~FLAG_POWER_DOCK_COLLISION;
                 }
             } else if (d.type == DockType.BigPower) {
                 if (colliding) {
-                    flags[(s.x + d.x) * height + s.y + d.y] |= FLAG_POWER_DOCK_COLLISION;
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] |= FLAG_POWER_DOCK_COLLISION | FLAG_STRUCTURE_COLLISION;
+                    flags[dockX * height + dockY] |= FLAG_POWER_DOCK_COLLISION;
+                    // Check bounds for dock direction
+                    int dockDirX = dockX + d.dir.dx;
+                    int dockDirY = dockY + d.dir.dy;
+                    if (dockDirX >= 0 && dockDirX < width && dockDirY >= 0 && dockDirY < height) {
+                        flags[dockDirX * height + dockDirY] |= FLAG_POWER_DOCK_COLLISION | FLAG_STRUCTURE_COLLISION;
+                    }
                 } else {
-                    flags[(s.x + d.x) * height + s.y + d.y] &= ~FLAG_POWER_DOCK_COLLISION;
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] &= ~(FLAG_POWER_DOCK_COLLISION | FLAG_STRUCTURE_COLLISION);
+                    flags[dockX * height + dockY] &= ~FLAG_POWER_DOCK_COLLISION;
+                    // Check bounds for dock direction
+                    int dockDirX = dockX + d.dir.dx;
+                    int dockDirY = dockY + d.dir.dy;
+                    if (dockDirX >= 0 && dockDirX < width && dockDirY >= 0 && dockDirY < height) {
+                        flags[dockDirX * height + dockDirY] &= ~(FLAG_POWER_DOCK_COLLISION | FLAG_STRUCTURE_COLLISION);
+                    }
                 }
             } else if (d.type == DockType.ItemIn || d.type == DockType.ItemOut) {
-                if (colliding) {
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] |= FLAG_ITEM_DOCK_COLLISION;
-                } else {
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] &= ~FLAG_ITEM_DOCK_COLLISION;
+                // Check bounds for dock direction
+                int dockDirX = dockX + d.dir.dx;
+                int dockDirY = dockY + d.dir.dy;
+                if (dockDirX >= 0 && dockDirX < width && dockDirY >= 0 && dockDirY < height) {
+                    if (colliding) {
+                        flags[dockDirX * height + dockDirY] |= FLAG_ITEM_DOCK_COLLISION;
+                    } else {
+                        flags[dockDirX * height + dockDirY] &= ~FLAG_ITEM_DOCK_COLLISION;
+                    }
                 }
             } else if (d.type == DockType.FluidIn || d.type == DockType.FluidOut) {
-                if (colliding) {
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] |= FLAG_FLUID_DOCK_COLLISION;
-                } else {
-                    flags[(s.x + d.x + d.dir.dx) * height + s.y + d.y + d.dir.dy] &= ~FLAG_FLUID_DOCK_COLLISION;
+                // Check bounds for dock direction
+                int dockDirX = dockX + d.dir.dx;
+                int dockDirY = dockY + d.dir.dy;
+                if (dockDirX >= 0 && dockDirX < width && dockDirY >= 0 && dockDirY < height) {
+                    if (colliding) {
+                        flags[dockDirX * height + dockDirY] |= FLAG_FLUID_DOCK_COLLISION;
+                    } else {
+                        flags[dockDirX * height + dockDirY] &= ~FLAG_FLUID_DOCK_COLLISION;
+                    }
                 }
             }
         }
