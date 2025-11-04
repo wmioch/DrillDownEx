@@ -7,11 +7,12 @@
 
 varying vec2 v_texCoords;
 uniform sampler2D u_texture;
+uniform vec4 u_tintColor;
 
 void main() {
 	vec4 col = texture2D(u_texture, v_texCoords);
 	if(col.a == 0.0) 
 		discard;
 		
-	gl_FragColor = col;
+	gl_FragColor = col * u_tintColor;
 }
