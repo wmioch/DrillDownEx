@@ -57,6 +57,7 @@ See [docs/README_SETUP.md](docs/README_SETUP.md) for detailed instructions.
 Run with `RUN_GAME.bat` or pass `debug` argument for developer controls:
 - `G` - God mode, `P` - Cycle speeds, `O` - Reset speed
 - `X` - Fill structures, `F` - Fill fluids, `D` - Debug overlay
+- `0-5` - Select liquid type (Water, Oils, Molten Copper) for filling tanks/pipes
 - `H` - Frame step, `F1` - Toggle UI
 
 [Full debug reference →](docs/DEBUG_CONTROLS.md)

@@ -423,6 +423,17 @@ public class Game extends GameScene {
                     }
                     FILLMODE = false;
                 }
+                // Debug liquid fill mode (number key activated)
+                if (LIQUID_FILL_TYPE >= 0 && LIQUID_FILL_TYPE < DEBUG_LIQUIDS.length) {
+                    ItemType liquid = DEBUG_LIQUIDS[LIQUID_FILL_TYPE];
+                    if (s instanceof FluidTubeStructure) {
+                        s.acceptFluid(liquid, 1000, null);
+                    } else if (s instanceof Tank) {
+                        ((Tank) s).acceptFluid(liquid, 100_000_000, null);
+                    }
+                    ui.toast.show("Filled " + s.getSchema().type.name() + " with " + liquid.title);
+                    LIQUID_FILL_TYPE = -1; // Reset after one use
+                }
                 if (structureDestroyMode) {
                     if (!s.getSchema().has(Flags.Indestructible)) {
                         if (activeStructure == s) {
@@ -1556,6 +1567,17 @@ public class Game extends GameScene {
     public static boolean SINGLE_FRAME = false;
     public static boolean UI_VISIBLE = true;
     public static boolean SMOOTH_CAMERA = false;
+
+    // Debug liquid fill mode - for filling tanks with specific liquids via number keys
+    public static int LIQUID_FILL_TYPE = -1; // -1 = none, 0+ = index into debugLiquids array
+    public static final ItemType[] DEBUG_LIQUIDS = {
+            ItemType.Water,
+            ItemType.RefinedOil,
+            ItemType.CrudeOil,
+            ItemType.IntermediateOilToColumn,
+            ItemType.IntermediateOilToRefinery,
+            ItemType.MoltenCopper
+    };
 
     private static final Pattern fileRegex = Pattern.compile("[^0-9a-zA-Z-_]");
 
@@ -4044,6 +4066,20 @@ public class Game extends GameScene {
                     for (int i = 0; i < layer.width; i++)
                         for (int j = 0; j < layer.height; j++)
                             layer.removeMeta(i, j, TileMeta.FOG_OF_WAR);
+                    break;
+                // Number key handlers for liquid fill mode (0-6)
+                case Keys.NUM_0:
+                case Keys.NUM_1:
+                case Keys.NUM_2:
+                case Keys.NUM_3:
+                case Keys.NUM_4:
+                case Keys.NUM_5:
+                case Keys.NUM_6:
+                    int liquidIndex = keycode - Keys.NUM_0;
+                    if (liquidIndex < DEBUG_LIQUIDS.length) {
+                        LIQUID_FILL_TYPE = liquidIndex;
+                        ui.toast.show("Liquid Fill Mode: " + DEBUG_LIQUIDS[liquidIndex].title + " (click on tank/pipe to fill)");
+                    }
                     break;
             }
         }

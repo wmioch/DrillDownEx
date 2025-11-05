@@ -52,6 +52,25 @@ To enable debug mode and access all debug controls:
 
 ---
 
+#### **0-5 - Debug Liquid Fill** (Single Press)
+- **Select Liquid Type**: Press number keys 0-5 to select a specific liquid type
+- **Available Liquids**:
+  - **0**: Water
+  - **1**: Refined Oil
+  - **2**: Crude Oil
+  - **3**: Intermediate Oil (to Column)
+  - **4**: Intermediate Oil (to Refinery)
+  - **5**: Molten Copper
+- **Fill Structures**: After selecting a liquid, click on tanks or pipes to fill them
+- **Fill Amounts**:
+  - **Pipes (FluidTubeStructure)**: 1,000 units
+  - **Tanks**: 100,000,000 units
+- **Auto-Reset**: Must press number key again for each fill (prevents accidental fills)
+- **Toast Feedback**: Shows selected liquid name and fill confirmation
+- **Use Case**: Test specific liquid types in production chains without manual resource gathering
+
+---
+
 ### Rendering & Visualization
 
 #### **D - DRAW_DEBUG** (Toggle)
@@ -171,7 +190,7 @@ To enable debug mode and access all debug controls:
 ### Testing Full Building Chains
 1. Press **G** to enable GOD_MODE
 2. Press **X** to fill storages with resources
-3. Press **F** multiple times to fill fluid structures
+3. Press **F** multiple times to fill fluid structures, or use **0-5** to select specific liquids
 4. Use **P** to speed up testing
 
 ### Debugging Visual Issues
