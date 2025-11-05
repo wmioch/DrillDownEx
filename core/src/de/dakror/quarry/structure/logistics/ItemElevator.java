@@ -17,11 +17,16 @@
 package de.dakror.quarry.structure.logistics;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import de.dakror.common.libgdx.io.NBT.Builder;
 import de.dakror.common.libgdx.io.NBT.CompoundTag;
 import de.dakror.common.libgdx.io.NBT.NBTException;
+import de.dakror.quarry.Const;
+import de.dakror.quarry.Quarry;
 import de.dakror.quarry.game.Item.ItemCategory;
 import de.dakror.quarry.game.Item.ItemType;
 import de.dakror.quarry.game.Item.Items;
@@ -33,11 +38,12 @@ import de.dakror.quarry.structure.base.Dock;
 import de.dakror.quarry.structure.base.Dock.DockType;
 import de.dakror.quarry.structure.base.Schema;
 import de.dakror.quarry.structure.base.Structure;
-import de.dakror.quarry.structure.base.StructureType;
-import de.dakror.quarry.util.Bounds;
 import de.dakror.common.libgdx.render.SpriteRenderer;
 import de.dakror.quarry.structure.base.ISpecialRenderer;
 import de.dakror.quarry.structure.base.RenderingStyle;
+import de.dakror.quarry.structure.base.StructureType;
+import de.dakror.quarry.util.Bounds;
+import de.dakror.quarry.util.SpriterDelegateBatch;
 
 /**
  * @author Maximilian Stark | Dakror
@@ -48,15 +54,23 @@ public class ItemElevator extends Structure<Schema> implements ISpecialRenderer 
             new Items(ItemType.SteelIngot, 10, ItemType.StoneBrick, 4, ItemType.MachineFrame, 2),
             null,
             new Dock(0, 0, Direction.West, DockType.ItemIn))
-                    .sciences(ScienceType.MineExpansion, ScienceType.Routers, ScienceType.AdvancedTransport);
+                    .sciences(ScienceType.MineExpansion, ScienceType.Routers, ScienceType.AdvancedTransport)
+                    .flags(Schema.Flags.NotRotatable);
 
     // Blue tint for visual distinction
     protected static final Color ELEVATOR_TINT = new Color(0.7f, 0.7f, 1.0f, 1.0f);
+
+    static final TextureRegion DEFAULT_TEXTURE = classSchema.tex;
+    static final TextureRegion UPWARD_TEXTURE = Quarry.Q.atlas.findRegion("structure_itemliftout");
+
+    private static BitmapFont floorLabelFont;
+    private static GlyphLayout floorLabelLayout;
 
     ItemElevator targetElevator;
     boolean hasOutput;
     boolean isInput; // true for input elevator, false for exit or passthrough
     int targetLayerIndex = -1; // -1 means not configured
+    int sourceLayerIndex = -1; // For exit/passthrough elevators, tracks the source floor
     
     ItemType currentItem;
     Structure<?> currentSource;
@@ -140,6 +154,7 @@ public class ItemElevator extends Structure<Schema> implements ISpecialRenderer 
                 exit.setUpDirection(upDirection);
                 
                 exit.targetLayerIndex = layer.getIndex();
+                exit.sourceLayerIndex = layer.getIndex(); // Set sourceLayerIndex for label display
                 exit.targetElevator = this;
                 this.targetElevator = exit;
                 l.addStructure(exit);
@@ -338,6 +353,7 @@ public class ItemElevator extends Structure<Schema> implements ISpecialRenderer 
     protected void saveData(Builder b) {
         super.saveData(b);
         b.Int("targetLayer", targetLayerIndex)
+         .Int("sourceLayer", sourceLayerIndex)
          .Byte("isInput", (byte) (isInput ? 1 : 0))
          .Short("item", currentItem != null ? currentItem.value : 0)
          .Byte("customDockDir", customDockDirection != null ? (byte) customDockDirection.ordinal() : (byte) -1);
@@ -347,6 +363,7 @@ public class ItemElevator extends Structure<Schema> implements ISpecialRenderer 
     protected void loadData(CompoundTag tag) throws NBTException {
         super.loadData(tag);
         targetLayerIndex = tag.Int("targetLayer", -1);
+        sourceLayerIndex = tag.Int("sourceLayer", -1);
         isInput = tag.Byte("isInput", (byte) 1) == 1;
         currentItem = de.dakror.quarry.game.Item.get(tag.Short("item", (short) 0));
         
@@ -377,10 +394,167 @@ public class ItemElevator extends Structure<Schema> implements ISpecialRenderer 
     }
 
     @Override
-    public void draw(de.dakror.common.libgdx.render.SpriteRenderer spriter) {
-        // Tinting is handled at the Chunk level in drawFrameStructures for ISpecialRenderer structures
-        // Just call super.draw to add sprites to the batch with whatever tint is currently set
-        super.draw(spriter);
+    public Object clone() {
+        ItemElevator copy = (ItemElevator) super.clone();
+        copy.targetLayerIndex = this.targetLayerIndex;
+        copy.sourceLayerIndex = this.sourceLayerIndex;
+        copy.customDockDirection = this.customDockDirection;
+
+        if (copy.isInput) {
+            if (copy.customDockDirection != null) {
+                copy.docks = new Dock[] { new Dock(0, 0, copy.customDockDirection, DockType.ItemIn) };
+            } else {
+                copy.docks = copy.schema.copyDocks(copy);
+            }
+        } else if (copy.customDockDirection != null) {
+            // For exit elevators keep custom output dock direction
+            copy.docks = new Dock[] { new Dock(0, 0, copy.customDockDirection,
+                    copy.docks.length > 0 ? copy.docks[0].type : DockType.ItemOut) };
+        }
+
+        return copy;
+    }
+
+    @Override
+    public void draw(SpriteRenderer spriter) {
+        if (docks.length > 0) {
+            drawDocks(spriter);
+        }
+
+        TextureRegion tex = resolveTexture();
+        float drawX = this.x * Const.TILE_SIZE;
+        float drawY = this.y * Const.TILE_SIZE;
+        float z = Const.Z_STRUCTURES;
+        float width = schema.width * Const.TILE_SIZE;
+        float height = schema.height * Const.TILE_SIZE;
+
+        float originX;
+        float originY;
+        if (upDirection.dx != 0) {
+            originX = getHeight() / 2f * Const.TILE_SIZE;
+            originY = getWidth() / 2f * Const.TILE_SIZE;
+            drawX += (getWidth() - getHeight()) / 2f * Const.TILE_SIZE;
+            drawY += (getHeight() - getWidth()) / 2f * Const.TILE_SIZE;
+        } else {
+            originX = (schema.width / 2f) * Const.TILE_SIZE;
+            originY = (schema.height / 2f) * Const.TILE_SIZE;
+        }
+
+        float rotation = upDirection.rot - Direction.North.rot;
+        if (getSchema().has(Schema.Flags.TextureAlwaysUpright)) {
+            rotation = 0;
+        }
+
+        spriter.add(tex, drawX, drawY, z, originX, originY, width, height, 1, 1, rotation);
+    }
+
+    @Override
+    public void drawFrame(SpriteRenderer spriter, ShapeRenderer shaper, SpriterDelegateBatch pfxBatch) {
+        super.drawFrame(spriter, shaper, pfxBatch);
+        // Text labels are rendered separately in Layer.drawElevatorLabels() using regular batch
+    }
+    
+    /**
+     * Renders the floor label for this elevator. Called from Layer.drawElevatorLabels().
+     * @param batch The SpriteBatch to render text with
+     */
+    public void drawFloorLabel(com.badlogic.gdx.graphics.g2d.SpriteBatch batch) {
+        String label = resolveFloorLabel();
+        if (label == null || label.isEmpty()) {
+            return;
+        }
+
+        ensureLabelResources();
+
+        floorLabelLayout.setText(floorLabelFont, label);
+
+        float centerX = (x + 0.5f) * Const.TILE_SIZE;
+        float centerY = (y + 0.5f) * Const.TILE_SIZE;
+
+        float textX = centerX - floorLabelLayout.width / 2f;
+        float textY = centerY + floorLabelLayout.height / 2f;
+
+        // Use black text for upward elevators (white background), white for downward (dark background)
+        if (isUpwardElevator()) {
+            floorLabelFont.setColor(0f, 0f, 0f, 1f); // Black
+        } else {
+            floorLabelFont.setColor(1f, 1f, 1f, 1f); // White
+        }
+        floorLabelFont.draw(batch, label, textX, textY);
+    }
+
+    private TextureRegion resolveTexture() {
+        return isUpwardElevator() ? (UPWARD_TEXTURE != null ? UPWARD_TEXTURE : DEFAULT_TEXTURE) : DEFAULT_TEXTURE;
+    }
+
+    private static void ensureLabelResources() {
+        if (floorLabelFont != null) return;
+        floorLabelFont = Quarry.Q.skin.getFont("small-font");
+        floorLabelLayout = new GlyphLayout();
+    }
+
+    private String resolveFloorLabel() {
+        int layerIndex = resolveLabelLayerIndex();
+        if (layerIndex < 0) {
+            return null;
+        }
+        return Integer.toString(-layerIndex);
+    }
+
+    private int resolveLabelLayerIndex() {
+        if (isInput) {
+            // Input elevator: show destination floor
+            if (targetLayerIndex >= 0) return targetLayerIndex;
+            if (targetElevator != null && targetElevator.layer != null) {
+                return targetElevator.layer.getIndex();
+            }
+        } else {
+            // Exit elevator: show SOURCE floor (where items come from)
+            if (sourceLayerIndex >= 0) {
+                return sourceLayerIndex;
+            }
+            if (targetElevator != null && targetElevator.layer != null) {
+                return targetElevator.layer.getIndex();
+            }
+            if (targetLayerIndex >= 0) {
+                // For exit elevators, targetLayerIndex may also be the source layer
+                return targetLayerIndex;
+            }
+        }
+        return -1;
+    }
+
+    private boolean isUpwardElevator() {
+        int currentLayerIndex = getCurrentLayerIndex();
+        if (currentLayerIndex < 0) {
+            return false;
+        }
+
+        if (targetLayerIndex >= 0) {
+            if (isInput) {
+                return targetLayerIndex < currentLayerIndex;
+            } else {
+                return targetLayerIndex > currentLayerIndex;
+            }
+        }
+
+        if (targetElevator != null) {
+            Layer otherLayer = targetElevator.layer;
+            if (otherLayer != null) {
+                if (isInput) {
+                    return otherLayer.getIndex() < currentLayerIndex;
+                } else {
+                    return otherLayer.getIndex() > currentLayerIndex;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private int getCurrentLayerIndex() {
+        Layer current = layer != null ? layer : Game.G.layer;
+        return current != null ? current.getIndex() : -1;
     }
     
     /**

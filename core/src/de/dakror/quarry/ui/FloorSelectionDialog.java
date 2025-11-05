@@ -33,6 +33,7 @@ import de.dakror.quarry.Quarry;
 import de.dakror.quarry.game.Layer;
 import de.dakror.quarry.scenes.Game;
 import de.dakror.quarry.structure.logistics.ItemElevator;
+import de.dakror.quarry.ui.Ui;
 
 /**
  * Dialog for selecting target floor for ItemElevator
@@ -55,6 +56,7 @@ public class FloorSelectionDialog extends Window {
     
     Callback<Integer> confirmCallback;
     Callback<Boolean> cancelCallback;
+    Ui ui;
     
     public FloorSelectionDialog(Skin skin) {
         super("", skin, "default"); // Empty window title to avoid overlap
@@ -177,7 +179,12 @@ public class FloorSelectionDialog extends Window {
         pack();
     }
     
-    public void show(int sourceFloor, int x, int y, Callback<Integer> confirm, Callback<Boolean> cancel) {
+    public void show(Ui ui, int sourceFloor, int x, int y, Callback<Integer> confirm, Callback<Boolean> cancel) {
+        // only one at a time
+        if (getStage() != null)
+            return;
+            
+        this.ui = ui;
         this.sourceFloor = sourceFloor;
         this.x = x;
         this.y = y;
@@ -186,13 +193,17 @@ public class FloorSelectionDialog extends Window {
         this.cancelCallback = cancel;
         
         updateFloorDisplay();
+        pack();
         setPosition((Const.UI_W - getWidth()) / 2, (Const.UI_H - getHeight()) / 2);
-        setVisible(true);
+        ui.show(this);
     }
     
     public void hide() {
-        setVisible(false);
-        remove();
+        if (ui != null) {
+            ui.hide(this);
+        }
+        confirmCallback = null;
+        cancelCallback = null;
     }
     
     private void changeFloor(int delta) {

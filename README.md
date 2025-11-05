@@ -12,6 +12,15 @@ Visual UI buttons for game speed adjustment (1x, 2x, 4x, 10x, 25x) with keyboard
 ### 🌬️ Air Purifier Balance
 Air Purifiers now cover an entire layer - only **one needed per depth level** instead of multiple units.
 
+### 🚡 Enhanced Item Elevators
+Complete visual overhaul for vertical transport between floors:
+- **Directional Sprites**: White graphics for upward travel, black for downward
+- **Floor Labels**: Input/exit elevators show destination/source floor numbers
+- **Passthrough Labels**: Intermediate floors display both source and target floors with a diagonal dividing line
+- **Color-Coded Text**: Black text on white backgrounds (upward), white text on dark backgrounds (downward)
+- **Blue Tinting**: All elevator structures feature distinctive blue-tinted graphics
+- **Fixed Bugs**: Resolved rotation, placement, direction persistence, and 1-floor elevator labeling issues
+
 ### 🛠️ Modern Build System
 - Gradle 8.3 (Java 21+ compatible)
 - Updated dependencies and syntax

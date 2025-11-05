@@ -409,7 +409,65 @@ public class Layer implements Disposable, Savable, Listener<Layer> {
             shaper.end();
         }
 
+        // Render Item Elevator floor labels using regular batch
+        // Must render text and lines separately since SpriteBatch and ShapeRenderer can't be active simultaneously
+        batch.setProjectionMatrix(cam.combined);
         batch.begin();
+        drawElevatorText(batch, cam);
+        batch.end();
+        
+        shaper.setProjectionMatrix(cam.combined);
+        shaper.begin(com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType.Line);
+        drawElevatorLines(shaper, cam);
+        shaper.end();
+        
+        batch.begin();
+    }
+    
+    /**
+     * Renders text labels for all Item Elevators and Passthrough elevators in this layer
+     */
+    private void drawElevatorText(com.badlogic.gdx.graphics.g2d.Batch batch, OrthographicCamera cam) {
+        synchronized (chunkLock) {
+            for (Chunk c : chunks) {
+                if (c.isInBounds(cam, false)) {
+                    synchronized (c.structLock) {
+                        for (Structure<?> st : c.structures.items) {
+                            if (st == null) break;
+                            
+                            if (st instanceof de.dakror.quarry.structure.logistics.ItemElevatorPassthrough) {
+                                ((de.dakror.quarry.structure.logistics.ItemElevatorPassthrough) st).drawPassthroughText(
+                                    (com.badlogic.gdx.graphics.g2d.SpriteBatch) batch);
+                            } else if (st instanceof de.dakror.quarry.structure.logistics.ItemElevator) {
+                                ((de.dakror.quarry.structure.logistics.ItemElevator) st).drawFloorLabel(
+                                    (com.badlogic.gdx.graphics.g2d.SpriteBatch) batch);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Renders lines for all Passthrough elevators in this layer
+     */
+    private void drawElevatorLines(ShapeRenderer shaper, OrthographicCamera cam) {
+        synchronized (chunkLock) {
+            for (Chunk c : chunks) {
+                if (c.isInBounds(cam, false)) {
+                    synchronized (c.structLock) {
+                        for (Structure<?> st : c.structures.items) {
+                            if (st == null) break;
+                            
+                            if (st instanceof de.dakror.quarry.structure.logistics.ItemElevatorPassthrough) {
+                                ((de.dakror.quarry.structure.logistics.ItemElevatorPassthrough) st).drawPassthroughLine(shaper);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public Chunk getChunk(int x, int y) {

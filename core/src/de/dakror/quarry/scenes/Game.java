@@ -179,6 +179,11 @@ public class Game extends GameScene {
 
     public class QuarryCameraControl extends EditorCameraControl {
         @Override
+        public boolean tap(float x, float y, int count, int button) {
+            return super.tap(x, y, count, button);
+        }
+        
+        @Override
         public boolean touchUp(int screenX, int screenY, int pointer, int button) {
             activeEnd = 0;
 
@@ -933,6 +938,30 @@ public class Game extends GameScene {
                 }
             }
 
+            // Item Elevator must be placed on edge (not corner, not middle)
+            if (structure instanceof de.dakror.quarry.structure.logistics.ItemElevator) {
+                int x = structure.x;
+                int y = structure.y;
+                int width = layer.width;
+                int height = layer.height;
+                
+                // Check if on edge but not corner
+                boolean atWestEdge = (x == 0 && y > 0 && y < height - 1);
+                boolean atEastEdge = (x == width - 1 && y > 0 && y < height - 1);
+                boolean atSouthEdge = (y == 0 && x > 0 && x < width - 1);
+                boolean atNorthEdge = (y == height - 1 && x > 0 && x < width - 1);
+                
+                if (!(atWestEdge || atEastEdge || atSouthEdge || atNorthEdge)) {
+                    return false; // Not on edge, or on corner
+                }
+                
+                // Set dock direction based on edge position
+                de.dakror.quarry.structure.logistics.ItemElevator elevator = 
+                    (de.dakror.quarry.structure.logistics.ItemElevator) structure;
+                Direction dockDir = de.dakror.quarry.structure.logistics.ItemElevator.getDockDirectionForEdge(x, y, width, height);
+                elevator.setDockDirection(dockDir);
+            }
+
             if (structure instanceof Mine) {
                 if (((Mine) structure).getMineableItems() == 0)
                     return false;
@@ -1023,8 +1052,9 @@ public class Game extends GameScene {
 
         @Override
         protected boolean checkActiveElementPlaceable() {
-            if (!ui.canAffordStructure && !GOD_MODE)
+            if (!ui.canAffordStructure && !GOD_MODE) {
                 return false;
+            }
 
             if (pasteMode) {
                 copyCollisions.clear();
@@ -1318,13 +1348,12 @@ public class Game extends GameScene {
                         }
                     }
 
-                    // ===== ADD THIS SECTION =====
                     // Handle Item Elevator - show floor selection dialog
                     if (activeStructure instanceof de.dakror.quarry.structure.logistics.ItemElevator) {
                         de.dakror.quarry.structure.logistics.ItemElevator elevator = 
                             (de.dakror.quarry.structure.logistics.ItemElevator) activeStructure;
                         // Show floor selection dialog instead of placing directly
-                        ui.floorSelectionDialog.show(layer.getIndex(), activeStructure.x, activeStructure.y,
+                        ui.floorSelectionDialog.show(ui, layer.getIndex(), activeStructure.x, activeStructure.y,
                             new de.dakror.common.Callback<Integer>() {
                                 @Override
                                 public void call(Integer selectedFloor) {
@@ -1348,17 +1377,18 @@ public class Game extends GameScene {
                                 }
                             }
                         );
-                    } else {
-                        // ===== END NEW SECTION =====
-                        placeStructure(layer, (Structure<?>) activeStructure.clone());
+                        return; // CRITICAL: Return early - don't continue with normal placement
+                    }
+                    // ===== END NEW SECTION =====
+                    
+                    placeStructure(layer, (Structure<?>) activeStructure.clone());
 
-                        if (endA.x > -1) {
-                            endA.set(-1, 0);
-                            endB.set(-1, 0);
-                            activeStructure.x = -1;
-                            activeStructure.y = 0;
-                        }
-                    } // <-- Add closing brace for the else
+                    if (endA.x > -1) {
+                        endA.set(-1, 0);
+                        endB.set(-1, 0);
+                        activeStructure.x = -1;
+                        activeStructure.y = 0;
+                    }
                 }
             }
         }
