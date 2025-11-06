@@ -4,6 +4,19 @@
 
 ---
 
+## ⚠️ AGENT ALERT: Remember the Texture Packing Step!
+
+**YOU WILL FORGET THIS STEP.** Every agent does. It's separate from building.
+
+After editing texture files, you MUST run:
+```bash
+.\gradlew.bat desktop:run --args="textures"
+```
+
+See **Step 3** below. Don't skip it. The game will crash if you do.
+
+---
+
 ## 📋 Pre-Implementation Checklist
 
 Before you start, ensure you have:
@@ -12,6 +25,7 @@ Before you start, ensure you have:
 - [ ] Game code locations identified (ItemType, StructureType, etc.)
 - [ ] Git branch or working directory ready
 - [ ] Current code compiles and runs
+- [ ] **You understand texture packing is a SEPARATE step** (read TEXTURE_PACKING_GUIDE.md first)
 
 ---
 
@@ -128,17 +142,25 @@ public enum TileType {
 
 **THIS IS CRITICAL - DO NOT SKIP!**
 
-### Option A: Using Gradle (Recommended)
+**⚠️ THIS IS SEPARATE FROM BUILDING THE GAME**
+- `Build-Game.ps1` does NOT do this
+- `gradlew desktop:dist` does NOT do this
+- You MUST run this explicitly after adding/editing textures
+
+### Option A: Using Gradle (Recommended - Only Way That Works)
 ```bash
 cd D:\Projects\DrillDown
-.\gradlew.bat desktop:run -Pargs=textures
+.\gradlew.bat desktop:run --args="textures"
 ```
 
 [ ] Command executed without errors
 [ ] Waited for TexturePacker to complete
 [ ] No error messages in console
+[ ] Console output shows "Packing..." messages from TexturePacker
 
-### Option B: Manual TexturePacker Invocation
+**Why `--args` and not `-Pargs`?** Because that's how DesktopLauncher.java checks for it (line 114)
+
+### Option B: Manual TexturePacker Invocation (Not Recommended)
 ```bash
 java -jar gdx-tools.jar com.badlogic.gdx.tools.texturepacker.TexturePacker \
   ./Development/Textures/ \
@@ -146,6 +168,8 @@ java -jar gdx-tools.jar com.badlogic.gdx.tools.texturepacker.TexturePacker \
   tex.atlas \
   ./android/assets/atlas-settings.json
 ```
+
+⚠️ Only use this if Gradle fails for some reason
 
 ---
 

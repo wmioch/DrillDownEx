@@ -120,4 +120,18 @@ public class RenderingStyle {
      *   - For LESS blue: raise red/green (e.g., 0.6/0.8), decrease alpha (e.g., 0.6)
      */
     public static final RenderingStyle BLUE_TINT = new RenderingStyle(new Color(0.4f, 0.6f, 1.0f, 0.8f), true);
+
+    /**
+     * Orange tint for Relief Valve
+     * Color: (1.0f, 0.65f, 0.2f, 0.8f)
+     * - Orange overlay that preserves brightness via overlay blend mode
+     * - Red 1.0, Green 0.65, Blue 0.2 creates a warm orange tone
+     * - Alpha 0.8 = 80% blend intensity
+     * - Distinguishes Relief Valve from regular Valve (which has no tint)
+     * 
+     * If you need to adjust intensity:
+     *   - For MORE orange: lower blue more (e.g., 0.1), increase alpha (e.g., 0.9)
+     *   - For LESS orange: raise blue (e.g., 0.3), decrease alpha (e.g., 0.6)
+     */
+    public static final RenderingStyle ORANGE_TINT = new RenderingStyle(new Color(1.0f, 0.65f, 0.2f, 0.8f), true);
 }

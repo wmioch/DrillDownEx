@@ -4,16 +4,36 @@
 
 ---
 
+## ⚠️ CRITICAL: Texture Packing is a SEPARATE Step
+
+**IMPORTANT FOR CODING AGENTS:**
+
+**Building the game ≠ Packing textures**
+
+- Running `.\Build-Game.ps1` or `gradlew desktop:dist` **DOES NOT** pack textures
+- Running `gradlew desktop:run` normally **DOES NOT** pack textures
+- **You MUST explicitly run TexturePacker after adding/editing textures**
+
+**To pack textures, you MUST run:**
+```bash
+.\gradlew.bat desktop:run --args="textures"
+```
+
+**If you skip this step, the game will crash with "could not find texture" errors.**
+
+---
+
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [How It Works](#how-it-works)
-3. [Key Concepts](#key-concepts)
-4. [Files Involved](#files-involved)
-5. [Texture Naming Convention](#texture-naming-convention)
-6. [Adding New Textures - Step by Step](#adding-new-textures---step-by-step)
-7. [Troubleshooting](#troubleshooting)
-8. [Common Mistakes](#common-mistakes)
+1. [Critical Information](#-critical-texture-packing-is-a-separate-step) ⬆️ **READ THIS FIRST**
+2. [Overview](#overview)
+3. [How It Works](#how-it-works)
+4. [Key Concepts](#key-concepts)
+5. [Files Involved](#files-involved)
+6. [Texture Naming Convention](#texture-naming-convention)
+7. [Adding New Textures - Step by Step](#adding-new-textures---step-by-step)
+8. [Troubleshooting](#troubleshooting)
+9. [Common Mistakes](#common-mistakes)
 
 ---
 
@@ -24,6 +44,9 @@ The Drill Down game uses **LibGDX's TexturePacker** to combine thousands of indi
 - **`android/assets/tex.atlas`** - A descriptor file that maps texture names to coordinates within the PNG
 
 This approach is more efficient than loading individual texture files and is the standard in LibGDX games.
+
+### Key Point for Coding Agents
+**Texture packing is a completely separate process from building the game.** You must manually trigger it after adding or modifying textures.
 
 ---
 

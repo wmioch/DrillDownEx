@@ -120,6 +120,14 @@ public abstract class FluidTubeStructure extends Structure<FluidTubeSchema> impl
 
     protected abstract boolean isAllowedFluid(ItemType i);
 
+    /**
+     * Gets the current fluid level in this tube.
+     * @return The current fluid level
+     */
+    public int getFluidLevel() {
+        return fluidLevel;
+    }
+
     @Override
     public int acceptFluid(ItemType item, int amount, Structure<?> source) {
         if (fluidLevel >= getSchema().maxFluid) return amount;

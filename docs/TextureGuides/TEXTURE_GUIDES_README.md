@@ -6,6 +6,46 @@
 
 ## 📚 Available Guides
 
+### 0. **AGENT_QUICK_START.md** - For Coding Agents (READ THIS FIRST!)
+
+**Best for:** AI agents adding new textures to the game
+
+**Contents:**
+- The critical fact: Building ≠ Texture Packing
+- 30-second summary of the whole process
+- Command reference
+- Common mistakes
+- Troubleshooting quick reference
+
+**When to read:**
+- You're an AI agent adding graphics
+- You want to understand the process quickly
+- You've gotten "could not find texture" errors
+
+**Read time:** 2-3 minutes
+
+---
+
+### 0.5 **AGENT_BEFORE_COMMIT.md** - Pre-Commit Verification Checklist
+
+**Best for:** AI agents about to commit texture changes
+
+**Contents:**
+- 5-minute verification checklist
+- Common mistakes that get caught here
+- Files to stage for commit
+- What NOT to commit
+- Recovery instructions if you messed up
+
+**When to read:**
+- Before committing ANY texture changes
+- If you're not 100% sure you packed textures correctly
+- To prevent breaking other developers' builds
+
+**Read time:** 5 minutes (MANDATORY before committing)
+
+---
+
 ### 1. **TEXTURE_PACKING_GUIDE.md** - Complete Reference Manual
 
 **Best for:** Understanding the complete system, troubleshooting issues, learning how everything works
@@ -105,6 +145,20 @@
 
 ## 🎯 Quick Navigation
 
+### "I'm an AI agent and need to add a texture"
+→ Read **AGENT_QUICK_START.md** (2-3 min)
+
+Quick summary with command reference. Specifically designed for this situation.
+
+---
+
+### "I'm about to commit texture changes"
+→ Read **AGENT_BEFORE_COMMIT.md** (5 min - MANDATORY)
+
+Verification checklist to ensure you didn't miss the texture packing step. Use this BEFORE every commit.
+
+---
+
 ### "I need to add a texture right now!"
 → Read **TEXTURE_IMPLEMENTATION_CHECKLIST.md**
 
@@ -152,25 +206,29 @@ Multiple debugging techniques and visual debugging tools.
 ```
 START: "I need to work with textures"
     ↓
-    Are you adding textures for the first time?
-    ├─ YES → Read TEXTURE_IMPLEMENTATION_CHECKLIST.md (5-10 min)
-    │        Then keep TEXTURE_PACKING_GUIDE.md as reference
+    Are you an AI coding agent?
+    ├─ YES → Read AGENT_QUICK_START.md (2-3 min)
+    │        This covers your exact use case
     │
-    └─ NO → Do you have a specific problem?
-            ├─ YES, I don't know why textures aren't working
-            │   → Read TEXTURE_PACKING_GUIDE.md (Troubleshooting)
+    └─ NO → Are you adding textures for the first time?
+            ├─ YES → Read TEXTURE_IMPLEMENTATION_CHECKLIST.md (5-10 min)
+            │        Then keep TEXTURE_PACKING_GUIDE.md as reference
             │
-            ├─ YES, I want to optimize
-            │   → Read TEXTURE_PATTERNS_AND_TIPS.md
-            │
-            ├─ YES, I'm debugging
-            │   → Read TEXTURE_PATTERNS_AND_TIPS.md (Debugging section)
-            │
-            └─ NO, I want to understand everything
-                → Read all guides in order:
-                   1. TEXTURE_SYSTEM_ARCHITECTURE.md
-                   2. TEXTURE_PACKING_GUIDE.md
-                   3. TEXTURE_PATTERNS_AND_TIPS.md
+            └─ NO → Do you have a specific problem?
+                    ├─ YES, I don't know why textures aren't working
+                    │   → Read TEXTURE_PACKING_GUIDE.md (Troubleshooting)
+                    │
+                    ├─ YES, I want to optimize
+                    │   → Read TEXTURE_PATTERNS_AND_TIPS.md
+                    │
+                    ├─ YES, I'm debugging
+                    │   → Read TEXTURE_PATTERNS_AND_TIPS.md (Debugging section)
+                    │
+                    └─ NO, I want to understand everything
+                        → Read all guides in order:
+                           1. TEXTURE_SYSTEM_ARCHITECTURE.md
+                           2. TEXTURE_PACKING_GUIDE.md
+                           3. TEXTURE_PATTERNS_AND_TIPS.md
 ```
 
 ---

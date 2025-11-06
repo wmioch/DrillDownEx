@@ -494,3 +494,4 @@ The game will automatically use the coordinates from the regenerated `.atlas` fi
 *Guide created for Drill Down development team. For questions, check the code in `DesktopLauncher.java` (lines 114-121) and `LoadingScreen.java` (lines 75-88).*
 
 
+
