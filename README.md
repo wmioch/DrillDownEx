@@ -27,6 +27,13 @@ Complete visual overhaul for vertical transport between floors:
 - Directional output control with orange-tinted graphics
 - Automatically detects connected pipes when threshold is reached
 
+### ⚙️ Coker Building
+- Advanced fuel processing structure for producing Petroleum Coke
+- Converts Refined Oil into high-density Petroleum Coke through thermal cracking
+- Minimalist flat top-down design aesthetic
+- Requires Advanced Fuel Processing technology
+- Complete texture implementation with building sprite, UI icon, and dark fuel item graphic
+
 ### 🛠️ Modern Build System
 - Gradle 8.3 (Java 21+ compatible)
 - Updated dependencies and syntax
