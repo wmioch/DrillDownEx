@@ -21,6 +21,12 @@ Complete visual overhaul for vertical transport between floors:
 - **Blue Tinting**: All elevator structures feature distinctive blue-tinted graphics
 - **Fixed Bugs**: Resolved rotation, placement, direction persistence, and 1-floor elevator labeling issues
 
+### 🔧 Relief Valve System
+- Unique structure that prevents overpressure in fluid systems
+- Fluid only flows when input exceeds 99% capacity threshold
+- Directional output control with orange-tinted graphics
+- Automatically detects connected pipes when threshold is reached
+
 ### 🛠️ Modern Build System
 - Gradle 8.3 (Java 21+ compatible)
 - Updated dependencies and syntax
@@ -30,6 +36,9 @@ Complete visual overhaul for vertical transport between floors:
 - Full debug keybinds reference (20+ commands)
 - Setup and development guides
 - Helper scripts for building and running
+- **Agent-Focused Texture Guides** (crucial for adding new graphics)
+  - [Quick Start for AI Agents](docs/TextureGuides/AGENT_QUICK_START.md)
+  - [Pre-Commit Verification](docs/TextureGuides/AGENT_BEFORE_COMMIT.md)
 
 ## 🚀 Quick Start
 
@@ -69,6 +78,15 @@ Run with `RUN_GAME.bat` or pass `debug` argument for developer controls:
 - [Debug Controls](docs/DEBUG_CONTROLS.md)
 - [Build Summary](docs/BUILD_SUMMARY.md)
 - [Speed Controls Details](docs/SPEED_CONTROLS_IMPLEMENTATION_SUMMARY.md)
+
+### Texture & Graphics Development
+
+**⚠️ Adding New Graphics? Start here:**
+- [Agent Quick Start](docs/TextureGuides/AGENT_QUICK_START.md) - 2-3 min overview
+- [Agent Before Commit](docs/TextureGuides/AGENT_BEFORE_COMMIT.md) - Pre-commit checklist
+- [Complete Implementation Guide](docs/TextureGuides/TEXTURE_IMPLEMENTATION_CHECKLIST.md)
+- [System Architecture](docs/TextureGuides/TEXTURE_SYSTEM_ARCHITECTURE.md)
+- [Comprehensive Reference](docs/TextureGuides/TEXTURE_PACKING_GUIDE.md)
 
 ## 🤝 Contributing
 
