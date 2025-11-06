@@ -252,7 +252,7 @@ public class Item {
         Blueprint(68, "blueprint", 677712, ItemCategory.Component),
         Gunpowder(71, "gunpowder", 72850, ItemCategory.Component),
         Dynamite(70, "dynamite", 1640401, ItemCategory.Component),
-        PetroleumCoke(72, "charcoal", 500, ItemCategory.CoalFuel),
+        PetroleumCoke(72, "petroleum_coke", 500, ItemCategory.CoalFuel),
 
         Water(100, "water", 100, ItemCategory.Fluid),
         Steam(101, "steam", 200, ItemCategory.Fluid),
