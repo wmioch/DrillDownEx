@@ -15,10 +15,10 @@ def hasAndroidSdk() {
     return envSdk && new File(envSdk).exists()
 }
 
-include ':core', ':desktop', 'commons:core', 'commons:annotations', 'gdx-sfx:core', 'gdx-sfx:desktop'
+include ':core', ':desktop', 'commons:core', 'commons:annotations'
 
 if (hasAndroidSdk()) {
-    include ':android', 'gdx-sfx:android'
+    include ':android'
 } else {
     println "Android SDK not found; skipping ':android' modules"
 }

@@ -49,7 +49,6 @@ project(":desktop") {
         implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        implementation project(":gdx-sfx:desktop")
     }
 }
 
@@ -79,10 +78,6 @@ if (androidProject) {
             natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
 
             implementation "androidx.documentfile:documentfile:1.0.1"
-
-            if (findProject(':gdx-sfx:android')) {
-                implementation project(":gdx-sfx:android")
-            }
         }
     }
 } else {
@@ -94,7 +89,6 @@ project(":core") {
 
     dependencies {
         api project(":commons:core")
-        api project(":gdx-sfx:core")
 		
 		implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
 
