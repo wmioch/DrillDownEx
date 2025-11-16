@@ -53,34 +53,40 @@ project(":desktop") {
     }
 }
 
-// Android configuration excluded - desktop only build
-project(":android") {
-    apply plugin: "android"
+def androidProject = findProject(':android')
+if (androidProject) {
+    project(":android") {
+        apply plugin: "android"
 
-    android.ndkVersion = '21.4.7075529'
+        android.ndkVersion = '21.4.7075529'
 
-    configurations { natives }
+        configurations { natives }
 
-    dependencies {
-        implementation project(":core")
-        implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+        dependencies {
+            implementation project(":core")
+            implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+            natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+            natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+            natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+            natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+            natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
 
-		implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
-		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
-		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
-		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
-		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+            implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+            natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
+            natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+            natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+            natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+            natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
 
-        implementation "androidx.documentfile:documentfile:1.0.1"
+            implementation "androidx.documentfile:documentfile:1.0.1"
 
-        implementation project(":gdx-sfx:android")
+            if (findProject(':gdx-sfx:android')) {
+                implementation project(":gdx-sfx:android")
+            }
+        }
     }
+} else {
+    logger.lifecycle("Android project not included; skipping ':android' configuration")
 }
 
 project(":core") {
