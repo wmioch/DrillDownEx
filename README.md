@@ -94,6 +94,9 @@ Run with `RUN_GAME.bat` or pass `debug` argument for developer controls:
   1. Check out the repository (including submodules)
   2. Install JDK 21 and the Android SDK platform/Build Tools 34
   3. Run `./gradlew desktop:dist` and `./gradlew android:assembleDebug`
+  4. Automatically publish the Android debug APK as a workflow artifact you can download from the GitHub UI
+
+> **Note:** GitHub-hosted runners do not have access to the private `android/drilldown.keystore`. The Android module now falls back to the default debug keystore whenever that file is absent so CI can still assemble `android:assembleDebug`; local release builds continue using the custom keystore when it exists.
 
 ## 📱 Deploy an Android build directly from GitHub
 
