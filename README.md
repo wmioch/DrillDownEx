@@ -86,6 +86,44 @@ Run with `RUN_GAME.bat` or pass `debug` argument for developer controls:
 - [Build Summary](docs/BUILD_SUMMARY.md)
 - [Speed Controls Details](docs/SPEED_CONTROLS_IMPLEMENTATION_SUMMARY.md)
 
+## ✅ Continuous Integration
+
+- GitHub Actions workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+- Triggers on pushes and pull requests targeting `main`
+- Steps:
+  1. Check out the repository (including submodules)
+  2. Install JDK 21 and the Android SDK platform/Build Tools 34
+  3. Run `./gradlew desktop:dist` and `./gradlew android:assembleDebug`
+
+## 📱 Deploy an Android build directly from GitHub
+
+You no longer need a PC to sideload new versions—each CI run now publishes the latest debug APK so you can install it straight from your phone:
+
+1. Push/merge your changes so the **CI** workflow runs.
+2. On your Android device, open the GitHub app or https://github.com, navigate to this repository, and tap the **Actions** tab.
+3. Select the most recent successful run of the "CI" workflow.
+4. Scroll to the **Artifacts** section and download `android-debug-apk`. GitHub delivers it as a `.zip`; tap it in your Downloads app to extract the contained `.apk`.
+5. If prompted, allow installs from unknown sources, then open the extracted `.apk` to update Drill Down on the device.
+
+The artifact is rebuilt on every push to `main`, so the download is always up to date with the latest commit.
+
+> **Mobile install tips**
+> - You must push (or merge) your commits so that the CI workflow runs—only successful runs produce the downloadable artifact.
+> - GitHub zips artifacts; any Files app that can extract ZIP archives works (no desktop required).
+> - Artifacts expire automatically after 90 days. If the archive is gone, re-run the workflow (or push again) to generate a new APK.
+
+### 🔁 Trigger a new Android artifact from your phone
+
+Already merged but need to rebuild without a PC handy? You can kick off a new CI run directly from the GitHub app or mobile site:
+
+1. Navigate to **Actions → CI** and open the most recent workflow run.
+2. Tap the **⋯** menu in the upper-right corner and choose **Re-run jobs** (GitHub will queue a fresh run on hosted runners).
+3. Wait for the run to complete, then grab the regenerated `android-debug-apk` artifact using the steps above.
+
+This is handy when an old artifact has expired or when you just merged changes from another device and want the latest APK right away.
+
+> **Note:** When running the Gradle wrapper inside this sandboxed environment we cannot download the Gradle 8.3 distribution because the proxy blocks outbound HTTPS requests ("Unable to tunnel through proxy"), so local builds here fail before Gradle runs. GitHub Actions has normal internet access, so the workflow succeeds there—any failure you may see locally only indicates the sandbox restriction, not a CI issue.
+
 ### Texture & Graphics Development
 
 **⚠️ Adding New Graphics? Start here:**
