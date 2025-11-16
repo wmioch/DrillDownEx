@@ -7,6 +7,21 @@ Write-Host "  DrillDown - Android Deployment"
 Write-Host "========================================"
 Write-Host ""
 
+$incrementScript = Join-Path $PSScriptRoot "Increment-Version.ps1"
+if (Test-Path $incrementScript) {
+    Write-Host "Incrementing Android/Desktop version numbers..."
+    $incrementProcess = Start-Process -FilePath powershell -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',"$incrementScript",'-Force') -Wait -PassThru -NoNewWindow
+    if ($incrementProcess.ExitCode -ne 0) {
+        Write-Host ""
+        Write-Host "ERROR: Version increment failed. Aborting deployment." -ForegroundColor Red
+        exit $incrementProcess.ExitCode
+    }
+    Write-Host ""
+} else {
+    Write-Host "WARNING: Increment-Version.ps1 not found. Version bump must be done manually." -ForegroundColor Yellow
+    Write-Host ""
+}
+
 # Find ADB
 $adbCmd = $null
 $adbLocations = @(
@@ -153,8 +168,7 @@ Write-Host ""
 Write-Host "The app is now installed on your phone."
 Write-Host ""
 Write-Host "IMPORTANT - For next update:"
-Write-Host "  1. Edit: android\build.gradle"
-Write-Host "  2. Increment versionCode: 122 -> 123"
-Write-Host "  3. Run this script again"
+Write-Host "  • Simply run this script again; it auto bumps versionCode/versionName." 
+Write-Host "  • Need to bump versions manually? Run Increment-Version.ps1 by itself."
 Write-Host ""
 
