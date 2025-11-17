@@ -30,12 +30,23 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Install Android SDK components
-        uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platforms;android-34
-            build-tools;34.0.0
-            platform-tools
+        run: |
+          set -euxo pipefail
+          ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
+
+          if [ -x "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" ]; then
+            SDKMANAGER="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+          else
+            SDKMANAGER="$(find "${ANDROID_SDK_ROOT}/cmdline-tools" -maxdepth 1 -mindepth 1 -type d -print | sort | tail -n 1)/bin/sdkmanager"
+          fi
+
+          if [ ! -x "$SDKMANAGER" ]; then
+            echo "Unable to locate sdkmanager" >&2
+            exit 1
+          fi
+
+          yes | "$SDKMANAGER" --licenses >/dev/null
+          "$SDKMANAGER" "platforms;android-34" "build-tools;34.0.0" "platform-tools"
 
       - name: Build desktop distribution
         run: ./gradlew desktop:dist
