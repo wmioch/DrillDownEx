@@ -93,8 +93,8 @@ public class DesktopLauncher implements PlatformInterface {
 
         /////////////////////
 
-        int versionCode = 128;
-        String version = "v128";
+        int versionCode = 129;
+        String version = "v129";
         
         // Enable debug mode if debug argument is passed
         if (arg.length > 0 && arg[0].equals("debug")) {

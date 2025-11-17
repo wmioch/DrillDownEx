@@ -47,8 +47,8 @@ android {
         applicationId "de.dakror.quarry"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 128
-        versionName "v128"
+        versionCode 129
+        versionName "v129"
         multiDexEnabled false
     }
     buildTypes {

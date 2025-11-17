@@ -207,3 +207,4 @@ When you commit texture changes but forget to pack them:
 
 *This checklist exists because even AI agents forget the texture packing step. You will too. Use this list.*
 
+
