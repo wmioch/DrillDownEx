@@ -1,6 +1,10 @@
 # DrillDown - Version Increment Script
 # Increments the Android app version code and version name AND the Desktop version
 
+param(
+    [switch]$Force = $false
+)
+
 Write-Host ""
 Write-Host "========================================"
 Write-Host "  DrillDown - Version Increment"
@@ -78,14 +82,18 @@ if ($desktopContent -match 'String version = "v?(\d+)";') {
 
 Write-Host ""
 
-# Ask for confirmation
-Write-Host "Continue with version increment? (Y/N): " -NoNewline -ForegroundColor Yellow
-$confirm = Read-Host
+if (-not $Force) {
+    # Ask for confirmation unless Force flag is provided
+    Write-Host "Continue with version increment? (Y/N): " -NoNewline -ForegroundColor Yellow
+    $confirm = Read-Host
 
-if ($confirm -ne 'Y' -and $confirm -ne 'y') {
-    Write-Host ""
-    Write-Host "Cancelled." -ForegroundColor Yellow
-    exit 0
+    if ($confirm -ne 'Y' -and $confirm -ne 'y') {
+        Write-Host ""
+        Write-Host "Cancelled." -ForegroundColor Yellow
+        exit 0
+    }
+} else {
+    Write-Host "Auto mode enabled (-Force). Skipping confirmation." -ForegroundColor Yellow
 }
 
 Write-Host ""

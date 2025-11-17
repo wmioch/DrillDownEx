@@ -10,6 +10,21 @@ echo   DrillDown - Android Deployment
 echo ========================================
 echo.
 
+REM Automatically increment version numbers before deploying
+if exist "%~dp0Increment-Version.ps1" (
+    echo Incrementing Android/Desktop version numbers...
+    powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0Increment-Version.ps1" -Force
+    if errorlevel 1 (
+        echo.
+        echo ERROR: Failed to increment version information. Aborting deployment.
+        echo.
+        exit /b 1
+    )
+) else (
+    echo WARNING: Increment-Version.ps1 not found. Skipping automatic version bump.
+    echo Ensure versionCode/versionName are incremented manually before deploying.
+)
+
 REM Try to find ADB
 set "ADB_CMD=adb"
 
@@ -184,7 +199,6 @@ echo.
 echo The app is now installed on your phone.
 echo.
 echo IMPORTANT - For next update:
-echo   1. Edit: android\build.gradle
-echo   2. Increment versionCode (android\build.gradle): 122 ^-^> 123
-echo   3. Run this script again
+echo   - Just run this script again; it auto bumps versionCode/versionName before building.
+echo   - Need to bump versions manually? Run Increment-Version.ps1 separately.
 echo.

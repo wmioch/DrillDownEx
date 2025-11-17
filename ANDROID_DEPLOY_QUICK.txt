@@ -11,6 +11,29 @@ That's it! The script will:
    3. Deploy to your phone
 
 ================================================================================
+                   DEPLOY FROM YOUR PHONE (NO PC NEEDED)
+================================================================================
+
+Need the latest build while you're away from a computer? Every push to `main` triggers the GitHub Actions workflow, which now
+uploads the newest debug APK as an artifact you can download on Android:
+
+1. Open the GitHub app (or https://github.com) and navigate to this repository.
+2. Tap the **Actions** tab → select the most recent successful **CI** run.
+3. Scroll down to **Artifacts** and download `android-debug-apk` (GitHub delivers a `.zip`).
+4. Use the built-in Files/Downloads app to extract the `.apk` inside the `.zip`.
+5. Tap the extracted `.apk`, approve "Install unknown apps" if prompted, and it will update Drill Down on your device.
+
+Because each run increments the `versionCode` before building, installing from the downloaded artifact always counts as a new up
+date just like the USB workflow.
+
+Need a fresh artifact but nothing changed locally? From the GitHub app/site open **Actions → CI**, select the latest run, tap the **⋯** menu, and choose **Re-run jobs**—GitHub will rebuild and post a new ZIP you can immediately download on the same phone.
+
+Need to fix a failed phone-only install?
+   • "Artifact not found" → Trigger a new CI run (push any commit or re-run the latest workflow) because GitHub cleans artifacts after 90 days.
+   • "Can't open file" → Ensure you unzipped `android-debug-apk.zip`. The `.apk` inside installs normally once extracted.
+   • "Install blocked" → Enable Settings → Apps → Special access → Install unknown apps for your browser/Files app.
+
+================================================================================
                               FIRST TIME SETUP
 ================================================================================
 
@@ -37,21 +60,12 @@ If this is your first deployment run:
 
 Workflow:
 1. Modify code
-2. BEFORE deploying - Edit android/build.gradle (line 46):
-   Change: versionCode 122
-   To:     versionCode 123  (increment by 1)
-   
-   Also update line 47:
-   Change: versionName "v122"
-   To:     versionName "v123"
+2. Connect phone via USB (USB debugging enabled)
+3. Double-click: DEPLOY_ANDROID.bat
 
-3. Save the file
+The deployment script now auto-increments `versionCode`/`versionName` (via Increment-Version.ps1) **before** building and installing, so each install counts as a new update without editing files manually.
 
-4. Connect phone via USB
-
-5. Double-click: DEPLOY_ANDROID.bat
-
-6. Your phone will update the app, preserving all game data
+Your phone will update the app, preserving all game data.
 
 ================================================================================
                         PACKAGE NAME (DO NOT CHANGE)
@@ -117,11 +131,13 @@ Current versionCode: 122 (line 46 of android/build.gradle)
 Current versionName: v122 (line 47 of android/build.gradle)
 Package Name: de.dakror.quarry
 
+Note: These values are automatically bumped each time you run DEPLOY_ANDROID.bat / Deploy-Android.ps1. Run `Increment-Version.ps1` manually if you ever need to increment without deploying.
+
 ================================================================================
                               TIPS
 ================================================================================
 
-• Always increment versionCode before deploying updates
+• Always increment versionCode before deploying updates (the new script handles this automatically)
 • versionCode must be higher than the previous version
 • versionName is just for display (e.g., "v123", "1.0", etc.)
 • Game saves are preserved when updating (same package name)

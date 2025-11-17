@@ -1,1 +1,24 @@
-include ':core', ':desktop', ':android', 'commons:core', 'commons:annotations', 'gdx-sfx:core', 'gdx-sfx:desktop', 'gdx-sfx:android'
+import java.util.Properties
+
+def hasAndroidSdk() {
+    def localProps = new File(rootDir, 'local.properties')
+    if (localProps.exists()) {
+        def props = new Properties()
+        localProps.withInputStream { props.load(it) }
+        def sdkDir = props.getProperty('sdk.dir')
+        if (sdkDir && new File(sdkDir).exists()) {
+            return true
+        }
+    }
+
+    def envSdk = System.getenv('ANDROID_HOME') ?: System.getenv('ANDROID_SDK_ROOT')
+    return envSdk && new File(envSdk).exists()
+}
+
+include ':core', ':desktop', 'commons:core', 'commons:annotations'
+
+if (hasAndroidSdk()) {
+    include ':android'
+} else {
+    println "Android SDK not found; skipping ':android' modules"
+}

@@ -72,6 +72,9 @@ public class GasTurbine extends GeneratorStructure {
                     add(new GasTurbineRecipe("dual", 600_000, 1.75f)
                             .input(new Amount(ItemType.NaturalGas, 1000), new ConstantSupplyAmount(ItemType.Lubricant, 1200), new Amount(ItemType.Water, 5000))
                             .output(new Amount(ItemType.PressurizedSteam, 9000)));
+                    add(new GasTurbineRecipe("overdrive", 750_000, 2.35f)
+                            .input(new Amount(ItemType.NaturalGas, 1000), new ConstantSupplyAmount(ItemType.Lubricant, 2200), new Amount(ItemType.Water, 8000))
+                            .output(new Amount(ItemType.PressurizedSteam, 13000)));
                 }
 
                 @Override
@@ -311,25 +314,36 @@ public class GasTurbine extends GeneratorStructure {
             water += t.inputInventories[2].getCount();
         }
 
-        int waterNeeded = instancedRecipes[1].getInput().getAmount(ItemType.Water);
+        int gasAvailable = inputInventories[0].getCount();
+        int waterNeeded = 0;
         int lubricantNeeded = 0;
         int gasNeeded = 0;
-        int recipe = 0;
+        int recipe = -1;
 
-        if (water >= waterNeeded) {
-            lubricantNeeded = instancedRecipes[1].getInput().getAmount(ItemType.Lubricant);
-            gasNeeded = instancedRecipes[1].getInput().getAmount(ItemType.NaturalGas);
-            recipe = 1;
-        } else {
-            lubricantNeeded = instancedRecipes[0].getInput().getAmount(ItemType.Lubricant);
-            gasNeeded = instancedRecipes[0].getInput().getAmount(ItemType.NaturalGas);
+        for (int i = instancedRecipes.length - 1; i >= 0; i--) {
+            Items inputs = instancedRecipes[i].getInput();
+            if (inputs == null) continue;
+
+            int neededWater = inputs.getAmount(ItemType.Water);
+            int neededLube = inputs.getAmount(ItemType.Lubricant);
+            int neededGas = inputs.getAmount(ItemType.NaturalGas);
+
+            boolean hasWater = neededWater == 0 || water >= neededWater;
+            if (hasWater && lubricant >= neededLube && gasAvailable >= neededGas) {
+                recipe = i;
+                waterNeeded = neededWater;
+                lubricantNeeded = neededLube;
+                gasNeeded = neededGas;
+                break;
+            }
         }
 
-        if (lubricant >= lubricantNeeded && inputInventories[0].getCount() >= gasNeeded) {
+        if (recipe >= 0) {
             inputInventories[0].remove(ItemType.NaturalGas, gasNeeded);
 
-            int lubricantSlice = (int) Math.ceil(lubricantNeeded / (float) levels.size);
-            int waterSlice = (int) Math.ceil(waterNeeded / (float) levels.size);
+            int levelCount = Math.max(1, levels.size);
+            int lubricantSlice = (int) Math.ceil(lubricantNeeded / (float) levelCount);
+            int waterSlice = (int) Math.ceil(waterNeeded / (float) levelCount);
 
             for (GasTurbine t : levels) {
                 int lubeIn = Math.min(lubricantNeeded, lubricantSlice);

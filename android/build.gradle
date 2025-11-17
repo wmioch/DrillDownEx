@@ -1,10 +1,19 @@
+def keystorePath = project.hasProperty('keypass_file') ? file(keypass_file) : null
+def hasCustomSigning = keystorePath != null && keystorePath.exists()
+
+if (!hasCustomSigning) {
+    logger.lifecycle("Custom keystore '${project.hasProperty('keypass_file') ? keypass_file : ''}' not found; using the default debug keystore.")
+}
+
 android {
     signingConfigs {
-        config {
-            keyAlias keypass_alias
-            keyPassword keypass_pwd
-            storeFile file(keypass_file)
-            storePassword keypass_pwd
+        if (hasCustomSigning) {
+            config {
+                keyAlias keypass_alias
+                keyPassword keypass_pwd
+                storeFile keystorePath
+                storePassword keypass_pwd
+            }
         }
     }
     compileSdkVersion 30
@@ -56,13 +65,17 @@ android {
             minifyEnabled false
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
-            signingConfig signingConfigs.config
             debuggable false
+            if (hasCustomSigning) {
+                signingConfig signingConfigs.config
+            }
         }
         debug {
             zipAlignEnabled true
             minifyEnabled false
-            signingConfig signingConfigs.config
+            if (hasCustomSigning) {
+                signingConfig signingConfigs.config
+            }
         }
     }
     compileOptions {
