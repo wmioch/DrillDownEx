@@ -29,34 +29,48 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Validate Gradle wrapper
+        run: |
+          chmod +x gradlew
+          ./gradlew --version
+
       - name: Install Android SDK components
         run: |
           set -euxo pipefail
-          ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
+          
+          # Verify Android SDK setup
+          echo "ANDROID_HOME: ${ANDROID_HOME}"
+          echo "ANDROID_SDK_ROOT: ${ANDROID_SDK_ROOT:-not set}"
+          ls -la ${ANDROID_HOME}/cmdline-tools/ || true
+          
+          # Accept licenses first
+          yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          
+          # Install required SDK components including NDK and CMake
+          ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-30" \
+            "platforms;android-34" \
+            "build-tools;34.0.0" \
+            "platform-tools" \
+            "ndk;21.4.7075529" \
+            "cmake;3.22.1"
 
-          if [ -x "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" ]; then
-            SDKMANAGER="${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
-          else
-            SDKMANAGER="$(find "${ANDROID_SDK_ROOT}/cmdline-tools" -maxdepth 1 -mindepth 1 -type d -print | sort | tail -n 1)/bin/sdkmanager"
-          fi
-
-          if [ ! -x "$SDKMANAGER" ]; then
-            echo "Unable to locate sdkmanager" >&2
-            exit 1
-          fi
-
-          yes | "$SDKMANAGER" --licenses >/dev/null
-          "$SDKMANAGER" "platforms;android-34" "build-tools;34.0.0" "platform-tools"
+      - name: Verify Android SDK installation
+        run: |
+          echo "Installed Android platforms:"
+          ls -la ${ANDROID_HOME}/platforms/ || echo "No platforms directory"
+          echo "Installed build-tools:"
+          ls -la ${ANDROID_HOME}/build-tools/ || echo "No build-tools directory"
 
       - name: Build desktop distribution
-        run: ./gradlew desktop:dist
+        run: ./gradlew desktop:dist --no-daemon --stacktrace
 
       - name: Assemble Android debug build
-        run: ./gradlew android:assembleDebug
+        run: ./gradlew android:assembleFullDebug --no-daemon --stacktrace
 
       - name: Upload Android debug APK
         uses: actions/upload-artifact@v4
         with:
           name: android-debug-apk
-          path: android/build/outputs/apk/debug/*.apk
+          path: android/build/outputs/apk/full/debug/*.apk
           if-no-files-found: error
