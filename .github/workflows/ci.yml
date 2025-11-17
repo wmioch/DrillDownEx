@@ -20,19 +20,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Set up JDK 8
+      - name: Set up JDK 17 (for Android SDK Manager)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '8'
-
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: Validate Gradle wrapper
-        run: |
-          chmod +x gradlew
-          ./gradlew --version
+          java-version: '17'
 
       - name: Install Android SDK components
         run: |
@@ -61,6 +53,20 @@ jobs:
           ls -la ${ANDROID_HOME}/platforms/ || echo "No platforms directory"
           echo "Installed build-tools:"
           ls -la ${ANDROID_HOME}/build-tools/ || echo "No build-tools directory"
+
+      - name: Set up JDK 8 (for game build)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Validate Gradle wrapper
+        run: |
+          chmod +x gradlew
+          ./gradlew --version
 
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
