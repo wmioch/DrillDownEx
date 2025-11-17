@@ -72,12 +72,27 @@ Both build steps now use:
   run: ./gradlew desktop:dist --no-daemon --stacktrace
 
 - name: Assemble Android debug build
-  run: ./gradlew android:assembleDebug --no-daemon --stacktrace
+  run: ./gradlew android:assembleFullDebug --no-daemon --stacktrace
 ```
 
-**Reason:** CI environments benefit from single-use Gradle processes, and detailed stack traces help diagnose build failures.
+**Reason:** CI environments benefit from single-use Gradle processes, and detailed stack traces help diagnose build failures. The `assembleFullDebug` task is used to specify the "full" product flavor.
 
-### 6. Added Debug Output
+### 6. Fixed APK Artifact Path
+
+Updated the artifact upload path to match the product flavor directory structure:
+
+```yaml
+- name: Upload Android debug APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: android-debug-apk
+    path: android/build/outputs/apk/full/debug/*.apk
+    if-no-files-found: error
+```
+
+**Reason:** Android builds with product flavors output APKs to flavor-specific directories. The path must include `/full/` for the "full" flavor.
+
+### 7. Added Debug Output
 
 The SDK installation step now displays environment information:
 ```bash
@@ -100,11 +115,14 @@ The CI workflow relies on:
 
 3. **Android SDK Components:**
    - Platform API 30 (compileSdkVersion)
+   - Platform API 34 (latest for compatibility)
    - Build Tools 34.0.0
    - NDK 21.4.7075529 (for native builds)
    - CMake 3.22.1 (for lz4-jni compilation)
 
 4. **Gradle 8.3:** Specified in gradle-wrapper.properties
+
+5. **Product Flavor:** The Android build uses the "full" flavor, so the build task is `assembleFullDebug` and APK path is `android/build/outputs/apk/full/debug/*.apk`
 
 ## Testing in Local Environment
 
@@ -123,8 +141,8 @@ The CI workflow is designed to run on GitHub Actions runners, which have proper 
 5. ✓ Install Android SDK components (platforms, build-tools, NDK, CMake)
 6. ✓ Verify installations
 7. ✓ Build desktop distribution (`./gradlew desktop:dist`)
-8. ✓ Assemble Android debug build (`./gradlew android:assembleDebug`)
-9. ✓ Upload Android APK as artifact
+8. ✓ Assemble Android debug build (`./gradlew android:assembleFullDebug`)
+9. ✓ Upload Android APK as artifact (`android/build/outputs/apk/full/debug/*.apk`)
 
 ## Troubleshooting
 
