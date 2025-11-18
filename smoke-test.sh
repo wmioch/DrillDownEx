@@ -2,7 +2,25 @@
 # Smoke test script for DrillDown desktop application
 # This script launches the application and verifies it stays running for 30 seconds
 
-set -e
+set -euo pipefail
+
+# Cleanup function
+cleanup() {
+    echo ""
+    echo "Cleaning up..."
+    set +e  # Disable exit on error for cleanup
+    if [ -n "${APP_PID:-}" ]; then
+        kill $APP_PID 2>/dev/null || true
+        kill -9 $APP_PID 2>/dev/null || true
+    fi
+    if [ -n "${XVFB_PID:-}" ]; then
+        kill $XVFB_PID 2>/dev/null || true
+        kill -9 $XVFB_PID 2>/dev/null || true
+    fi
+}
+
+# Set up trap to ensure cleanup on exit
+trap cleanup EXIT INT TERM
 
 echo "========================================="
 echo "  DrillDown Desktop Smoke Test"
@@ -58,7 +76,6 @@ while [ $ELAPSED -lt $TEST_DURATION ]; do
     if ! ps -p $APP_PID > /dev/null; then
         echo ""
         echo "ERROR: Application crashed or exited prematurely after ${ELAPSED} seconds"
-        kill $XVFB_PID 2>/dev/null || true
         exit 1
     fi
     
@@ -74,16 +91,6 @@ done
 echo ""
 echo "SUCCESS: Application ran successfully for ${TEST_DURATION} seconds!"
 echo ""
-
-# Cleanup
-echo "Cleaning up..."
-kill $APP_PID 2>/dev/null || true
-kill $XVFB_PID 2>/dev/null || true
-sleep 1
-
-# Force kill if still running
-kill -9 $APP_PID 2>/dev/null || true
-kill -9 $XVFB_PID 2>/dev/null || true
 
 echo "Smoke test completed successfully!"
 exit 0
