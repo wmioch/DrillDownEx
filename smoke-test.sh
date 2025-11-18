@@ -13,7 +13,8 @@ cleanup() {
         kill $APP_PID 2>/dev/null || true
         kill -9 $APP_PID 2>/dev/null || true
     fi
-    if [ -n "${XVFB_PID:-}" ]; then
+    # Only kill Xvfb if we started it (not if it was already running from workflow)
+    if [ -n "${XVFB_PID:-}" ] && [ "${STARTED_XVFB:-false}" = "true" ]; then
         kill $XVFB_PID 2>/dev/null || true
         kill -9 $XVFB_PID 2>/dev/null || true
     fi
@@ -30,7 +31,7 @@ echo ""
 # Configuration
 JAR_PATH="desktop/build/libs/desktop-1.0.jar"
 TEST_DURATION=30
-DISPLAY=":99"
+DISPLAY="${DISPLAY:-:99}"
 
 # Verify JAR exists
 if [ ! -f "$JAR_PATH" ]; then
@@ -42,19 +43,25 @@ echo "JAR file found: $JAR_PATH"
 echo "Test duration: ${TEST_DURATION} seconds"
 echo ""
 
-# Start Xvfb (virtual display)
-echo "Starting virtual display (Xvfb)..."
-Xvfb $DISPLAY -screen 0 1280x720x24 &
-XVFB_PID=$!
-sleep 2
-
-# Verify Xvfb is running
-if ! ps -p $XVFB_PID > /dev/null; then
-    echo "ERROR: Failed to start Xvfb"
-    exit 1
+# Check if Xvfb is already running (from CI workflow)
+if [ -z "$DISPLAY" ] || ! ps aux | grep -q "[X]vfb.*$DISPLAY"; then
+    echo "Starting virtual display (Xvfb)..."
+    Xvfb $DISPLAY -screen 0 1280x720x24 > /dev/null 2>&1 &
+    XVFB_PID=$!
+    STARTED_XVFB=true
+    sleep 2
+    
+    # Verify Xvfb is running
+    if ! ps -p $XVFB_PID > /dev/null; then
+        echo "ERROR: Failed to start Xvfb"
+        exit 1
+    fi
+    echo "Virtual display started (PID: $XVFB_PID)"
+else
+    echo "Virtual display already running at $DISPLAY"
+    STARTED_XVFB=false
 fi
 
-echo "Virtual display started (PID: $XVFB_PID)"
 echo ""
 
 # Launch the application in windowed mode
