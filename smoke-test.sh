@@ -32,6 +32,7 @@ echo ""
 JAR_PATH="desktop/build/libs/desktop-1.0.jar"
 TEST_DURATION=30
 DISPLAY="${DISPLAY:-:99}"
+LOG_FILE="/tmp/drilldown-smoke-test.log"
 
 # Verify JAR exists
 if [ ! -f "$JAR_PATH" ]; then
@@ -41,6 +42,7 @@ fi
 
 echo "JAR file found: $JAR_PATH"
 echo "Test duration: ${TEST_DURATION} seconds"
+echo "Output log: $LOG_FILE"
 echo ""
 
 # Check if Xvfb is already running (from CI workflow)
@@ -67,7 +69,9 @@ echo ""
 # Launch the application in windowed mode
 echo "Launching DrillDown desktop application..."
 export DISPLAY=$DISPLAY
-java -jar "$JAR_PATH" windowed 2>/dev/null &
+
+# Start the app and redirect all output to log file and also to console
+java -jar "$JAR_PATH" windowed > "$LOG_FILE" 2>&1 &
 APP_PID=$!
 
 echo "Application launched (PID: $APP_PID)"
@@ -83,6 +87,10 @@ while [ $ELAPSED -lt $TEST_DURATION ]; do
     if ! ps -p $APP_PID > /dev/null; then
         echo ""
         echo "ERROR: Application crashed or exited prematurely after ${ELAPSED} seconds"
+        echo ""
+        echo "===== APPLICATION OUTPUT ====="
+        cat "$LOG_FILE"
+        echo "===== END OUTPUT ====="
         exit 1
     fi
     
@@ -98,6 +106,11 @@ done
 echo ""
 echo "SUCCESS: Application ran successfully for ${TEST_DURATION} seconds!"
 echo ""
+
+# Show the log output
+echo "===== APPLICATION OUTPUT ====="
+cat "$LOG_FILE"
+echo "===== END OUTPUT ====="
 
 echo "Smoke test completed successfully!"
 exit 0
