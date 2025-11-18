@@ -77,14 +77,14 @@ jobs:
           sudo apt-get install -y \
             xvfb \
             libxvmc1 \
-            libgl1-mesa-glx \
-            libgl1-mesa-dri \
+            libgl1 \
             libglx0 \
             libx11-6 \
             libxext6 \
             libxrandr2 \
             libxinerama1 \
-            libxi6
+            libxi6 \
+            mesa-utils
 
       - name: Start Xvfb virtual display
         run: |
