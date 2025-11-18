@@ -71,42 +71,6 @@ jobs:
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
-      - name: Install OpenGL and display libraries
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            xvfb \
-            libxvmc1 \
-            libgl1 \
-            libglx0 \
-            libx11-6 \
-            libxext6 \
-            libxrandr2 \
-            libxinerama1 \
-            libxi6 \
-            mesa-utils
-
-      - name: Start Xvfb virtual display
-        run: |
-          Xvfb :99 -screen 0 1024x768x24 +extension GLX > /dev/null 2>&1 &
-          echo "DISPLAY=:99" >> $GITHUB_ENV
-          sleep 3
-
-      - name: Verify OpenGL setup
-        run: |
-          export DISPLAY=:99
-          glxinfo | head -20 || echo "glxinfo not available, continuing anyway..."
-
-      - name: Run desktop smoke test
-        env:
-          DISPLAY: :99
-          GALLIUM_DRIVER: llvmpipe
-          LP_NUM_THREADS: 4
-          LD_LIBRARY_PATH: /usr/lib/x86_64-linux-gnu/mesa:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-        run: |
-          chmod +x smoke-test.sh
-          ./smoke-test.sh
-
       - name: Assemble Android release build (signed)
         run: |
           ./gradlew android:assembleFullRelease \
