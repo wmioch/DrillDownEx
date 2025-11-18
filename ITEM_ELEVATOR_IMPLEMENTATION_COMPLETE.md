@@ -207,16 +207,6 @@ The `showOrHideRotateButton()` method in GameUi checks for IRotatable interface.
 
 ## Testing Protocol
 
-### Quick Smoke Test (5 minutes) ⏳ READY
-1. Launch game
-2. Select Item Elevator from build menu
-3. Move to map edge - should show green preview
-4. Click to place - floor dialog should appear
-5. Select destination floor and confirm
-6. Elevator should place with blue tint
-7. Exit elevator should appear on destination floor
-8. Save and load - no crash, tint persists
-
 ### Comprehensive Test (30 minutes) ⏳ READY
 
 **Tinting Tests:**
