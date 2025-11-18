@@ -1,22 +1,33 @@
-name: CI
+name: Continuous Integration
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - name: Checkout source code
+      uses: actions/checkout@v2
 
-      - name: Setup OpenGL
-        uses: openrndr/setup-opengl@v1.0.0
+    - name: Set up OpenGL
+      uses: setup-opengl@v1
 
-      - name: Build
-        run: ./gradlew build
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgl-dev libglu1-mesa-dev
 
-      - name: Smoke Test
-        run: ./gradlew smokeTest
+    - name: Compile
+      run: |
+        make
+
+    - name: Smoke test
+      run: |
+        make test
