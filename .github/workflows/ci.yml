@@ -71,24 +71,38 @@ jobs:
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
-      - name: Install Mesa, Xvfb, and audio libraries for headless OpenGL testing
+      - name: Install OpenGL and display libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y mesa-utils xvfb libxvmc1 libopenal1 libopenal-dev libpulse0
+          sudo apt-get install -y \
+            xvfb \
+            libxvmc1 \
+            libgl1-mesa-glx \
+            libgl1-mesa-dri \
+            libglx0 \
+            libx11-6 \
+            libxext6 \
+            libxrandr2 \
+            libxinerama1 \
+            libxi6
 
       - name: Start Xvfb virtual display
         run: |
-          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          Xvfb :99 -screen 0 1024x768x24 +extension GLX > /dev/null 2>&1 &
           echo "DISPLAY=:99" >> $GITHUB_ENV
-          sleep 2
+          sleep 3
 
-      - name: Run desktop smoke test with Mesa llvm-pipe
+      - name: Verify OpenGL setup
+        run: |
+          export DISPLAY=:99
+          glxinfo | head -20 || echo "glxinfo not available, continuing anyway..."
+
+      - name: Run desktop smoke test
         env:
           DISPLAY: :99
           GALLIUM_DRIVER: llvmpipe
           LP_NUM_THREADS: 4
-          LP_DEBUG: verbose
-          LD_PRELOAD: /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+          LD_LIBRARY_PATH: /usr/lib/x86_64-linux-gnu/mesa:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
         run: |
           chmod +x smoke-test.sh
           ./smoke-test.sh
