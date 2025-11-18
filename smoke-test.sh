@@ -46,10 +46,10 @@ echo ""
 # Check if Xvfb is already running (from CI workflow)
 if [ -z "$DISPLAY" ] || ! ps aux | grep -q "[X]vfb.*$DISPLAY"; then
     echo "Starting virtual display (Xvfb)..."
-    Xvfb $DISPLAY -screen 0 1280x720x24 > /dev/null 2>&1 &
+    Xvfb $DISPLAY -screen 0 1280x720x24 +extension GLX > /dev/null 2>&1 &
     XVFB_PID=$!
     STARTED_XVFB=true
-    sleep 2
+    sleep 3
     
     # Verify Xvfb is running
     if ! ps -p $XVFB_PID > /dev/null; then
@@ -64,14 +64,10 @@ fi
 
 echo ""
 
-# Launch the application in windowed mode (headless - no audio)
-echo "Launching DrillDown desktop application (headless mode)..."
+# Launch the application in windowed mode
+echo "Launching DrillDown desktop application..."
 export DISPLAY=$DISPLAY
-export ALSA_CARD=dummy
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/pulseaudio:/usr/lib/x86_64-linux-gnu
-java -Djava.awt.headless=false \
-     -Dcom.sun.media.sound=false \
-     -jar "$JAR_PATH" windowed &
+java -jar "$JAR_PATH" windowed 2>/dev/null &
 APP_PID=$!
 
 echo "Application launched (PID: $APP_PID)"
