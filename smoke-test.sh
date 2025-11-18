@@ -64,10 +64,14 @@ fi
 
 echo ""
 
-# Launch the application in windowed mode
-echo "Launching DrillDown desktop application..."
+# Launch the application in windowed mode (headless - no audio)
+echo "Launching DrillDown desktop application (headless mode)..."
 export DISPLAY=$DISPLAY
-java -jar "$JAR_PATH" windowed &
+export ALSA_CARD=dummy
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/pulseaudio:/usr/lib/x86_64-linux-gnu
+java -Djava.awt.headless=false \
+     -Dcom.sun.media.sound=false \
+     -jar "$JAR_PATH" windowed &
 APP_PID=$!
 
 echo "Application launched (PID: $APP_PID)"
