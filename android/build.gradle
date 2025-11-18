@@ -1,8 +1,19 @@
-def keystorePath = project.hasProperty('keypass_file') ? file(keypass_file) : null
+def keystoreFileName = project.hasProperty('keypass_file') ? keypass_file : ''
+def keystorePath = keystoreFileName ? file(keystoreFileName) : null
+
+// Ensure path is resolved relative to project root
+if (keystorePath != null && keystorePath.isAbsolute() == false) {
+    keystorePath = file(keystoreFileName)
+}
+
 def hasCustomSigning = keystorePath != null && keystorePath.exists()
 
 if (!hasCustomSigning) {
-    logger.lifecycle("Custom keystore '${project.hasProperty('keypass_file') ? keypass_file : ''}' not found; using the default debug keystore.")
+    if (keystoreFileName) {
+        logger.warn("⚠️  Custom keystore not found at '${keystorePath?.absolutePath}'; using the default debug keystore.")
+    }
+} else {
+    logger.lifecycle("✅ Using custom keystore for signing: ${keystorePath.absolutePath}")
 }
 
 android {
