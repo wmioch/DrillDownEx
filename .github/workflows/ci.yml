@@ -34,10 +34,11 @@ jobs:
 
       - name: Set up signing keystore
         run: |
-          # Decode base64 keystore and save to file
+          # Decode base64 keystore and save to file in android directory
           echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > android/drilldown.keystore
           # Verify keystore was created
           ls -lh android/drilldown.keystore
+          echo "Keystore saved at: $(pwd)/android/drilldown.keystore"
 
       - name: Install Android SDK components
         run: |
@@ -73,7 +74,7 @@ jobs:
       - name: Assemble Android release build (signed)
         run: |
           ./gradlew android:assembleFullRelease \
-            -Pkeypass_file=android/drilldown.keystore \
+            -Pkeypass_file=drilldown.keystore \
             -Pkeypass_alias=${{ secrets.KEY_ALIAS }} \
             -Pkeypass_pwd=${{ secrets.KEY_PASSWORD }} \
             --no-daemon --stacktrace
