@@ -32,6 +32,13 @@ jobs:
           chmod +x gradlew
           ./gradlew --version
 
+      - name: Set up signing keystore
+        run: |
+          # Decode base64 keystore and save to file
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > android/drilldown.keystore
+          # Verify keystore was created
+          ls -lh android/drilldown.keystore
+
       - name: Install Android SDK components
         run: |
           set -euxo pipefail
@@ -63,12 +70,17 @@ jobs:
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
-      - name: Assemble Android debug build
-        run: ./gradlew android:assembleFullDebug --no-daemon --stacktrace
+      - name: Assemble Android release build (signed)
+        run: |
+          ./gradlew android:assembleFullRelease \
+            -Pkeypass_file=android/drilldown.keystore \
+            -Pkeypass_alias=${{ secrets.KEY_ALIAS }} \
+            -Pkeypass_pwd=${{ secrets.KEY_PASSWORD }} \
+            --no-daemon --stacktrace
 
-      - name: Upload Android debug APK
+      - name: Upload Android release APK (signed)
         uses: actions/upload-artifact@v4
         with:
-          name: android-debug-apk
-          path: android/build/outputs/apk/full/debug/*.apk
+          name: android-release-apk
+          path: android/build/outputs/apk/full/release/*.apk
           if-no-files-found: error
