@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -71,15 +71,22 @@ jobs:
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
-      - name: Install Xvfb for headless testing
+      - name: Install Mesa and Xvfb for headless OpenGL testing
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb
+          sudo apt-get install -y mesa-utils xvfb libxvmc1
 
-      - name: Setup OpenGL (Mesa software rendering)
-        uses: openrndr/setup-opengl@v1.1
+      - name: Start Xvfb virtual display
+        run: |
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+          sleep 2
 
-      - name: Run desktop smoke test
+      - name: Run desktop smoke test with Mesa llvm-pipe
+        env:
+          DISPLAY: :99
+          GALLIUM_DRIVER: llvmpipe
+          LP_NUM_THREADS: 4
         run: |
           chmod +x smoke-test.sh
           ./smoke-test.sh
