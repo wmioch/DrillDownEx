@@ -68,6 +68,9 @@ jobs:
           echo "Installed build-tools:"
           ls -la ${ANDROID_HOME}/build-tools/ || echo "No build-tools directory"
 
+      - name: Rebuild texture atlas
+        run: ./gradlew desktop:run --args="textures" --no-daemon --stacktrace
+
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 

@@ -54,6 +54,10 @@ import net.spookygames.gdx.sfx.desktop.DesktopAudioDurationResolver;
 
 public class DesktopLauncher implements PlatformInterface {
     public static void main(String[] arg) throws URISyntaxException, java.io.IOException {
+        if (shouldPackTextures(arg)) {
+            packTextures();
+            return;
+        }
         new DesktopLauncher(arg);
     }
 
@@ -112,44 +116,49 @@ public class DesktopLauncher implements PlatformInterface {
 
         config.title = "Drill Down";
 
-        if (arg.length > 0 && arg[0].equals("textures")) {
-            try {
-                // Find project root - look for Development/Textures directory
-                java.io.File current = new java.io.File(".").getCanonicalFile();
-                java.io.File projectRoot = null;
-                while (current != null) {
-                    java.io.File devTextures = new java.io.File(current, "Development/Textures");
-                    if (devTextures.exists() && devTextures.isDirectory()) {
-                        projectRoot = current;
-                        break;
-                    }
-                    current = current.getParentFile();
-                }
-                
-                if (projectRoot == null) {
-                    throw new RuntimeException("Could not find project root (Development/Textures not found)");
-                }
-                
-                String inputDir = new java.io.File(projectRoot, "Development/Textures/").getAbsolutePath() + "/";
-                String outputDir = new java.io.File(projectRoot, "android/assets/").getAbsolutePath() + "/";
-                String settingsPath = new java.io.File(projectRoot, "android/assets/atlas-settings.json").getAbsolutePath();
-                
-                System.out.println("[TEXTURE PACKER] Project root: " + projectRoot.getAbsolutePath());
-                System.out.println("[TEXTURE PACKER] Input: " + inputDir);
-                System.out.println("[TEXTURE PACKER] Output: " + outputDir);
-                System.out.println("[TEXTURE PACKER] Starting packing...");
-                TexturePacker.main(new String[] { inputDir, outputDir, "tex.atlas", settingsPath });
-                System.out.println("[TEXTURE PACKER] Successfully packed textures!");
-            } catch (Exception e1) {
-                System.err.println("[TEXTURE PACKER] Error packing textures:");
-                e1.printStackTrace();
-            }
-            System.exit(0);
-        }
-
         DesktopAudioDurationResolver.initialize();
         Quarry game = new Quarry(this, true, versionCode, version, true, false, mode);
         new LwjglApplication(game, config);
+    }
+
+    private static boolean shouldPackTextures(String[] arg) {
+        return arg.length > 0 && arg[0].equals("textures");
+    }
+
+    private static void packTextures() throws java.io.IOException {
+        try {
+            // Find project root - look for Development/Textures directory
+            java.io.File current = new java.io.File(".").getCanonicalFile();
+            java.io.File projectRoot = null;
+            while (current != null) {
+                java.io.File devTextures = new java.io.File(current, "Development/Textures");
+                if (devTextures.exists() && devTextures.isDirectory()) {
+                    projectRoot = current;
+                    break;
+                }
+                current = current.getParentFile();
+            }
+
+            if (projectRoot == null) {
+                throw new RuntimeException("Could not find project root (Development/Textures not found)");
+            }
+
+            String inputDir = new java.io.File(projectRoot, "Development/Textures/").getAbsolutePath() + "/";
+            String outputDir = new java.io.File(projectRoot, "android/assets/").getAbsolutePath() + "/";
+            String settingsPath = new java.io.File(projectRoot, "android/assets/atlas-settings.json").getAbsolutePath();
+
+            System.out.println("[TEXTURE PACKER] Project root: " + projectRoot.getAbsolutePath());
+            System.out.println("[TEXTURE PACKER] Input: " + inputDir);
+            System.out.println("[TEXTURE PACKER] Output: " + outputDir);
+            System.out.println("[TEXTURE PACKER] Starting packing...");
+            TexturePacker.main(new String[] { inputDir, outputDir, "tex.atlas", settingsPath });
+            System.out.println("[TEXTURE PACKER] Successfully packed textures!");
+            System.exit(0);
+        } catch (Exception e1) {
+            System.err.println("[TEXTURE PACKER] Error packing textures:");
+            e1.printStackTrace();
+            System.exit(1);
+        }
     }
 
     @Override

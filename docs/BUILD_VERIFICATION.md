@@ -4,6 +4,19 @@ This document captures the exact steps used to prove that the sandbox
 environment can successfully build the DrillDown project in parity with
 our CI workflow (`.github/workflows/ci.yml`).
 
+## 0. Regenerate the texture atlas (matches CI)
+
+Before triggering any Gradle builds, run the exact TexturePacker command
+that CI now executes to refresh `android/assets/tex.png` and
+`android/assets/tex.atlas` from `Development/Textures/`:
+
+```
+./gradlew desktop:run --args="textures" --no-daemon --stacktrace
+```
+
+Seeing `BUILD SUCCESSFUL` here guarantees that the atlas artifacts used
+in later build steps match what CI produces.
+
 ## 1. Install an Android SDK locally
 
 Because CI runners already expose the Android SDK but the sandbox does
