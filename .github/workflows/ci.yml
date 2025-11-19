@@ -71,8 +71,41 @@ jobs:
       - name: Rebuild texture atlas
         run: ./gradlew desktop:run --args="textures" --no-daemon --stacktrace
 
+      - name: Stage regenerated texture atlases for packaging
+        run: |
+          set -euo pipefail
+
+          mkdir -p desktop/build/staged-assets
+
+          for file in tex.png tex.atlas; do
+            if [ ! -f "android/assets/${file}" ]; then
+              echo "Missing regenerated asset: android/assets/${file}"
+              exit 1
+            fi
+
+            cp "android/assets/${file}" desktop/build/staged-assets/
+          done
+
+          ls -lh desktop/build/staged-assets
+
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
+
+      - name: Verify desktop distribution uses regenerated texture atlases
+        run: |
+          set -euo pipefail
+
+          DESKTOP_JAR=$(ls desktop/build/libs/*.jar)
+
+          for file in tex.png tex.atlas; do
+            src_hash=$(sha256sum "android/assets/${file}" | awk '{print $1}')
+            jar_hash=$(unzip -p "${DESKTOP_JAR}" "${file}" | sha256sum | awk '{print $1}')
+
+            if [ "${src_hash}" != "${jar_hash}" ]; then
+              echo "Mismatch detected for ${file}: jar does not include regenerated asset"
+              exit 1
+            fi
+          done
 
       - name: Assemble Android release build (signed)
         run: |
@@ -82,9 +115,35 @@ jobs:
             -Pkeypass_pwd=${{ secrets.KEY_PASSWORD }} \
             --no-daemon --stacktrace
 
+      - name: Verify Android APK uses regenerated texture atlases
+        run: |
+          set -euo pipefail
+
+          APK_PATH=$(ls android/build/outputs/apk/full/release/*.apk)
+
+          for file in tex.png tex.atlas; do
+            src_hash=$(sha256sum "android/assets/${file}" | awk '{print $1}')
+            apk_hash=$(unzip -p "${APK_PATH}" "assets/${file}" | sha256sum | awk '{print $1}')
+
+            if [ "${src_hash}" != "${apk_hash}" ]; then
+              echo "Mismatch detected for ${file}: APK does not include regenerated asset"
+              exit 1
+            fi
+          done
+
       - name: Upload Android release APK (signed)
         uses: actions/upload-artifact@v4
         with:
           name: android-release-apk
           path: android/build/outputs/apk/full/release/*.apk
+          if-no-files-found: error
+
+      - name: Upload desktop distribution with staged assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-distribution
+          path: |
+            desktop/build/libs/*.jar
+            desktop/build/staged-assets/tex*.png
+            desktop/build/staged-assets/tex*.atlas
           if-no-files-found: error
