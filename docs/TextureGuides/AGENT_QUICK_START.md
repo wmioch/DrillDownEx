@@ -147,3 +147,4 @@ Seriously. It's always this.
 *This guide is specifically for AI agents to prevent the common mistakes that happen during texture implementation.*
 
 
+
