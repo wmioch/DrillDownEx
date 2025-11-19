@@ -71,6 +71,25 @@ jobs:
       - name: Rebuild texture atlas
         run: ./gradlew desktop:run --args="textures" --no-daemon --stacktrace
 
+      - name: Stage regenerated texture atlases
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          atlas_dir=android/assets
+          files=(${atlas_dir}/tex*.png ${atlas_dir}/tex*.atlas)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No regenerated texture atlases found in ${atlas_dir}"
+            exit 1
+          fi
+
+          mkdir -p desktop/build/packaged-assets
+          for file in "${files[@]}"; do
+            cp "$file" desktop/build/packaged-assets/
+          done
+
+          ls -la desktop/build/packaged-assets
+
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
@@ -81,6 +100,39 @@ jobs:
             -Pkeypass_alias=${{ secrets.KEY_ALIAS }} \
             -Pkeypass_pwd=${{ secrets.KEY_PASSWORD }} \
             --no-daemon --stacktrace
+
+      - name: Verify regenerated textures packaged in APK
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          atlas_dir=android/assets
+          files=(${atlas_dir}/tex*.png ${atlas_dir}/tex*.atlas)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No regenerated texture atlases present in ${atlas_dir}"
+            exit 1
+          fi
+
+          apk_path=$(ls android/build/outputs/apk/full/release/*.apk)
+          echo "Inspecting APK: ${apk_path}"
+
+          for file in "${files[@]}"; do
+            name=$(basename "$file")
+            if ! unzip -l "$apk_path" "assets/${name}" >/dev/null; then
+              echo "Missing ${name} in packaged APK"
+              exit 1
+            fi
+
+            source_hash=$(sha256sum "$file" | cut -d' ' -f1)
+            apk_hash=$(unzip -p "$apk_path" "assets/${name}" | sha256sum | cut -d' ' -f1)
+
+            if [ "$source_hash" != "$apk_hash" ]; then
+              echo "Checksum mismatch for ${name}: source ${source_hash} vs APK ${apk_hash}"
+              exit 1
+            fi
+          done
+
+          echo "Texture atlas assets match between source and APK"
 
       - name: Upload Android release APK (signed)
         uses: actions/upload-artifact@v4
@@ -108,6 +160,26 @@ jobs:
       - name: Regenerate texture atlas
         run: .\\gradlew.bat desktop:run --args="textures" --no-daemon --stacktrace
 
+      - name: Stage regenerated texture atlases
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          atlas_dir=android/assets
+          files=(${atlas_dir}/tex*.png ${atlas_dir}/tex*.atlas)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No regenerated texture atlases found in ${atlas_dir}"
+            exit 1
+          fi
+
+          mkdir -p desktop/build/packaged-assets
+          for file in "${files[@]}"; do
+            cp "$file" desktop/build/packaged-assets/
+          done
+
+          ls -la desktop/build/packaged-assets
+
       - name: Build desktop distribution
         run: .\\gradlew.bat desktop:dist --no-daemon --stacktrace
 
@@ -118,4 +190,5 @@ jobs:
           path: |
             desktop/build/libs/*.jar
             desktop/build/distributions/*.zip
+            desktop/build/packaged-assets/*
           if-no-files-found: error
