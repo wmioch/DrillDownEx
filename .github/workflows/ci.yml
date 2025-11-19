@@ -88,3 +88,34 @@ jobs:
           name: android-release-apk
           path: android/build/outputs/apk/full/release/*.apk
           if-no-files-found: error
+
+  windows-desktop:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Regenerate texture atlas
+        run: .\\gradlew.bat desktop:run --args="textures" --no-daemon --stacktrace
+
+      - name: Build desktop distribution
+        run: .\\gradlew.bat desktop:dist --no-daemon --stacktrace
+
+      - name: Upload Windows desktop artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-desktop-dist
+          path: |
+            desktop/build/libs/*.jar
+            desktop/build/distributions/*.zip
+          if-no-files-found: error
