@@ -154,18 +154,6 @@ core/src/de/dakror/quarry/structure/logistics/ItemElevatorPassthrough.java
 
 ## Testing Protocol
 
-### Quick Smoke Test (5 minutes)
-1. Launch game
-2. Select Item Elevator from build menu
-3. Place at North edge
-4. Floor dialog should appear
-5. Select destination floor
-6. Elevator should place with blue tint
-7. Exit should appear on destination floor
-8. Save game
-9. Load game
-10. No crash, elevator direction correct, tint still blue
-
 ### Comprehensive Test (30 minutes)
 
 #### Tinting Tests
