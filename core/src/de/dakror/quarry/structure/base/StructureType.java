@@ -30,6 +30,7 @@ import de.dakror.quarry.structure.logistics.Conveyor;
 import de.dakror.quarry.structure.logistics.ConveyorBridge;
 import de.dakror.quarry.structure.logistics.CopperTube;
 import de.dakror.quarry.structure.logistics.Distributor;
+import de.dakror.quarry.structure.logistics.GreenConveyor;
 import de.dakror.quarry.structure.logistics.ElectricConveyor;
 import de.dakror.quarry.structure.logistics.ElectricConveyorCore;
 import de.dakror.quarry.structure.logistics.Filter;
@@ -115,6 +116,7 @@ public enum StructureType {
     SteelTube(5, SteelTube.class),
     ElectricConveyor(6, ElectricConveyor.class),
     ElectricConveyorCore(7, ElectricConveyorCore.class),
+    GreenConveyor(8, GreenConveyor.class),
 
     // distributors
     Filter(10, Filter.class),

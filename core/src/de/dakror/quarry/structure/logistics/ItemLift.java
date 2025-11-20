@@ -86,7 +86,7 @@ public class ItemLift extends Structure<Schema> {
         Direction d = getDocks()[0].dir;
         Structure<?> s = layer.getStructure(x + d.dx, y + d.dy);
         hasOutput = s != null
-                && ((s.getSchema().type == StructureType.Conveyor && ((Conveyor) s).getDirection() != d.inv())
+                && ((Conveyor.isBasicConveyorType(s.getSchema().type) && ((Conveyor) s).getDirection() != d.inv())
                         || (s.getSchema().type == StructureType.ElectricConveyor && ((Conveyor) s).getDirection() != d.inv())
                         || (s.getSchema().type == StructureType.ElectricConveyorCore && ((Conveyor) s).getDirection() == d)
                         || (s.getSchema().type == StructureType.ConveyorBridge && (((ConveyorBridge) s).getDirection() != d.inv() || ((ConveyorBridge) s).getDirection2() != d.inv()))

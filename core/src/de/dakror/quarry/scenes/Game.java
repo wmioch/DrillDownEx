@@ -984,7 +984,7 @@ public class Game extends GameScene {
 
             if (structure instanceof ConveyorBridge && !fog && !pasteMode) {
                 Structure<?> x = layer.getStructure(structure.x, structure.y);
-                if (x != null && x.getSchema().type == StructureType.Conveyor) {
+                if (x != null && Conveyor.isBasicConveyorType(x.getSchema().type)) {
                     ((ConveyorBridge) structure).setRotation(((Conveyor) x).getDirection());
                     return true;
                 }
@@ -1276,7 +1276,7 @@ public class Game extends GameScene {
                         if (!activeStructureTrail
                                 .containsKey((int) ((endA.x + d.dx) * layer.height + (endA.y + d.dy)))) {
                             Structure<?> q = layer.getStructure((int) endA.x + d.dx, (int) endA.y + d.dy);
-                            if (q != null && q.getSchema().type == StructureType.Conveyor) {
+                            if (q != null && Conveyor.isBasicConveyorType(q.getSchema().type)) {
                                 if (((Conveyor) q).getStructureInDirection(((Conveyor) q).getDirection()) == null) {
                                     ((Conveyor) q).setRotation(d.inv());
                                     break;
@@ -1342,7 +1342,7 @@ public class Game extends GameScene {
                     if (activeStructure instanceof Conveyor) {
                         for (Direction d : Direction.values) {
                             Structure<?> q = layer.getStructure(activeStructure.x + d.dx, activeStructure.y + d.dy);
-                            if (q != null && q.getSchema().type == StructureType.Conveyor) {
+                            if (q != null && Conveyor.isBasicConveyorType(q.getSchema().type)) {
                                 if (((Conveyor) q).getStructureInDirection(((Conveyor) q).getDirection()) == null) {
                                     ((Conveyor) q).setRotation(d.inv());
                                     break;
@@ -1354,7 +1354,7 @@ public class Game extends GameScene {
                     // remove conveyor when building conveyor bridge on top
                     if (activeStructure instanceof ConveyorBridge) {
                         Structure<?> x = layer.getStructure(activeStructure.x, activeStructure.y);
-                        if (x != null && x.getSchema().type == StructureType.Conveyor) {
+                        if (x != null && Conveyor.isBasicConveyorType(x.getSchema().type)) {
                             layer.removeStructure(x);
                         }
                     }

@@ -176,7 +176,7 @@ public class Chunk implements Disposable, FBOable, Savable {
         synchronized (structLock) {
             for (Structure<?> st : structures.items) {
                 if (st == null) break;
-                if (hasWidth || st.getSchema().type != StructureType.Conveyor)
+                if (hasWidth || !Conveyor.isBasicConveyorType(st.getSchema().type))
                     st.update(deltaTime, gameSpeed * st.getSpeedScale(), dirtyBounds);
             }
 

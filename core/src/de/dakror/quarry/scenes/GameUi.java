@@ -115,6 +115,7 @@ import de.dakror.quarry.structure.logistics.Conveyor;
 import de.dakror.quarry.structure.logistics.ConveyorBridge;
 import de.dakror.quarry.structure.logistics.CopperTube;
 import de.dakror.quarry.structure.logistics.Distributor;
+import de.dakror.quarry.structure.logistics.GreenConveyor;
 import de.dakror.quarry.structure.logistics.ElectricConveyor;
 import de.dakror.quarry.structure.logistics.ElectricConveyorCore;
 import de.dakror.quarry.structure.logistics.Filter;
@@ -922,6 +923,7 @@ public class GameUi implements Ui {
         }
 
         buildMenuItem(tube, new Conveyor(-1, 0));
+        buildMenuItem(tube, new GreenConveyor(-1, 0));
         buildMenuItem(tube, new ConveyorBridge(-1, 0));
         buildMenuItem(tube, new BrickChannel(-1, 0));
         buildMenuItem(tube, new CopperTube(-1, 0));

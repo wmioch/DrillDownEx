@@ -241,7 +241,8 @@ public class Tutorial {
 
             @Override
             public boolean isDone() {
-                return Game.G.activeStructure != null && Game.G.activeStructure.getSchema().type == StructureType.Conveyor;
+                return Game.G.activeStructure != null
+                        && Conveyor.isBasicConveyorType(Game.G.activeStructure.getSchema().type);
             }
         });
         steps.add(new Step(0, 120, Const.UI_W, heights[11][l], false, false) {

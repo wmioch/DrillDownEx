@@ -61,6 +61,7 @@ public class LoadingCompat {
                         CompoundTag str = (CompoundTag) t3;
 
                         if (str.Byte("type") == StructureType.Conveyor.id
+                                || str.Byte("type") == StructureType.GreenConveyor.id
                                 || str.Byte("type") == StructureType.ConveyorBridge.id
                                 || str.Byte("type") == StructureType.Hopper.id) {
 

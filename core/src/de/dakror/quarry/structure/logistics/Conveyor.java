@@ -77,6 +77,10 @@ public class Conveyor extends Structure<ConveyorSchema> implements IRotatable, I
             .flags(Flags.Draggable, Flags.NoDustEffect)
             .loudness(0.5f);
 
+    public static boolean isBasicConveyorType(StructureType type) {
+        return type == StructureType.Conveyor || type == StructureType.GreenConveyor;
+    }
+
     protected Direction dir;
 
     final static int s = Const.TILE_SIZE - 2 * Const.TUBE_OFFSET;
@@ -625,7 +629,7 @@ public class Conveyor extends Structure<ConveyorSchema> implements IRotatable, I
 
     private boolean isDockOrInputConveyor(Structure<?> s, Direction dir) {
         if (s instanceof Conveyor) {
-            if (s.getSchema().type == StructureType.Conveyor
+            if (isBasicConveyorType(s.getSchema().type)
                     || s.getSchema().type == StructureType.ElectricConveyor) {
                 return ((Conveyor) s).getDirection() == dir.inv();
             } else if (s.getSchema().type == StructureType.ConveyorBridge || s.getSchema().type == StructureType.Hopper) {

@@ -81,7 +81,7 @@ public abstract class RouterStructure extends Structure<RouterSchema> {
         for (int i = 0; i < 4; i++) {
             Direction d = Direction.values[i];
             Structure<?> s = layer.getStructure(x + d.dx, y + d.dy);
-            tubes[i] = s != null && ((s.getSchema().type == StructureType.Conveyor && ((Conveyor) s).getDirection() != d.inv())
+            tubes[i] = s != null && ((Conveyor.isBasicConveyorType(s.getSchema().type) && ((Conveyor) s).getDirection() != d.inv())
                     || (s.getSchema().type == StructureType.Hopper && ((Conveyor) s).getDirection() == d)
                     || (s.getSchema().type == StructureType.ElectricConveyor && ((Conveyor) s).getDirection() != d.inv())
                     || (s.getSchema().type == StructureType.ElectricConveyorCore && ((Conveyor) s).getDirection() == d)
