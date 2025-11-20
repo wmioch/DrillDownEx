@@ -98,12 +98,22 @@ public class Assembler extends ProducerStructure {
                                     new Amount(ItemType.Lubricant, 10_000))
                             .output(new Amount(ItemType.Turbine, 1))
                             .science(ScienceType.OilProcessing));
+
+                    add(new Recipe(70f, "advanced_servo", 2600)
+                            .input(
+                                    new Amount(ItemType.Lubricant, 12_500),
+                                    new Amount(ItemType.SulfurDust, 90),
+                                    new Amount(ItemType.PlasticCasing, 3),
+                                    new Amount(ItemType.SteelTube, 16),
+                                    new Amount(ItemType.Chip, 2))
+                            .output(new Amount(ItemType.AdvancedServo, 1))
+                            .science(ScienceType.OilProcessing, ScienceType.Blueprints, ScienceType.AdvancedTransport));
                 }
             }, new Sfx("assembler" + Const.SFX_FORMAT),
             false,
             new Dock(5, 0, Direction.South, DockType.ItemOut),
             new Dock(0, 5, Direction.West, DockType.ItemIn, new DockFilter(ItemType.CopperWire, ItemType.BronzePlate, ItemType.Rotor, ItemType.Paper, ItemType.WoodPlank)),
-            new Dock(5, 5, Direction.East, DockType.ItemIn, new DockFilter(ItemType.Magnet, ItemType.IronPlate, ItemType.Dynamo, ItemType.IronPlate, ItemType.Gunpowder, ItemType.SteelWire)),
+            new Dock(5, 5, Direction.East, DockType.ItemIn, new DockFilter(ItemType.Magnet, ItemType.IronPlate, ItemType.Dynamo, ItemType.IronPlate, ItemType.Gunpowder, ItemType.SteelWire, ItemType.Chip)),
             new Dock(5, 3, Direction.East, DockType.ItemIn, new DockFilter(ItemType.SteelIngot, ItemType.SulfurDust, ItemType.SteelTube, ItemType.Sand)),
             new Dock(0, 3, Direction.West, DockType.ItemIn, new DockFilter(ItemType.CarbonBlock, ItemType.PlasticCasing, ItemType.SteelPlate, ItemType.Clay)),
             new Dock(1, 5, Direction.North, DockType.Power), new Dock(4, 5, Direction.North, DockType.FluidIn, new DockFilter(ItemType.Lubricant)))

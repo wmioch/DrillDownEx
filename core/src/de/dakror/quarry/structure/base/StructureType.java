@@ -62,6 +62,7 @@ import de.dakror.quarry.structure.power.Substation;
 import de.dakror.quarry.structure.power.SuperCapacitor;
 import de.dakror.quarry.structure.power.WaterWheel;
 import de.dakror.quarry.structure.producer.AirPurifier;
+import de.dakror.quarry.structure.producer.AdvancedServoAssembler;
 import de.dakror.quarry.structure.producer.ArcWelder;
 import de.dakror.quarry.structure.producer.Assembler;
 import de.dakror.quarry.structure.producer.BallMill;
@@ -161,6 +162,7 @@ public enum StructureType {
     Polarizer(86, Polarizer.class),
     Compactor(87, Compactor.class),
     Assembler(88, Assembler.class),
+    AdvancedServoAssembler(215, AdvancedServoAssembler.class),
     Refinery(89, Refinery.class),
     DistillationColumn(90, DistillationColumn.class),
     Polymerizer(91, Polymerizer.class),

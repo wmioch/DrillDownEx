@@ -183,6 +183,8 @@ This document provides a complete reference for the technology research tree, sh
   - DistillationColumn
   - SteelTube
   - Valve (requires Routers)
+- Assembler recipe: Advanced Servo (needs Blueprints + AdvancedTransport; consumes heavy Lubricant alongside catalysts for late-game turbines and precision frames)
+- Dedicated Advanced Servo Assembler structure mirrors the servo recipe with its own build slot (OilProcessing tier)
 
 #### **SolarPower**
 - **ID:** 19
