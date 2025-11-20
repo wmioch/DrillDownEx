@@ -426,6 +426,13 @@ item_advancedmachineframe
   orig: 24, 24
   offset: 0, 0
   index: -1
+item_advanced_servo
+  rotate: false
+  xy: 1513, 1707
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
 item_au_dust
   rotate: false
   xy: 1513, 1681
@@ -1050,6 +1057,13 @@ structure_arcwelder
   offset: 0, 0
   index: -1
 structure_assembler
+  rotate: false
+  xy: 1539, 1663
+  size: 384, 384
+  orig: 384, 384
+  offset: 0, 0
+  index: -1
+structure_advanced_servo_assembler
   rotate: false
   xy: 1539, 1663
   size: 384, 384
@@ -2197,6 +2211,13 @@ item_ore2
   offset: 0, 0
   index: -1
 item_pallet
+  rotate: false
+  xy: 1249, 1887
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+item_advanced_servo_pallet
   rotate: false
   xy: 1249, 1887
   size: 24, 24

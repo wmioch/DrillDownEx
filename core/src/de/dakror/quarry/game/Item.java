@@ -244,6 +244,7 @@ public class Item {
         Rotor(60, "rotor", 156747, ItemCategory.Component),
         MachineFrame(61, "machineframe", 29208, ItemCategory.Component),
         AdvancedMachineFrame(62, "advancedmachineframe", 6679663, ItemCategory.Component),
+        AdvancedServo(73, "advanced_servo", 5220000, ItemCategory.Component),
         PlateStack(63, "platestack", 1078504, ItemCategory.Component),
         SteelCable(64, "steel_cable", 39688, ItemCategory.Component),
         WoodChips(65, "wood_chips", 1, ItemCategory.Component),
@@ -356,6 +357,7 @@ public class Item {
         RotorPallet(Pallet, 68, Rotor),
         MachineFramePallet(Pallet, 69, MachineFrame),
         AdvancedMachineFramePallet(Pallet, 70, AdvancedMachineFrame),
+        AdvancedServoPallet(Pallet, 88, AdvancedServo),
         PlateStackPallet(Pallet, 71, PlateStack),
         SteelCablePallet(Pallet, 72, SteelCable),
 
