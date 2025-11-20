@@ -18,6 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set build version stamp
+        run: echo "CI_BUILD_VERSION=$(date -u +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -148,6 +151,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set build version stamp
+        shell: pwsh
+        run: echo "CI_BUILD_VERSION=$(Get-Date -Format 'yyyyMMddHHmmss')" >> $Env:GITHUB_ENV
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -191,12 +198,20 @@ jobs:
           debug_dir=desktop/build/debug-dist
           mkdir -p "$debug_dir"
 
-          cp desktop/build/libs/desktop-1.0.jar "$debug_dir/"
+          jar_pattern="desktop/build/libs/desktop-${CI_BUILD_VERSION:-*}.jar"
+          jar_path=$(ls ${jar_pattern} 2>/dev/null | head -n 1)
+          if [ -z "$jar_path" ]; then
+            echo "Could not find desktop jar using pattern ${jar_pattern}"
+            exit 1
+          fi
+
+          debug_jar_name="desktop-debug.jar"
+          cp "$jar_path" "$debug_dir/$debug_jar_name"
 
           cat >"$debug_dir/run-debug.bat" <<'EOF'
           @echo off
           set SCRIPT_DIR=%~dp0
-          java -jar "%SCRIPT_DIR%\\desktop-1.0.jar" debug
+          java -jar "%SCRIPT_DIR%\\desktop-debug.jar" debug
           EOF
 
           if [ -d desktop/build/packaged-assets ]; then

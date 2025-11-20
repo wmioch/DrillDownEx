@@ -13,8 +13,24 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
-    
-    version = '1.0'
+
+    def isDebugTask = gradle.startParameter.taskNames.any { it.toLowerCase().contains('debug') }
+    def ciBuildVersion = System.getenv('CI_BUILD_VERSION')
+    def isCiEnvironment = System.getenv('CI') == 'true' || System.getenv('GITHUB_ACTIONS') == 'true'
+
+    if (isDebugTask) {
+        version = 'debug'
+    } else if (isCiEnvironment) {
+        if (ciBuildVersion) {
+            version = ciBuildVersion
+        } else {
+            def formatter = new java.text.SimpleDateFormat("yyyyMMddHHmmss")
+            formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+            version = formatter.format(new Date())
+        }
+    } else {
+        version = '1.0'
+    }
     ext {
         appName = "DrillDown"
         gdxVersion = '1.9.9'
