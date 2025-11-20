@@ -72,6 +72,8 @@ public abstract class Structure<T extends Schema> implements Savable, Region {
 
     public static final Color selectionColor = Color.valueOf("#4286f4a0");
 
+    protected static final float POWER_RESTORE_GRACE_SECONDS = 10f / 60f;
+
     protected Booster nearbyBooster;
 
     protected PowerNetwork powerNetwork;

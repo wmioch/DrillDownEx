@@ -106,7 +106,7 @@ public abstract class ProducerStructure extends PausableStructure<ProducerSchema
     protected final WindowedMean powerLevelMean = new WindowedMean(60);
 
     protected boolean noPower;
-    protected int framesPassedWithPower;
+    protected float powerUptime;
 
     protected Container<Actor> ui;
     protected Label timeLabel;
@@ -435,10 +435,9 @@ public abstract class ProducerStructure extends PausableStructure<ProducerSchema
             noPower = powerLevel < activeRecipe.getPower() / 2;
             if (!noPower) {
                 powerLevel = Math.max(0, powerLevel - activeRecipe.getPower() * 60 * deltaTime * gameSpeed);
-                framesPassedWithPower++;
-                if (framesPassedWithPower > 10) framesPassedWithPower = 10;
+                powerUptime = Math.min(POWER_RESTORE_GRACE_SECONDS, powerUptime + (float) (deltaTime * gameSpeed));
             } else {
-                framesPassedWithPower = 0;
+                powerUptime = 0;
             }
         } else noPower = false;
 
@@ -485,7 +484,7 @@ public abstract class ProducerStructure extends PausableStructure<ProducerSchema
 
         drawRecipeProgress(shaper);
 
-        if (activeRecipe != null && activeRecipe.getPower() > 0 && framesPassedWithPower < 10) {
+        if (activeRecipe != null && activeRecipe.getPower() > 0 && powerUptime < POWER_RESTORE_GRACE_SECONDS) {
             float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
             spriter.add(nopowerTex, (x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f,
                     (y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2, Const.Z_STATES, size, size);

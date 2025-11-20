@@ -32,6 +32,7 @@ import de.dakror.quarry.structure.base.Schema;
 import de.dakror.quarry.structure.base.Schema.Flags;
 import de.dakror.quarry.structure.base.Structure;
 import de.dakror.quarry.structure.base.StructureType;
+import de.dakror.quarry.util.Bounds;
 import de.dakror.quarry.util.SpriterDelegateBatch;
 
 /**
@@ -40,6 +41,8 @@ import de.dakror.quarry.util.SpriterDelegateBatch;
 public class ShaftDrillHead extends Structure<Schema> {
     public static final Schema classSchema = new Schema(0, StructureType.ShaftDrillHead, true, ShaftDrill.classSchema.width, ShaftDrill.classSchema.height, "", new Items(), null)
             .flags(Flags.Indestructible, Flags.TextureAlwaysUpright);
+
+    private static final float ROTATION_SPEED_DEG_PER_SEC = 7.5f;
 
     static final TextureRegion core = Quarry.Q.atlas.findRegion("structure_shaft_drill_head");
     static final TextureRegion corner = Quarry.Q.atlas.findRegion("structure_shaft_drill_head_outer");
@@ -65,11 +68,16 @@ public class ShaftDrillHead extends Structure<Schema> {
     }
 
     @Override
-    public void drawFrame(SpriteRenderer spriter, ShapeRenderer shaper, SpriterDelegateBatch pfxBatch) {
-        if (drill.getActiveRecipe() != null && !drill.isSleeping()) {
-            rotation = (rotation - 0.125f * gameSpeed) % 360;
-        }
+    public void update(double deltaTime, int gameSpeed, Bounds dirtyBounds) {
+        super.update(deltaTime, gameSpeed, dirtyBounds);
 
+        if (drill != null && drill.getActiveRecipe() != null && !drill.isSleeping() && gameSpeed > 0) {
+            rotation = (rotation - ROTATION_SPEED_DEG_PER_SEC * (float) (deltaTime * gameSpeed)) % 360;
+        }
+    }
+
+    @Override
+    public void drawFrame(SpriteRenderer spriter, ShapeRenderer shaper, SpriterDelegateBatch pfxBatch) {
         spriter.add(core, x * Const.TILE_SIZE, y * Const.TILE_SIZE, Const.Z_STRUCTURES, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, 1, 1, rotation);
         spriter.add(core, x * Const.TILE_SIZE, y * Const.TILE_SIZE, Const.Z_STRUCTURES, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, 1, 1, rotation + 90);
         spriter.add(core, x * Const.TILE_SIZE, y * Const.TILE_SIZE, Const.Z_STRUCTURES, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, Const.TILE_SIZE * 2, 1, 1, rotation + 180);
