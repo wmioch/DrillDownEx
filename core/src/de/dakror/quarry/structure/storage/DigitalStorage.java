@@ -104,7 +104,7 @@ public class DigitalStorage extends Storage {
     double powerUse;
     boolean noPower;
     final WindowedMean powerLevelMean = new WindowedMean(60);
-    protected int framesPassedWithPower;
+    protected float powerUptime;
 
     public DigitalStorage(int x, int y) {
         super(x, y, classSchema);
@@ -192,16 +192,16 @@ public class DigitalStorage extends Storage {
             if (!noPower) {
                 playSfx();
                 powerLevel = Math.max(0, powerLevel - powerUse * 60 * deltaTime * gameSpeed);
-                if (framesPassedWithPower == 0) {
+                boolean regainedPower = powerUptime == 0;
+                powerUptime = Math.min(POWER_RESTORE_GRACE_SECONDS, powerUptime + (float) (deltaTime * gameSpeed));
+                if (regainedPower) {
                     // regained power
                     setItemNotifications();
                 }
-                framesPassedWithPower++;
-                if (framesPassedWithPower > 10) framesPassedWithPower = 10;
                 pumping = outputs.size > 0;
             } else {
                 pauseSfx();
-                framesPassedWithPower = 0;
+                powerUptime = 0;
                 pumping = false;
             }
         } else noPower = false;
@@ -213,7 +213,7 @@ public class DigitalStorage extends Storage {
     public void drawFrame(SpriteRenderer spriter, ShapeRenderer shaper, SpriterDelegateBatch pfxBatch) {
         super.drawFrame(spriter, shaper, pfxBatch);
 
-        if (framesPassedWithPower < 10) {
+        if (powerUptime < POWER_RESTORE_GRACE_SECONDS) {
             float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
             spriter.add(ProducerStructure.nopowerTex, (x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2,
                     (y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2, Const.Z_STATES, size, size);

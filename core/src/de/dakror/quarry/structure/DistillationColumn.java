@@ -87,7 +87,7 @@ public class DistillationColumn extends PausableStructure<PausableSchema> {
     double powerLevel;
     boolean noPower;
     final WindowedMean powerLevelMean = new WindowedMean(60);
-    protected int framesPassedWithPower;
+    protected float powerUptime;
 
     int level;
 
@@ -239,10 +239,9 @@ public class DistillationColumn extends PausableStructure<PausableSchema> {
             level.noPower = level.powerLevel < recipe.power;
             if (!level.noPower) {
                 level.powerLevel = Math.max(0, level.powerLevel - recipe.power * 60 * deltaTime * gameSpeed);
-                level.framesPassedWithPower++;
-                if (level.framesPassedWithPower > 10) level.framesPassedWithPower = 10;
+                level.powerUptime = Math.min(POWER_RESTORE_GRACE_SECONDS, level.powerUptime + (float) (deltaTime * gameSpeed));
             } else {
-                level.framesPassedWithPower = 0;
+                level.powerUptime = 0;
             }
         } else {
             level.noPower = false;
@@ -374,17 +373,17 @@ public class DistillationColumn extends PausableStructure<PausableSchema> {
 
         if (level == 0) {
             if (workingTime > 0) {
-                if (framesPassedWithPower < 10) {
+                if (powerUptime < POWER_RESTORE_GRACE_SECONDS) {
                     float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
                     spriter.add(ProducerStructure.nopowerTex, (x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2,
                             (y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2, Const.Z_STATES, size, size);
                 }
-                if (level1 != null && level1.framesPassedWithPower < 10) {
+                if (level1 != null && level1.powerUptime < POWER_RESTORE_GRACE_SECONDS) {
                     float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
                     spriter.add(ProducerStructure.nopowerTex, (level1.x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 3,
                             (level1.y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f, Const.Z_STATES, size, size);
                 }
-                if (level2 != null && level2.framesPassedWithPower < 10) {
+                if (level2 != null && level2.powerUptime < POWER_RESTORE_GRACE_SECONDS) {
                     float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
                     spriter.add(ProducerStructure.nopowerTex, (level2.x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 3,
                             (level2.y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f, Const.Z_STATES, size, size);

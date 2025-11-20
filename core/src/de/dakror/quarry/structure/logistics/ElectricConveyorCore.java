@@ -73,7 +73,7 @@ public class ElectricConveyorCore extends Conveyor {
     double powerUse;
     boolean noPower;
     final WindowedMean powerLevelMean = new WindowedMean(60);
-    protected int framesPassedWithPower;
+    protected float powerUptime;
 
     final HashSet<Integer> tmp = new HashSet<>();
     Array<ElectricConveyor> connectedConveyors = new Array<>();
@@ -217,14 +217,14 @@ public class ElectricConveyorCore extends Conveyor {
             noPower = powerLevel < powerUse / 2;
             if (!noPower) {
                 powerLevel = Math.max(0, powerLevel - powerUse * 60 * deltaTime * gameSpeed);
-                if (framesPassedWithPower == 0) {
+                boolean regainedPower = powerUptime == 0;
+                powerUptime = Math.min(POWER_RESTORE_GRACE_SECONDS, powerUptime + (float) (deltaTime * gameSpeed));
+                if (regainedPower) {
                     // just regained power
                     notifyNeighbors(true);
                 }
-                framesPassedWithPower++;
-                if (framesPassedWithPower > 10) framesPassedWithPower = 10;
             } else {
-                framesPassedWithPower = 0;
+                powerUptime = 0;
             }
         } else noPower = false;
 
@@ -268,7 +268,7 @@ public class ElectricConveyorCore extends Conveyor {
     public void drawFrame(SpriteRenderer spriter, ShapeRenderer shaper, SpriterDelegateBatch pfxBatch) {
         super.drawFrame(spriter, shaper, pfxBatch);
 
-        if (framesPassedWithPower < 10) {
+        if (powerUptime < POWER_RESTORE_GRACE_SECONDS) {
             float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
             spriter.add(ProducerStructure.nopowerTex, (x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2,
                     (y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2, Const.Z_STATES, size, size);

@@ -104,7 +104,7 @@ public class Refinery extends PausableStructure<PausableSchema> {
     double powerLevel;
     private final WindowedMean powerLevelMean = new WindowedMean(60);
     boolean noPower;
-    protected int framesPassedWithPower;
+    protected float powerUptime;
 
     Table ui;
     Container<Table> container;
@@ -242,7 +242,7 @@ public class Refinery extends PausableStructure<PausableSchema> {
             shaper.rect(x * Const.TILE_SIZE, y * Const.TILE_SIZE + 10, progress * getWidth() * Const.TILE_SIZE, 8);
         }
 
-        if ((workingTime0 > 0 || workingTime1 > 0) && framesPassedWithPower < 10) {
+        if ((workingTime0 > 0 || workingTime1 > 0) && powerUptime < POWER_RESTORE_GRACE_SECONDS) {
             float size = Const.STATE_SIZE * (1 + 0.3f * (MathUtils.sin(time * 2 * MathUtils.PI) * 0.5f + 0.5f));
             spriter.add(ProducerStructure.nopowerTex, (x + getWidth()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2,
                     (y + getHeight()) * Const.TILE_SIZE - (size - Const.STATE_SIZE) / 2 - Const.STATE_SIZE * 1.25f * 2, Const.Z_STATES, size, size);
@@ -295,10 +295,9 @@ public class Refinery extends PausableStructure<PausableSchema> {
             noPower = powerLevel < recipe.power;
             if (!noPower) {
                 powerLevel = Math.max(0, powerLevel - recipe.power * 60 * deltaTime * gameSpeed);
-                framesPassedWithPower++;
-                if (framesPassedWithPower > 10) framesPassedWithPower = 10;
+                powerUptime = Math.min(POWER_RESTORE_GRACE_SECONDS, powerUptime + (float) (deltaTime * gameSpeed));
             } else {
-                framesPassedWithPower = 0;
+                powerUptime = 0;
             }
         } else {
             noPower = false;

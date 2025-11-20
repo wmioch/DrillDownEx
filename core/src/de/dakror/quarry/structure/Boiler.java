@@ -167,11 +167,16 @@ public class Boiler extends PausableStructure<PausableSchema> {
                 }
 
                 decay -= deltaTime * gameSpeed;
-                if (decay <= 0) {
-                    heatLevel = Math.max(0, heatLevel - recipe.heatDecay * gameSpeed);
+                boolean decayed = false;
+                while (decay <= 0) {
+                    heatLevel = Math.max(0, heatLevel - recipe.heatDecay);
+                    decay += recipe.heatDecayTime;
+                    decayed = true;
+                }
+
+                if (decayed) {
                     if (clicked) updateUI();
                     setItemNotifications();
-                    decay = recipe.heatDecayTime;
                 }
             } else {
                 pauseSfx();
