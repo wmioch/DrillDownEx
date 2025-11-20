@@ -113,6 +113,7 @@ import de.dakror.quarry.structure.base.component.IStorage;
 import de.dakror.quarry.structure.logistics.BrickChannel;
 import de.dakror.quarry.structure.logistics.Conveyor;
 import de.dakror.quarry.structure.logistics.ConveyorBridge;
+import de.dakror.quarry.structure.logistics.GreenConveyor;
 import de.dakror.quarry.structure.logistics.CopperTube;
 import de.dakror.quarry.structure.logistics.Distributor;
 import de.dakror.quarry.structure.logistics.ElectricConveyor;
@@ -922,6 +923,7 @@ public class GameUi implements Ui {
         }
 
         buildMenuItem(tube, new Conveyor(-1, 0));
+        buildMenuItem(tube, new GreenConveyor(-1, 0));
         buildMenuItem(tube, new ConveyorBridge(-1, 0));
         buildMenuItem(tube, new BrickChannel(-1, 0));
         buildMenuItem(tube, new CopperTube(-1, 0));
@@ -1699,7 +1701,8 @@ public class GameUi implements Ui {
                         if (tutorial.getStepNum() < 10) {
                             canAfford = c.getUserObject() instanceof Mine;
                         } else {
-                            canAfford = c.getUserObject().getClass().equals(Conveyor.class);
+                            Class<?> uoClass = c.getUserObject().getClass();
+                            canAfford = uoClass.equals(Conveyor.class) || uoClass.equals(GreenConveyor.class);
                         }
                     }
 
