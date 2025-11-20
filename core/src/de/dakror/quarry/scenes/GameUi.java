@@ -204,6 +204,7 @@ import de.dakror.quarry.structure.producer.Coker;
 public class GameUi implements Ui {
     public static final int ICONS_PER_COLUMN = 3;
     public static final int TOOLTIP_ICON_SIZE = 32;
+    private static final float RECIPE_CONTENT_WIDTH = 320f;
     public static final int RESOURCES_ICON_SIZE = 24;
 
     static DecimalFormat intFormat;
@@ -2482,6 +2483,19 @@ public class GameUi implements Ui {
         return d;
     }
 
+    private static void shrinkRecipeRow(Table row, Cell<?> cell) {
+        row.pack();
+        float prefWidth = row.getPrefWidth();
+        if (prefWidth > RECIPE_CONTENT_WIDTH) {
+            float scale = RECIPE_CONTENT_WIDTH / prefWidth;
+            row.setTransform(true);
+            row.setScale(scale);
+            row.setOrigin(Align.left);
+            cell.width(RECIPE_CONTENT_WIDTH);
+            cell.height(row.getPrefHeight() * scale);
+        }
+    }
+
     // TODO: resolve actual used items and not only the general recipe
     // Also see ProductionStructure.updateUI()
     public static Table renderRecipe(Skin skin, Recipe recipe,
@@ -2512,7 +2526,7 @@ public class GameUi implements Ui {
                 else
                     inputs.add(createResourceTable(TOOLTIP_ICON_SIZE, skin, a.getItem(), text)).padRight(5);
             }
-            table.add(inputs).expandX();
+            shrinkRecipeRow(inputs, table.add(inputs).expandX().fillX());
         }
 
         table.row();
@@ -2570,6 +2584,7 @@ public class GameUi implements Ui {
             Cell<?> c = table.add(outputs).center();
             if (recipe.getInput() == null)
                 c.expandX();
+            shrinkRecipeRow(outputs, c);
         }
 
         return table;
