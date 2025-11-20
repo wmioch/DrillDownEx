@@ -103,10 +103,10 @@ jobs:
           cp desktop/build/libs/desktop-1.0.jar "$debug_dir/"
 
           cat >"$debug_dir/run-debug.sh" <<'EOF'
-#!/usr/bin/env bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-java -jar "$SCRIPT_DIR/desktop-1.0.jar" debug
-EOF
+          #!/usr/bin/env bash
+          SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          java -jar "$SCRIPT_DIR/desktop-1.0.jar" debug
+          EOF
           chmod +x "$debug_dir/run-debug.sh"
 
           if [ -d desktop/build/packaged-assets ]; then
@@ -221,10 +221,10 @@ EOF
           cp desktop/build/libs/desktop-1.0.jar "$debug_dir/"
 
           cat >"$debug_dir/run-debug.bat" <<'EOF'
-@echo off
-set SCRIPT_DIR=%~dp0
-java -jar "%SCRIPT_DIR%\\desktop-1.0.jar" debug
-EOF
+          @echo off
+          set SCRIPT_DIR=%~dp0
+          java -jar "%SCRIPT_DIR%\\desktop-1.0.jar" debug
+          EOF
 
           if [ -d desktop/build/packaged-assets ]; then
             cp desktop/build/packaged-assets/* "$debug_dir/"
