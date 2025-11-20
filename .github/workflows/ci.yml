@@ -93,6 +93,33 @@ jobs:
       - name: Build desktop distribution
         run: ./gradlew desktop:dist --no-daemon --stacktrace
 
+      - name: Package desktop debug build
+        run: |
+          set -euo pipefail
+
+          debug_dir=desktop/build/debug-dist
+          mkdir -p "$debug_dir"
+
+          cp desktop/build/libs/desktop-1.0.jar "$debug_dir/"
+
+          cat >"$debug_dir/run-debug.sh" <<'EOF'
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+java -jar "$SCRIPT_DIR/desktop-1.0.jar" debug
+EOF
+          chmod +x "$debug_dir/run-debug.sh"
+
+          if [ -d desktop/build/packaged-assets ]; then
+            cp desktop/build/packaged-assets/* "$debug_dir/"
+          fi
+
+      - name: Upload desktop debug artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-debug-build
+          path: desktop/build/debug-dist/**
+          if-no-files-found: error
+
       - name: Assemble Android release build (signed)
         run: |
           ./gradlew android:assembleFullRelease \
@@ -182,6 +209,33 @@ jobs:
 
       - name: Build desktop distribution
         run: .\\gradlew.bat desktop:dist --no-daemon --stacktrace
+
+      - name: Package desktop debug build
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          debug_dir=desktop/build/debug-dist
+          mkdir -p "$debug_dir"
+
+          cp desktop/build/libs/desktop-1.0.jar "$debug_dir/"
+
+          cat >"$debug_dir/run-debug.bat" <<'EOF'
+@echo off
+set SCRIPT_DIR=%~dp0
+java -jar "%SCRIPT_DIR%\\desktop-1.0.jar" debug
+EOF
+
+          if [ -d desktop/build/packaged-assets ]; then
+            cp desktop/build/packaged-assets/* "$debug_dir/"
+          fi
+
+      - name: Upload Windows desktop debug artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-desktop-debug-dist
+          path: desktop/build/debug-dist/**
+          if-no-files-found: error
 
       - name: Upload Windows desktop artifacts
         uses: actions/upload-artifact@v4
