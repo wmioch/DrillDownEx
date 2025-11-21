@@ -35,7 +35,7 @@ import de.dakror.quarry.util.Sfx;
  */
 public class SteamCompressor extends ProducerStructure {
     public static final ProducerSchema classSchema = new ProducerSchema(0, StructureType.SteamCompressor, 3, 2,
-            "steamturbine",
+            "steamcompressor",
             new Items(ItemType.MachineFrame, 6, ItemType.SteelIngot, 18, ItemType.CopperTube, 16, ItemType.Dynamo, 2),
             new RecipeList() {
                 @Override
