@@ -659,7 +659,7 @@ public class GameUi implements Ui {
 
         speedButtonGroup = new ButtonGroup<>();
         speedButtonGroup.setMaxCheckCount(1);
-        speedButtonGroup.setMinCheckCount(1);
+        speedButtonGroup.setMinCheckCount(0);
         speedButtonGroup.setUncheckLast(true);
 
         speed2xButton = createSpeedButton(2, baseX, skin);
@@ -678,8 +678,8 @@ public class GameUi implements Ui {
         speedButtonGroup.add(speed100xButton);
         stage.addActor(speed100xButton);
 
-        // Set initial state (1x is default)
-        speed2xButton.setChecked(true);
+        // Sync button state to current speed
+        updateSpeedButtons();
     }
 
     private ImageButton createSpeedButton(final int speed, float xPosition, Skin skin) {
@@ -740,14 +740,6 @@ public class GameUi implements Ui {
         speed10xButton.setChecked(currentSpeed == 10);
         speed25xButton.setChecked(currentSpeed == 25);
         speed100xButton.setChecked(currentSpeed == 100);
-
-        // If speed is not one of the presets, select closest
-        if (currentSpeed != 2 && currentSpeed != 10 && currentSpeed != 25 && currentSpeed != 100) {
-            if (currentSpeed < 10) speed2xButton.setChecked(true);
-            else if (currentSpeed < 25) speed10xButton.setChecked(true);
-            else if (currentSpeed < 100) speed25xButton.setChecked(true);
-            else speed100xButton.setChecked(true);
-        }
 
         // Optionally disable speed controls when paused
         speed2xButton.setDisabled(isPaused);
