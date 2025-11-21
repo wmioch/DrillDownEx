@@ -95,6 +95,7 @@ import de.dakror.quarry.structure.producer.RockCrusher;
 import de.dakror.quarry.structure.producer.RollingMachine;
 import de.dakror.quarry.structure.producer.SawMill;
 import de.dakror.quarry.structure.producer.Stacker;
+import de.dakror.quarry.structure.producer.SteamCompressor;
 import de.dakror.quarry.structure.producer.TubeBender;
 import de.dakror.quarry.structure.producer.WireDrawer;
 import de.dakror.quarry.structure.storage.Barrel;
@@ -175,6 +176,7 @@ public enum StructureType {
     BarrelDrainer(98, BarrelDrainer.class),
     ArcWelder(99, ArcWelder.class),
     Coker(214, Coker.class),
+    SteamCompressor(216, SteamCompressor.class),
 
     // power management
     Substation(100, Substation.class),
