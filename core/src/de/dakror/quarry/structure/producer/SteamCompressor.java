@@ -40,9 +40,9 @@ public class SteamCompressor extends ProducerStructure {
             new RecipeList() {
                 @Override
                 protected void init() {
-                    add(new Recipe(3f, "pressurizedsteam", 350)
-                            .input(new Amount(ItemType.Steam, 5000))
-                            .output(new Amount(ItemType.PressurizedSteam, 1200)));
+                    add(new Recipe(1.5f, "pressurizedsteam", 350)
+                            .input(new Amount(ItemType.Steam, 8000))
+                            .output(new Amount(ItemType.PressurizedSteam, 2400)));
                 }
             },
             new Sfx("compactor" + Const.SFX_FORMAT, 0.7f),
