@@ -56,6 +56,17 @@ Complete visual overhaul for vertical transport between floors:
 gradlew desktop:run
 ```
 
+**Flutter + Flame sandbox (no native build required)**:
+
+```bash
+cd flutter_game
+source ../scripts/flutter_env.sh  # Exposes the preinstalled Flutter/Android/Chrome toolchains
+flutter pub get
+flutter run -d chrome
+```
+
+The sandbox recreates the factory loop (drills, smelters, pumps, purifiers, elevators, relief valves, and cokers) with procedural graphics for easy agent-driven testing.
+
 **Build from source**:
 ```bash
 gradlew desktop:dist
@@ -86,37 +97,34 @@ Run with `RUN_GAME.bat` or pass `debug` argument for developer controls:
 - [Build Summary](docs/BUILD_SUMMARY.md)
 - [Speed Controls Details](docs/SPEED_CONTROLS_IMPLEMENTATION_SUMMARY.md)
 
-## ✅ Continuous Integration & Automated Builds
+## ✅ Continuous Integration & Automated Builds (Flutter sandbox)
 
-GitHub Actions automatically builds and signs your APK on every push to `main`.
+GitHub Actions builds and tests the Flutter + Flame sandbox on pushes/PRs that touch `flutter_game/**`.
 
-**Workflow Config**: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)  
-**View Latest Builds**: [Actions Tab](https://github.com/wmioch/DrillDownEx/actions/workflows/ci.yml)
+**Workflow Config**: [`.github/workflows/flutter-ci.yml`](.github/workflows/flutter-ci.yml)
+**View Latest Runs**: [Actions Tab](https://github.com/wmioch/DrillDownEx/actions/workflows/flutter-ci.yml)
 
-### Each CI run:
-1. ✅ Builds desktop distribution (`desktop:dist`)
-2. ✅ Builds signed release APK (`android:assembleFullRelease`)
-3. ✅ Signs with your official keystore (stored securely in GitHub Secrets)
-4. ✅ Uploads APK as downloadable artifact
+### Each Flutter CI run:
+1. ✅ Runs unit tests (`flutter test --exclude-tags integration`)
+2. ✅ Runs integration tests (`flutter test --tags integration`)
+3. ✅ Builds Android release APK (`flutter build apk --release`)
+4. ✅ Builds Linux desktop bundle (`flutter build linux --release`)
+5. ✅ Uploads both artifacts for download
 
-### 📱 Install APK Directly from GitHub
+### 📱 Download the APK or desktop bundle from GitHub
 
-No PC needed! Download and install the latest signed APK on any Android device:
+1. **Trigger a build**: Push a change under `flutter_game/**` (or [re-run the workflow](https://github.com/wmioch/DrillDownEx/actions/workflows/flutter-ci.yml)).
+2. **Download artifacts**:
+   - Open [Actions](https://github.com/wmioch/DrillDownEx/actions/workflows/flutter-ci.yml) → latest successful run
+   - Grab **`flutter-android-apk`** (unzips to `app-release.apk`)
+   - Grab **`flutter-linux-desktop`** (tarball of the release bundle)
+3. **Install/run**:
+   - Android: copy `app-release.apk` to a device and install (enable "unknown sources" when prompted)
+   - Linux: extract the tarball and run `./flutter_game`
 
-1. **Trigger a build**: Push changes to `main` (or [re-run the workflow](https://github.com/wmioch/DrillDownEx/actions/workflows/ci.yml))
-2. **Get the APK**: 
-   - Open [Actions](https://github.com/wmioch/DrillDownEx/actions/workflows/ci.yml) → latest successful run
-   - Scroll to **Artifacts** → Download `android-release-apk`
-3. **Install**:
-   - Extract the `.zip` file (any Files app works)
-   - Open the `.apk` 
-   - If prompted, allow installs from unknown sources
-   - APK installs directly over your existing app—all your data is preserved
-
-> **💡 Tips**
-> - Artifacts are **already signed** with your official certificate (no package conflicts!)
-> - Artifacts expire after 90 days; push again to regenerate
-> - You can re-run the workflow without pushing: [Actions](https://github.com/wmioch/DrillDownEx/actions/workflows/ci.yml) → **⋯** → **Re-run jobs**
+> **Notes**
+> - Artifacts expire after 90 days—rerun the workflow to regenerate
+> - Workflow installs Flutter SDK 3.24.3 and required Linux deps automatically
 
 ### Texture & Graphics Development
 
