@@ -135,6 +135,7 @@ screenshots/
 *.keystore
 local.properties
 gradle.properties
+!/flutter_game/android/gradle.properties
 
 # Local Android SDK downloaded for manual builds/tests
 android-sdk/
