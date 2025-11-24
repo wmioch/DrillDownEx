@@ -69,12 +69,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flutter-android-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: flutter_game/build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
 
       - name: Upload Linux desktop bundle
         uses: actions/upload-artifact@v4
         with:
           name: flutter-linux-desktop
-          path: flutter-linux-bundle.tar.gz
+          path: flutter_game/flutter-linux-bundle.tar.gz
           if-no-files-found: error
